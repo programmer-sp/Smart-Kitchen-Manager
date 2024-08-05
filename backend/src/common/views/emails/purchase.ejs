@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title><%-assets.websiteName%></title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0,
+      minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css"
+    integrity="sha512-rSWTr6dChYCbhpHaT1hg2tf4re2jUxBWTuZbujxKg96+T87KQJriMzBzW5aqcb8jmzBhhNSx4XYGA6/Y+ok1vQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style type="text/css">
+  * {
+    font-family: "Lato";
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato";
+  }
+</style>
+
+<body>
+  <div style="max-width: 100%;
+      width: 600px;
+      margin: 0 auto;
+      background: #f8f8f8;">
+    <div style=" background-image:
+    url(<%-assets.welcomeBanner%>);
+    padding: 30px;background-repeat: no-repeat;display: flex;">
+      <p style="margin: 0;color:#ffffff;font-size:20px;line-height:24px;">Hello,
+        <%-data.username%>!
+      </p>
+      <div style="margin-left: auto;">
+        <!-- <a href="<%-assets.websiteName%>" target="_blank">
+      <img src="" alt="<%-assets.websiteName%>" />
+    </a> -->
+        <p style="margin: 0;color:#ffffff;font-size:20px;line-height:24px;"> <%-assets.websiteName%> </p>
+      </div>
+    </div>
+    <div style="padding: 60px 60px 0;">
+      <p style="margin: 0;font-weight: 900;
+          font-size: 30px;
+          color: #0d0f12;">Payment Invoice</p>
+      <p style="margin: 0;font-size: 15px;color: #666666;line-height:
+          26px;padding: 30px
+          0 40px">Congrats! You have successfully purchased the item, please check your payment details below.
+      </p>
+      <div style="padding: 30px;">
+        <p style="margin: 0;font-size: 15px;font-weight: bold;line-height: 26px;color: #000000;">
+          Invoice Details
+        </p>
+        <table width="100%" cellspacing="0" style="padding: 30px
+            0;border-bottom:1px solid #666666;">
+          <tbody>
+            <tr>
+              <td width="40%" style="color: #0d0f12;font-weight:
+                  bold;font-size: 15px;padding-bottom:15px;">Date</td>
+              <td width="10%" style="color: #666666;padding-bottom:15px;">:</td>
+              <td width="50%" style="color: #666666;font-size:
+                  15px;padding-bottom:15px;"><%-data.date%></td>
+            </tr>
+            <tr>
+              <td width="40%" style="color: #0d0f12;font-weight:
+                  bold;font-size: 15px;padding-bottom:15px;">Invoice No</td>
+              <td width="10%" style="color: #666666;padding-bottom:15px;">:</td>
+              <td width="50%" style="color: #666666;font-size:
+                  15px;padding-bottom:15px;"><%-data.invoiceId%></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" cellspacing="0" style="padding: 30px
+            0;border-bottom:1px solid #666666;">
+          <tbody>
+            <tr>
+              <td width="40%" style="color: #0d0f12;font-weight:
+                  bold;font-size: 15px;">Total</td>
+              <td width="10%" style="color: #666666;">:</td>
+              <td width="50%" style="color: #666666;font-size: 15px;"><%-data.paidAmount%></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" cellspacing="0" style="padding: 30px 0;">
+          <tbody>
+            <tr>
+              <td width="40%" style="color: #0d0f12;font-weight:
+                  bold;font-size: 15px;padding-bottom:15px;">Payment Method</td>
+              <td width="10%" style="color: #666666;padding-bottom:15px;">:</td>
+              <td width="50%" style="color: #666666;font-size:
+                  15px;padding-bottom:15px;"><%-data.method%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-bottom: 60px;">
+        <p style="margin: 0;font-size: 15px;color: #666666;line-height:
+            26px;">Thanks,</p>
+        <p style="margin: 0;font-size: 15px;color: #666666;line-height:
+            26px;"><%-assets.websiteName%>
+            team</p>
+      </div>
+      <div class="footer" style="padding: 60px 0;text-align: center;">
+        <div style="margin-bottom: 31px;">
+          <button style="border: none;background-color: #f8f8f8;">
+            <a href=<%-assets.playStoreUrl%> target="_blank"><img src=<%-assets.playStoreImg%>
+              alt="google-app"
+              /></a>
+          </button>
+          <button style="border: none;background-color: #f8f8f8;">
+            <a href=<%-assets.appStoreUrl%> target="_blank"><img src=<%-assets.appStoreImg%>
+              alt="app-store" /></a>
+          </button>
+        </div>
+        <a href=<%-assets.helpDeskUrl%> style="color:
+          #0d0f12;font-size:15px;text-decoration:
+          none;font-weight: bold;">Need help?</a>
+        <div style="margin: 20px 0;">
+          <p style="margin: 0;font-size: 13px;line-height: 22px;color: #000000;">
+            For any questions, you can contact us at <a href=<%-assets.helpDeskUrl%>
+              style="color:
+              #073d83;font-weight: bold;text-decoration:
+              none;"><%-assets.helpDeskMail%>.</a></p>
+          <p style="margin: 0;font-size: 13px;line-height: 22px;color: #000000;">
+            <a href="javascript:void(0);" style="color: #073d83;font-weight:
+                bold;text-decoration: none;">Unsubscribe</a>
+            from this list.
+          </p>
+        </div>
+        <p style="margin: 0;font-size: 13px;line-height: 22px;color:
+            #666666;">Copyright
+          © <%-year%> <%-assets.websiteName%>, All rights reserved.</p>
+      </div>
+      <div class="footer-bottom" style="padding: 20px 0;border-top: 1px solid
+          #666666;display: flex;justify-content: space-between;">
+        <div>
+          <a href=<%-assets.linkedIn%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">LinkedIn</a>
+          -
+          <a href=<%-assets.twitter%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">Twitter</a>
+          -
+          <a href=<%-assets.facebook%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">Facebook</a>
+          -
+          <a href=<%-assets.instagram%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">Instagram</a>
+          -
+          <a href=<%-assets.discord%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">Discord</a>
+        </div>
+        <div style="margin-left: auto;">
+          <a href=<%-assets.privacyPolicy%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">Privacy
+            Policy</a> -
+          <a href=<%-assets.termsCondition%> style="font-size:
+            12px;line-height:22px;color:#666666;text-decoration:none;"
+            target="_blank">T&C</a>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

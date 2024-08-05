@@ -1,0 +1,20 @@
+{
+    "SOMETHING_WENT_WRONG": "Something went wrong, please try again later",
+    "COMMON_SUCCESS": "{{key}} {{method}} successfully",
+    "INVALID_REQUEST": "Invalid request",
+    "ALREADY_EXISTS": "{{key}} already exists",
+    "NOT_EXISTS": "{{key}} does not exist",
+    "NOT_FOUND": "{{key}} not found",
+    "INVALID_CREDENTIALS": "Please enter a valid Email or Password",
+    "SUSPEND_MESSAGE": "Your account is suspended, please contact with higher authority",
+    "AUTHORIZATION_MESSAGE": "Invalid authorization token",
+    "COMMON_ALREADY": "{{key}} already {{method}}",
+    "COMMON_INACTIVE": "{{key}} is inactive",
+    "CANNOT_APPLY_COUPON": "The coupon cannot be applied to an empty cart",
+    "EMPTY_CART": "There is no products in your cart",
+    "VERIFY_EMAIL": "Please verify your email before login",
+    "INVITATION_EXPIRED": "Your verification is failed due to expired or invalid invitation",
+    "VERFIY_EMAIL_SENT": "Verification mail has been sent to your mail Id, please check",
+    "INFO_MISMATCH": "{{key}} information is invalid",
+    "WAIT_MESSAGE": "Please wait while model is being loaded"
+}
