@@ -1,1 +1,1 @@
-ingredient_id,name,category_id,unit,value,expiration_date,is_expired,created_at
+ingredient_id,name,category_id
