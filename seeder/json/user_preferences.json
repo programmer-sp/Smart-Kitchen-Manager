@@ -1,0 +1,31 @@
+{
+    "collMod": "user_preferences",
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "bsonType": "objectId",
+                    "description": "must be a valid ObjectId"
+                },
+                "dietary_restrictions": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string",
+                        "description": "must be a string and is optional"
+                    }
+                },
+                "preferred_cuisines": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string",
+                        "description": "must be a string and is optional"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "collMod": "recipe_ratings",
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "required": [
+                "user_id",
+                "recipe_id",
+                "rating"
+            ],
+            "properties": {
+                "user_id": {
+                    "bsonType": "objectId",
+                    "description": "must be a valid ObjectId"
+                },
+                "recipe_id": {
+                    "bsonType": "objectId",
+                    "description": "must be a valid ObjectId"
+                },
+                "rating": {
+                    "bsonType": "double",
+                    "minimum": 0,
+                    "maximum": 5,
+                    "description": "must be a double between 0 and 5"
+                },
+                "review": {
+                    "bsonType": "string",
+                    "description": "must be a string and is optional"
+                }
+            }
+        }
+    }
+}

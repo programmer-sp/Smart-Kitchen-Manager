@@ -1,0 +1,112 @@
+{
+    "collMod": "recipes",
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "required": [
+                "recipe_name",
+                "ingredients"
+            ],
+            "properties": {
+                "recipe_name": {
+                    "bsonType": "string",
+                    "description": "must be a string and is required"
+                },
+                "cuisine": {
+                    "bsonType": "string",
+                    "description": "must be a string and is optional"
+                },
+                "preparation_time": {
+                    "bsonType": "int",
+                    "minimum": 0,
+                    "description": "must be an integer and non-negative"
+                },
+                "system_rating": {
+                    "bsonType": "double",
+                    "minimum": 0,
+                    "maximum": 5,
+                    "description": "must be a double between 0 and 5"
+                },
+                "is_rated": {
+                    "bsonType": "bool",
+                    "description": "must be a boolean and defaults to false"
+                },
+                "expiration_date": {
+                    "bsonType": "date",
+                    "description": "must be a valid date in the future"
+                },
+                "ingredients": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "object",
+                        "required": [
+                            "ingredient_id",
+                            "name",
+                            "quantity",
+                            "unit"
+                        ],
+                        "properties": {
+                            "ingredient_id": {
+                                "bsonType": "objectId",
+                                "description": "must be a valid ObjectId"
+                            },
+                            "name": {
+                                "bsonType": "string",
+                                "description": "must be a string and is required"
+                            },
+                            "quantity": {
+                                "bsonType": "double",
+                                "minimum": 0,
+                                "description": "must be a double and non-negative"
+                            },
+                            "unit": {
+                                "bsonType": "string",
+                                "description": "must be a string and is required"
+                            }
+                        }
+                    }
+                },
+                "steps": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string",
+                        "description": "must be a string and is optional"
+                    }
+                },
+                "images": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string",
+                        "description": "must be a string and is optional"
+                    }
+                },
+                "video_url": {
+                    "bsonType": "string",
+                    "description": "must be a string and is optional"
+                },
+                "ratings": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "object",
+                        "properties": {
+                            "user_id": {
+                                "bsonType": "objectId",
+                                "description": "must be a valid ObjectId"
+                            },
+                            "rating": {
+                                "bsonType": "double",
+                                "minimum": 0,
+                                "maximum": 5,
+                                "description": "must be a double between 0 and 5"
+                            },
+                            "review": {
+                                "bsonType": "string",
+                                "description": "must be a string and is optional"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

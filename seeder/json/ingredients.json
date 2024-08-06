@@ -1,0 +1,57 @@
+{
+    "collMod": "ingredients",
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "required": [
+                "name",
+                "unit",
+                "value"
+            ],
+            "properties": {
+                "name": {
+                    "bsonType": "string",
+                    "description": "must be a string and is required"
+                },
+                "category": {
+                    "bsonType": "string",
+                    "description": "must be a string and is optional"
+                },
+                "unit": {
+                    "bsonType": "string",
+                    "description": "must be a string and is required"
+                },
+                "value": {
+                    "bsonType": "double",
+                    "minimum": 0,
+                    "description": "must be a double and non-negative"
+                },
+                "image_url": {
+                    "bsonType": "string",
+                    "description": "must be a string and is optional"
+                },
+                "nutritional_info": {
+                    "bsonType": "object",
+                    "properties": {
+                        "calories": {
+                            "bsonType": "int",
+                            "description": "must be an integer and is optional"
+                        },
+                        "protein": {
+                            "bsonType": "string",
+                            "description": "must be a string and is optional"
+                        },
+                        "fat": {
+                            "bsonType": "string",
+                            "description": "must be a string and is optional"
+                        },
+                        "carbohydrates": {
+                            "bsonType": "string",
+                            "description": "must be a string and is optional"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
