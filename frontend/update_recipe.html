@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Update Recipe - Smart Kitchen Helper
+</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+<header class="main-header">
+<h1>
+Update Recipe
+</h1>
+</header>
+<main>
+<form id="recipeUpdateForm">
+<p><label for="recipeName">Recipe Name:</label>
+<input type="text" id="recipeName" name="recipeName" readonly></p>
+<p><label for="cuisine">Cuisine:</label>
+<input type="text" id="cuisine" name="cuisine" required></p>
+<p><label for="prepTime">Preparation Time (minutes):</label>
+<input type="number" id="prepTime" name="prepTime" required></p>
+<h3>
+Ingredients
+</h3>
+<div id="ingredientList">
+<pre><code>            &lt;!-- Ingredients will be dynamically added here --&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;button&quot; onclick=&quot;addIngredient()&quot; class=&quot;btn&quot;&gt;Add Ingredient&lt;/button&gt;
+
+        &lt;h3&gt;Preparation Steps&lt;/h3&gt;
+        &lt;textarea id=&quot;preparationSteps&quot; name=&quot;preparationSteps&quot; rows=&quot;6&quot; required&gt;&lt;/textarea&gt;
+
+        &lt;h3&gt;Preparation Flowchart&lt;/h3&gt;
+        &lt;!-- Insert flowchart creation tool or integration here --&gt;
+
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Save Changes&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/main&gt;
+&lt;script src=&quot;../assets/js/update_recipe.js&quot;&gt;&lt;/script&gt;</code></pre>
+</body>
+</html>

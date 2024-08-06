@@ -7,8 +7,9 @@ def generate_markdown(directory, level=0):
     with os.scandir(directory) as entries:
         for entry in entries:
             if entry.is_dir(follow_symlinks=False):
-                markdown += f"{indent}- **{entry.name}/**\n"
-                markdown += generate_markdown(entry.path, level + 1)
+                if entry.name != '.git':  # Ignore .git directory
+                    markdown += f"{indent}- **{entry.name}/**\n"
+                    markdown += generate_markdown(entry.path, level + 1)
             else:
                 markdown += f"{indent}- {entry.name}\n"
 
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     # Print the markdown structure
     print(markdown_structure)
     
-    # # Save to a file
+    # Save to a file (uncomment to use)
     # with open("directory_structure.md", "w") as f:
     #     f.write(markdown_structure)
 

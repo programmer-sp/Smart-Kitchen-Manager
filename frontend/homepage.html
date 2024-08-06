@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Smart Kitchen Helper</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #E0E0E0;
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Styling */
+        .main-header {
+            background: linear-gradient(135deg, #1DB954, #191414);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-header .logo {
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-header .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .main-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1DB954;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid #1DB954;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #1DB954;
+            color: #fff;
+        }
+
+        /* Logout Button Styling */
+        .logout-button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        .logout-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1E1E1E;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Recent Activity Section */
+        .recent-activity {
+            background: #2C2C2C;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .recent-activity h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1DB954;
+        }
+
+        .recent-activity ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .recent-activity ul li {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s ease;
+        }
+
+        .recent-activity ul li:hover {
+            background: #1DB954;
+            color: #fff;
+        }
+
+        /* Quick Actions Section */
+        .quick-actions {
+            background: #2C2C2C;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-actions h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1DB954;
+        }
+
+        .quick-actions button {
+            background: linear-gradient(135deg, #1DB954, #191414);
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .quick-actions button:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+        }
+
+        .quick-actions button:active {
+            transform: translateY(1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .quick-actions button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo" class="logo" width="150">
+        <h1 id="welcomeMessage">Welcome, [User’s Name]</h1>
+        <nav>
+            <ul>
+                <li><a href="households.html">Households</a></li>
+                <li><a href="ingredients.html">Ingredients</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+        <button class="logout-button" id="logoutButton">Logout</button>
+    </header>
+    <main>
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul id="activityFeed">
+                <!-- Recent activities will be dynamically loaded here -->
+            </ul>
+        </section>
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <button onclick="location.href='add_ingredient.html'">Add New Ingredient</button>
+            <button onclick="location.href='find_recipes.html'">Find Recipes</button>
+        </section>
+    </main>
+    <script>
+        // Function to get the query parameter value by name
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // On DOMContentLoaded, update the welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = getQueryParam('username');
+            if (username) {
+                document.getElementById('welcomeMessage').textContent = `Welcome, ${username}`;
+            }
+        });
+
+        // Logout button functionality
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Simulate clearing user session (could involve clearing cookies or local storage)
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>

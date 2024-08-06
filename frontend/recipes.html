@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Recipes - Smart Kitchen Helper
+</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+<header class="main-header">
+<h1>
+Your Recipes
+</h1>
+</header>
+<main>
+<section id="recipeSearch">
+<h2>
+Find Recipes
+</h2>
+<input type="text" id="recipeSearchInput" placeholder="Search for recipes...">
+<button onclick="searchRecipes()" class="btn">Search</button>
+</section>
+<section id="recipeList">
+<h2>
+Recipe Collection
+</h2>
+<ul>
+<!-- Recipes will be dynamically loaded here -->
+</ul>
+<button onclick="location.href=&#39;add_recipe.html&#39;" class="btn">
+Add New Recipe
+</button>
+</section>
+</main>
+<script src="../assets/js/recipes.js"></script>
+</body>
+</html>

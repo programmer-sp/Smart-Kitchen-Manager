@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Kitchen Helper</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Login Container Styling */
+        .login-container {
+            background: #1E1E1E;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-container img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .login-container h2 {
+            font-size: 28px;
+            color: #1DB954;
+            margin-bottom: 30px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-container label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .login-container input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            background: #2C2C2C;
+            color: #E0E0E0;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .login-container input::placeholder {
+            color: #A0A0A0;
+        }
+
+        .login-container .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .login-container button {
+            background: linear-gradient(135deg, #1DB954, #191414);
+            border: none;
+            color: #fff;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 48%;
+        }
+
+        .login-container button:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+        }
+
+        .login-container button:active {
+            transform: translateY(1px);
+        }
+
+        .login-container a {
+            color: #1DB954;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px;
+            }
+
+            .login-container h2 {
+                font-size: 24px;
+            }
+
+            .login-container .button-container {
+                flex-direction: column;
+            }
+
+            .login-container button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm" action="login.html" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <div class="button-container">
+                <button type="submit">Login</button>
+                <button type="button" onclick="window.location.href='signup.html'">Sign Up</button>
+            </div>
+
+            <div class="error-message" id="error-message">{{ error or request.args.get('error', '') }}</div>
+        </form>
+        <a href="forgot_password.html">Forgot Password?</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const errorMessage = document.getElementById("error-message");
+            if (errorMessage.textContent.trim() !== "") {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>

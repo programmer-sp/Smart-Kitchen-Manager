@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Find Recipes - Smart Kitchen Helper
+</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+<header class="main-header">
+<h1>
+Find Recipes
+</h1>
+</header>
+<main>
+<form id="findRecipesForm">
+<p><label for="ingredientsSelect">Select Available Ingredients:</label>
+<select id="ingredientsSelect" name="ingredientsSelect" multiple>
+<!-- Options for ingredients will be dynamically loaded here -->
+</select></p>
+<p><label for="cuisineSelect">Cuisine:</label>
+<select id="cuisineSelect" name="cuisineSelect">
+<option value="">Any</option>
+<!-- Cuisine options will be dynamically loaded here --> </select></p>
+<p><label for="maxPrepTime">Maximum Preparation Time (minutes):</label>
+<input type="number" id="maxPrepTime" name="maxPrepTime"></p>
+<button type="submit" class="btn">
+Find Recipes
+</button>
+</form>
+<section id="recipeResults">
+<h2>
+Recipes You Can Make
+</h2>
+<ul>
+<!-- Recipe results will be dynamically loaded here -->
+</ul>
+<pre><code>&lt;/section&gt;
+&lt;/main&gt;
+&lt;script src=&quot;../assets/js/find_recipes.js&quot;&gt;&lt;/script&gt;</code></pre>
+</body>
+</html>
