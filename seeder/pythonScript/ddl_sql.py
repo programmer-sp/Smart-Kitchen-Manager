@@ -1,10 +1,15 @@
 import psycopg2
 from psycopg2 import sql
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Database connection parameters
 DATABASE = 'smart_kitchen_helper'
 USER = 'postgres'
-PASSWORD = 'admin@1234'
+PASSWORD = 'root'
 HOST = 'localhost'
 PORT = '5432'
 
@@ -23,13 +28,13 @@ def drop_and_create_db():
     try:
         # Drop the database if it exists
         cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(sql.Identifier(DATABASE)))
-        print(f"Database '{DATABASE}' dropped successfully.")
+        logger.info(f"Database '{DATABASE}' dropped successfully.")
         
         # Create the database
         cursor.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(DATABASE)))
-        print(f"Database '{DATABASE}' created successfully.")
+        logger.info(f"Database '{DATABASE}' created successfully.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.error(f"An error occurred: {e}")
     finally:
         cursor.close()
         conn.close()
@@ -156,7 +161,7 @@ def create_tables():
     conn.commit()
     cursor.close()
     conn.close()
-    print("Tables created successfully.")
+    logger.info("Tables created successfully.")
 
 if __name__ == "__main__":
     drop_and_create_db()
