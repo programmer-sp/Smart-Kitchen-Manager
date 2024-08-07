@@ -1,7 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export interface HouseholdsAttributes {
-    household_id: string;
+    household_id: number;
     household_name: string;
     status: boolean;
     address: string;
@@ -18,13 +18,14 @@ export type HouseholdsStatic = typeof Model & {
 export function HouseholdsFactory(sequelize: Sequelize): HouseholdsStatic {
     return <HouseholdsStatic>sequelize.define('Households', {
         household_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         household_name: {
             type: DataTypes.STRING,
+            unique: true,
+            allowNull: false
         },
         status: {
             type: DataTypes.BOOLEAN,

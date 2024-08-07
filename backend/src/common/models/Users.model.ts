@@ -15,14 +15,14 @@ export const setPassword = (value: any) => {
 };
 
 export interface UsersAttributes {
-    user_id: string;
+    user_id: number;
     username: string;
     email: string;
+    role: string;
     status: boolean;
-    type: string;
     emailVerified: Boolean;
-    password: string;
     invitationToken: string;
+    password_hash: string;
     createdAt?: Date;
     updatedAt?: Date;
 };
@@ -36,10 +36,9 @@ export type UsersStatic = typeof Model & {
 export function UsersFactory(sequelize: Sequelize): UsersStatic {
     return <UsersStatic>sequelize.define('Users', {
         user_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         username: {
             type: DataTypes.STRING,
@@ -51,6 +50,8 @@ export function UsersFactory(sequelize: Sequelize): UsersStatic {
                 let getValue = getDecrypt(this.getDataValue('username'))
                 return getValue;
             },
+            allowNull: false,
+            unique: true
         },
         email: {
             type: DataTypes.STRING,
@@ -62,35 +63,33 @@ export function UsersFactory(sequelize: Sequelize): UsersStatic {
                 let getValue = getDecrypt(this.getDataValue('email'))
                 return getValue;
             },
+            allowNull: false,
+            unique: true,
+        },
+        role: {
+            type: DataTypes.ENUM('Guest', 'Member', 'Owner', 'Moderator', 'Administrator', 'Content Creator', 'Viewer'),
+            defaultValue: 'Member',
         },
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
         },
-        type: {
-            type: DataTypes.ENUM('Guest', 'Member', 'Owner', 'Moderator', 'Administrator'),
-            defaultValue: 'Member',
-        },
         emailVerified: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
-        password: {
+        password_hash: {
             type: DataTypes.STRING,
             set(value) {
                 let setValue: any = setPassword(value);
-                this.setDataValue('password', setValue);
+                this.setDataValue('password_hash', setValue);
             },
-            allowNull: true,
+            allowNull: false,
         },
         invitationToken: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: null
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: true,
         },
     }, {
         timestamps: true

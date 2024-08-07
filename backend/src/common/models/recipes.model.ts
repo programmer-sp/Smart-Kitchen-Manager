@@ -1,7 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export interface RecipesAttributes {
-    recipe_id: string;
+    recipe_id: number;
     recipe_name: string;
     cuisine: string;
     preparation_time: number;
@@ -21,10 +21,9 @@ export type RecipesStatic = typeof Model & {
 export function RecipesFactory(sequelize: Sequelize): RecipesStatic {
     return <RecipesStatic>sequelize.define('Recipes', {
         recipe_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         recipe_name: {
             type: DataTypes.STRING,
@@ -36,7 +35,7 @@ export function RecipesFactory(sequelize: Sequelize): RecipesStatic {
             type: DataTypes.NUMBER,
         },
         system_rating: {
-            type: DataTypes.STRING,
+            type: DataTypes.NUMBER,
         },
         expiration_date: {
             type: DataTypes.DATE

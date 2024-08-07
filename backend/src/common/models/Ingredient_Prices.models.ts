@@ -1,9 +1,9 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export interface Ingredient_PricesAttributes {
-    price_id: string;
-    ingredient_id: string;
-    store_id: string;
+    price_id: number;
+    ingredient_id: number;
+    store_id: number;
     price: number;
     unit: string;
     last_updated: Date;
@@ -20,16 +20,23 @@ export type Ingredient_PricesStatic = typeof Model & {
 export function Ingredient_PricesFactory(sequelize: Sequelize): Ingredient_PricesStatic {
     return <Ingredient_PricesStatic>sequelize.define('Ingredient_Prices', {
         price_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         ingredient_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Ingredients',
+                key: 'ingredient_id'
+            },
         },
         store_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Stores',
+                key: 'store_id'
+            },
         },
         price: {
             type: DataTypes.NUMBER,

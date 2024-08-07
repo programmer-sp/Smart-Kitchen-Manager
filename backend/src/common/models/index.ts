@@ -2,7 +2,7 @@ import { dbConfig } from '../loaders/pgsql';
 import { usersFactory } from './Users.model';
 import { housesFactory } from '../models/houses.model';
 import { ingredientsFactory } from './Ingredients.model';
-import {storesFactory} from '../models/stores.model';
+import {storesFactory} from './Stores.model';
 
 // dbConfig.sync({}).then(() => {
 //     console.log(`Database & tables created!`)

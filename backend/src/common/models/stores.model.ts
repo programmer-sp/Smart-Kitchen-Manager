@@ -1,7 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export interface StoresAttributes {
-    store_id: string;
+    store_id: number;
     store_name: string;
     address: string;
     status: boolean;
@@ -19,14 +19,13 @@ export type StoresStatic = typeof Model & {
 export function StoresFactory(sequelize: Sequelize): StoresStatic {
     return <StoresStatic>sequelize.define('Stores', {
         store_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         store_name: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false
         },
         rating: {
             type: DataTypes.NUMBER,
@@ -38,7 +37,7 @@ export function StoresFactory(sequelize: Sequelize): StoresStatic {
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false
         },
     }, {
         timestamps: true

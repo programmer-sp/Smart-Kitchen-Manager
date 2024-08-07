@@ -2,9 +2,9 @@ import { BuildOptions, DataTypes, DATE, Model, Sequelize } from "sequelize";
 import config from '../config';
 
 export interface IngredientsAttributes {
-    ingredient_id: string;
+    ingredient_id: number;
     name: string;
-    category_id: string;
+    category_id: number;
     createdAt?: Date;
     updatedAt?: Date;
 };
@@ -22,16 +22,19 @@ export const getImageUrlOfBucket = (value: any) => {
 export function IngredientsFactory(sequelize: Sequelize): IngredientsStatic {
     return <IngredientsStatic>sequelize.define('Ingredients', {
         ingredient_id: {
-            type: DataTypes.UUID,
-            autoIncrement: false,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         name: {
             type: DataTypes.STRING,
         },
         category_id: {
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Ingredient_Categories',
+                key: 'category_id'
+            },
         },
     }, {
         timestamps: true
