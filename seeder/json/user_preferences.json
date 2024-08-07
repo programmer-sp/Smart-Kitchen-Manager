@@ -1,31 +1,50 @@
-{
-    "collMod": "user_preferences",
-    "validator": {
-        "$jsonSchema": {
-            "bsonType": "object",
-            "required": [
-                "user_id"
-            ],
-            "properties": {
-                "user_id": {
-                    "bsonType": "objectId",
-                    "description": "must be a valid ObjectId"
-                },
-                "dietary_restrictions": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "string",
-                        "description": "must be a string and is optional"
-                    }
-                },
-                "preferred_cuisines": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "string",
-                        "description": "must be a string and is optional"
-                    }
-                }
-            }
-        }
+[
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0a"
+        },
+        "dietary_restrictions": [
+            "gluten-free",
+            "vegan"
+        ],
+        "preferred_cuisines": [
+            "Italian",
+            "Mexican"
+        ]
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0b"
+        },
+        "dietary_restrictions": [
+            "nut-free"
+        ],
+        "preferred_cuisines": [
+            "Indian",
+            "Chinese"
+        ]
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0c"
+        },
+        "dietary_restrictions": [
+            "dairy-free",
+            "halal"
+        ],
+        "preferred_cuisines": [
+            "Mediterranean",
+            "Thai"
+        ]
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0d"
+        },
+        "dietary_restrictions": [],
+        "preferred_cuisines": [
+            "Japanese",
+            "French"
+        ]
     }
-}
+]

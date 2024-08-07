@@ -1,1 +1,3 @@
 rating_id,user_id,recipe_id,rating,review,created_at
+1,1,1,5,"Amazing cake!",2024-08-05 12:00:00
+2,2,2,4,"Very tasty soup.",2024-08-05 12:30:00

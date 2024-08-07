@@ -1,112 +1,128 @@
-{
-    "collMod": "recipes",
-    "validator": {
-        "$jsonSchema": {
-            "bsonType": "object",
-            "required": [
-                "recipe_name",
-                "ingredients"
-            ],
-            "properties": {
-                "recipe_name": {
-                    "bsonType": "string",
-                    "description": "must be a string and is required"
+[
+    {
+        "recipe_name": "Spaghetti Bolognese",
+        "cuisine": "Italian",
+        "preparation_time": 45,
+        "system_rating": 4.5,
+        "is_rated": true,
+        "expiration_date": {
+            "$date": "2025-01-01T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b0e"
                 },
-                "cuisine": {
-                    "bsonType": "string",
-                    "description": "must be a string and is optional"
+                "name": "Spaghetti",
+                "quantity": 500.0,
+                "unit": "grams"
+            },
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b0f"
                 },
-                "preparation_time": {
-                    "bsonType": "int",
-                    "minimum": 0,
-                    "description": "must be an integer and non-negative"
+                "name": "Ground Beef",
+                "quantity": 250.0,
+                "unit": "grams"
+            },
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b10"
                 },
-                "system_rating": {
-                    "bsonType": "double",
-                    "minimum": 0,
-                    "maximum": 5,
-                    "description": "must be a double between 0 and 5"
-                },
-                "is_rated": {
-                    "bsonType": "bool",
-                    "description": "must be a boolean and defaults to false"
-                },
-                "expiration_date": {
-                    "bsonType": "date",
-                    "description": "must be a valid date in the future"
-                },
-                "ingredients": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "object",
-                        "required": [
-                            "ingredient_id",
-                            "name",
-                            "quantity",
-                            "unit"
-                        ],
-                        "properties": {
-                            "ingredient_id": {
-                                "bsonType": "objectId",
-                                "description": "must be a valid ObjectId"
-                            },
-                            "name": {
-                                "bsonType": "string",
-                                "description": "must be a string and is required"
-                            },
-                            "quantity": {
-                                "bsonType": "double",
-                                "minimum": 0,
-                                "description": "must be a double and non-negative"
-                            },
-                            "unit": {
-                                "bsonType": "string",
-                                "description": "must be a string and is required"
-                            }
-                        }
-                    }
-                },
-                "steps": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "string",
-                        "description": "must be a string and is optional"
-                    }
-                },
-                "images": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "string",
-                        "description": "must be a string and is optional"
-                    }
-                },
-                "video_url": {
-                    "bsonType": "string",
-                    "description": "must be a string and is optional"
-                },
-                "ratings": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "object",
-                        "properties": {
-                            "user_id": {
-                                "bsonType": "objectId",
-                                "description": "must be a valid ObjectId"
-                            },
-                            "rating": {
-                                "bsonType": "double",
-                                "minimum": 0,
-                                "maximum": 5,
-                                "description": "must be a double between 0 and 5"
-                            },
-                            "review": {
-                                "bsonType": "string",
-                                "description": "must be a string and is optional"
-                            }
-                        }
-                    }
-                }
+                "name": "Tomato Sauce",
+                "quantity": 300.0,
+                "unit": "ml"
             }
-        }
+        ],
+        "steps": [
+            "Boil spaghetti according to package instructions.",
+            "In a pan, cook ground beef until browned.",
+            "Add tomato sauce to the pan and simmer for 10 minutes.",
+            "Mix the sauce with spaghetti and serve."
+        ],
+        "images": [
+            "https://example.com/spaghetti1.jpg",
+            "https://example.com/spaghetti2.jpg"
+        ],
+        "video_url": "https://example.com/spaghetti-video",
+        "ratings": [
+            {
+                "user_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b11"
+                },
+                "rating": 5.0,
+                "review": "Delicious and easy to make!"
+            },
+            {
+                "user_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b12"
+                },
+                "rating": 4.0,
+                "review": "Great taste but could use more spices."
+            }
+        ]
+    },
+    {
+        "recipe_name": "Chicken Curry",
+        "cuisine": "Indian",
+        "preparation_time": 60,
+        "system_rating": 4.8,
+        "is_rated": true,
+        "expiration_date": {
+            "$date": "2025-01-01T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b13"
+                },
+                "name": "Chicken",
+                "quantity": 500.0,
+                "unit": "grams"
+            },
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b14"
+                },
+                "name": "Curry Powder",
+                "quantity": 2.0,
+                "unit": "tablespoons"
+            },
+            {
+                "ingredient_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b15"
+                },
+                "name": "Coconut Milk",
+                "quantity": 400.0,
+                "unit": "ml"
+            }
+        ],
+        "steps": [
+            "Heat oil in a pot and cook chicken until browned.",
+            "Add curry powder and cook for another 2 minutes.",
+            "Pour in coconut milk and simmer for 20 minutes.",
+            "Serve hot with rice."
+        ],
+        "images": [
+            "https://example.com/chickencurry1.jpg",
+            "https://example.com/chickencurry2.jpg"
+        ],
+        "video_url": "https://example.com/chickencurry-video",
+        "ratings": [
+            {
+                "user_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b16"
+                },
+                "rating": 4.8,
+                "review": "Absolutely fantastic! The flavor was amazing."
+            },
+            {
+                "user_id": {
+                    "$oid": "60d5ec4af7d6e9d8b1f56b17"
+                },
+                "rating": 4.5,
+                "review": "Very good but a bit too spicy for my taste."
+            }
+        ]
     }
-}
+]

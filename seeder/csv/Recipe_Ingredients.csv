@@ -1,1 +1,3 @@
 recipe_ingredient_id,recipe_id,ingredient_id,quantity,unit
+1,1,1,250.0,grams
+2,1,2,100.0,milliliters

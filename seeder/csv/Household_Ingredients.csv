@@ -1,1 +1,4 @@
 household_ingredient_id,household_id,ingredient_id,quantity,unit,expiration_date,is_expired
+1,1,1,500.0,grams,2024-12-31,false
+2,1,2,200.0,milliliters,2024-11-15,false
+3,2,1,100.0,grams,2024-10-10,true

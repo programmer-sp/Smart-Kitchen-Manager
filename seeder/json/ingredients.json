@@ -1,57 +1,41 @@
-{
-    "collMod": "ingredients",
-    "validator": {
-        "$jsonSchema": {
-            "bsonType": "object",
-            "required": [
-                "name",
-                "unit",
-                "value"
-            ],
-            "properties": {
-                "name": {
-                    "bsonType": "string",
-                    "description": "must be a string and is required"
-                },
-                "category": {
-                    "bsonType": "string",
-                    "description": "must be a string and is optional"
-                },
-                "unit": {
-                    "bsonType": "string",
-                    "description": "must be a string and is required"
-                },
-                "value": {
-                    "bsonType": "double",
-                    "minimum": 0,
-                    "description": "must be a double and non-negative"
-                },
-                "image_url": {
-                    "bsonType": "string",
-                    "description": "must be a string and is optional"
-                },
-                "nutritional_info": {
-                    "bsonType": "object",
-                    "properties": {
-                        "calories": {
-                            "bsonType": "int",
-                            "description": "must be an integer and is optional"
-                        },
-                        "protein": {
-                            "bsonType": "string",
-                            "description": "must be a string and is optional"
-                        },
-                        "fat": {
-                            "bsonType": "string",
-                            "description": "must be a string and is optional"
-                        },
-                        "carbohydrates": {
-                            "bsonType": "string",
-                            "description": "must be a string and is optional"
-                        }
-                    }
-                }
-            }
+[
+    {
+        "name": "Sugar",
+        "unit": "grams",
+        "value": 500.0,
+        "category": "Sweetener",
+        "image_url": "http://example.com/images/sugar.jpg",
+        "nutritional_info": {
+            "calories": 387,
+            "protein": "0g",
+            "fat": "0g",
+            "carbohydrates": "100g"
+        }
+    },
+    {
+        "name": "Salt",
+        "unit": "grams",
+        "value": 250.0,
+        "category": "Seasoning",
+        "image_url": "http://example.com/images/salt.jpg",
+        "nutritional_info": {
+            "calories": 0,
+            "protein": "0g",
+            "fat": "0g",
+            "carbohydrates": "0g"
+        }
+    },
+    {
+        "name": "Olive Oil",
+        "unit": "milliliters",
+        "value": 100.0,
+        "category": "Oil",
+        "image_url": "http://example.com/images/olive_oil.jpg",
+        "nutritional_info": {
+            "calories": 884,
+            "protein": "0g",
+            "fat": "100g",
+            "carbohydrates": "0g"
         }
     }
-}
+]

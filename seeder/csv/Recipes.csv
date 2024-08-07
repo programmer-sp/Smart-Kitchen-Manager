@@ -1,1 +1,3 @@
 recipe_id,recipe_name,cuisine,preparation_time,system_rating,is_rated,expiration_date,created_at
+1,Chocolate Cake,Dessert,60,4.5,true,2024-12-31 00:00:00,2024-08-05 10:00:00
+2,Vegetable Soup,Appetizer,30,4.0,true,2024-11-01 00:00:00,2024-08-05 11:00:00

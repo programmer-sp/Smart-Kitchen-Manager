@@ -1,1 +1,4 @@
 user_id,username,email,password_hash,role,created_at,updated_at
+1,johndoe,john@example.com,hashedpassword1,admin,2024-08-01 12:00:00,2024-08-01 12:00:00
+2,janesmith,jane@example.com,hashedpassword2,member,2024-08-02 14:30:00,2024-08-02 14:30:00
+3,bobbrown,bob@example.com,hashedpassword3,guest,2024-08-03 15:00:00,2024-08-03 15:00:00

@@ -1,37 +1,23 @@
-{
-    "collMod": "household_ingredient_usage",
-    "validator": {
-        "$jsonSchema": {
-            "bsonType": "object",
-            "required": [
-                "household_id",
-                "ingredient_id",
-                "used_quantity",
-                "used_at"
-            ],
-            "properties": {
-                "household_id": {
-                    "bsonType": "objectId",
-                    "description": "must be a valid ObjectId"
-                },
-                "ingredient_id": {
-                    "bsonType": "objectId",
-                    "description": "must be a valid ObjectId"
-                },
-                "used_quantity": {
-                    "bsonType": "double",
-                    "minimum": 0,
-                    "description": "must be a double and non-negative"
-                },
-                "unit": {
-                    "bsonType": "string",
-                    "description": "must be a string and is required"
-                },
-                "used_at": {
-                    "bsonType": "date",
-                    "description": "must be a valid date"
-                }
-            }
-        }
+[
+    {
+        "household_id": "64c5b1e3f6a0e15a8c8e4f1d",
+        "ingredient_id": "64c5b1e3f6a0e15a8c8e4f2e",
+        "used_quantity": 250.0,
+        "unit": "grams",
+        "used_at": "2024-08-05T14:30:00Z"
+    },
+    {
+        "household_id": "64c5b1e3f6a0e15a8c8e4f3f",
+        "ingredient_id": "64c5b1e3f6a0e15a8c8e4f4f",
+        "used_quantity": 50.0,
+        "unit": "milliliters",
+        "used_at": "2024-08-05T15:00:00Z"
+    },
+    {
+        "household_id": "64c5b1e3f6a0e15a8c8e4f5f",
+        "ingredient_id": "64c5b1e3f6a0e15a8c8e4f6f",
+        "used_quantity": 100.0,
+        "unit": "grams",
+        "used_at": "2024-08-05T16:00:00Z"
     }
-}
+]

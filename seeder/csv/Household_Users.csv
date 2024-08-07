@@ -1,1 +1,4 @@
 household_user_id,household_id,user_id,role
+1,1,1,admin
+2,1,2,member
+3,2,3,guest

@@ -1,1 +1,3 @@
 household_id,household_name,address,created_at,updated_at
+1,Smith Family,123 Elm Street,2024-08-01 12:00:00,2024-08-01 12:00:00
+2,Johnson Family,456 Oak Avenue,2024-08-02 14:30:00,2024-08-02 14:30:00

@@ -1,1 +1,4 @@
 store_id,store_name,address,rating,created_at
+1,Bakery Shop,789 Maple Road,4.5,2024-08-01 09:00:00
+2,Dairy Farm,101 Pine Drive,4.0,2024-08-02 10:00:00
+3,Supermarket,102 Cedar Lane,4.7,2024-08-03 11:00:00

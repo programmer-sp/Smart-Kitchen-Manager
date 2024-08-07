@@ -1,33 +1,52 @@
-{
-    "collMod": "recipe_ratings",
-    "validator": {
-        "$jsonSchema": {
-            "bsonType": "object",
-            "required": [
-                "user_id",
-                "recipe_id",
-                "rating"
-            ],
-            "properties": {
-                "user_id": {
-                    "bsonType": "objectId",
-                    "description": "must be a valid ObjectId"
-                },
-                "recipe_id": {
-                    "bsonType": "objectId",
-                    "description": "must be a valid ObjectId"
-                },
-                "rating": {
-                    "bsonType": "double",
-                    "minimum": 0,
-                    "maximum": 5,
-                    "description": "must be a double between 0 and 5"
-                },
-                "review": {
-                    "bsonType": "string",
-                    "description": "must be a string and is optional"
-                }
-            }
-        }
+[
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b11"
+        },
+        "recipe_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0e"
+        },
+        "rating": 4.5,
+        "review": "Great recipe, very tasty and easy to make!"
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b12"
+        },
+        "recipe_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0f"
+        },
+        "rating": 4.0,
+        "review": "Nice recipe, but a bit too salty for my taste."
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b13"
+        },
+        "recipe_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b10"
+        },
+        "rating": 5.0,
+        "review": "Amazing! Will definitely make it again."
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b14"
+        },
+        "recipe_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0e"
+        },
+        "rating": 4.8,
+        "review": "Very good, but took longer to prepare than expected."
+    },
+    {
+        "user_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b15"
+        },
+        "recipe_id": {
+            "$oid": "60d5ec4af7d6e9d8b1f56b0f"
+        },
+        "rating": 3.5,
+        "review": "Not bad, but could use more seasoning."
     }
-}
+]
