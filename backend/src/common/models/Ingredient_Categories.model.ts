@@ -1,20 +1,20 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface Ingredient_CategoriesAttributes {
+export interface Ingredient_Categories_Attributes {
     category_id: number;
     category_name: string;
     createdAt?: Date;
     updatedAt?: Date;
 };
 
-export interface Ingredient_CategoriesModel extends Model<Ingredient_CategoriesAttributes>, Ingredient_CategoriesAttributes { };
+export interface Ingredient_Categories_Model extends Model<Ingredient_Categories_Attributes>, Ingredient_Categories_Attributes { };
 
-export type Ingredient_CategoriesStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): Ingredient_CategoriesModel;
+export type Ingredient_Categories_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Ingredient_Categories_Model;
 };
 
-export function Ingredient_CategoriesFactory(sequelize: Sequelize): Ingredient_CategoriesStatic {
-    return <Ingredient_CategoriesStatic>sequelize.define('Ingredient_Categories', {
+export function Ingredient_Categories_Factory(sequelize: Sequelize): Ingredient_Categories_Static {
+    return <Ingredient_Categories_Static>sequelize.define('Ingredient_Categories', {
         category_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

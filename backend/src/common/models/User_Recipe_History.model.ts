@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface User_Recipe_HistoryAttributes {
+export interface User_Recipe_History_Attributes {
     history_id: number;
     user_id: number;
     recipe_id: number;
@@ -9,14 +9,14 @@ export interface User_Recipe_HistoryAttributes {
     updatedAt?: Date;
 };
 
-export interface User_Recipe_HistoryModel extends Model<User_Recipe_HistoryAttributes>, User_Recipe_HistoryAttributes { };
+export interface User_Recipe_History_Model extends Model<User_Recipe_History_Attributes>, User_Recipe_History_Attributes { };
 
-export type User_Recipe_HistoryStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): User_Recipe_HistoryModel;
+export type User_Recipe_History_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): User_Recipe_History_Model;
 };
 
-export function User_Recipe_HistoryFactory(sequelize: Sequelize): User_Recipe_HistoryStatic {
-    return <User_Recipe_HistoryStatic>sequelize.define('User_Recipe_History', {
+export function User_Recipe_History_Factory(sequelize: Sequelize): User_Recipe_History_Static {
+    return <User_Recipe_History_Static>sequelize.define('User_Recipe_History', {
         history_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

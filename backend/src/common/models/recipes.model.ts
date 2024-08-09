@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface RecipesAttributes {
+export interface Recipes_Attributes {
     recipe_id: number;
     recipe_name: string;
     cuisine: string;
@@ -12,14 +12,14 @@ export interface RecipesAttributes {
     updatedAt?: Date;
 };
 
-export interface RecipesModel extends Model<RecipesAttributes>, RecipesAttributes { };
+export interface Recipes_Model extends Model<Recipes_Attributes>, Recipes_Attributes { };
 
-export type RecipesStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): RecipesModel;
+export type Recipes_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Recipes_Model;
 };
 
-export function RecipesFactory(sequelize: Sequelize): RecipesStatic {
-    return <RecipesStatic>sequelize.define('Recipes', {
+export function Recipes_Factory(sequelize: Sequelize): Recipes_Static {
+    return <Recipes_Static>sequelize.define('Recipes', {
         recipe_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -32,10 +32,10 @@ export function RecipesFactory(sequelize: Sequelize): RecipesStatic {
             type: DataTypes.STRING,
         },
         preparation_time: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         system_rating: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         expiration_date: {
             type: DataTypes.DATE

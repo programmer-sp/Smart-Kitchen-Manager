@@ -61,12 +61,7 @@ export default {
 	CLIENT_SECRET: process.env.CLIENT_SECRET,
 	ACCESS_TOKEN: process.env.ACCESS_TOKEN,
 	REFRESH_TOKEN: process.env.REFRESH_TOKEN,
-
-	PAYPAL_MODE: process.env.PAYPAL_MODE, // sandbox or live
-	PAYPAL_SUCCESS_REDIRECT: process.env.PAYPAL_SUCCESS_REDIRECT,
-	PAYPAL_CANCEL_REDIRECT: process.env.PAYPAL_CANCEL_REDIRECT,
-	PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
-	PAYPAL_SECRET_ID: process.env.PAYPAL_SECRET_ID,
+	GOOGLE_AUTH_code: process.env.GOOGLE_AUTH_code,
 
 	/* Developer Emails */
 	DEV_EMAILS: process.env.DEV_EMAILS.split(','),
@@ -79,9 +74,6 @@ export default {
 
 	/* API configs */
 	API_PREFIX: '/',
-
-	/* AI Model api Token */
-	HUGGING_FACE_TOKEN: process.env.HUGGING_FACE_TOKEN,
 
 	/* Base Url for Images */
 	ASSETS_URL: `https://${process.env.S3_ASSETS_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/`,

@@ -7,6 +7,9 @@ import { Service } from 'typedi';
 import { EMAIL_CONSTANTS } from '../utils/Constants';
 import { google } from 'googleapis';
 
+const oauth2Client = new google.auth.OAuth2(config.CLIENT_ID, config.CLIENT_SECRET, config.REDIRECT_URI);
+oauth2Client.setCredentials({ refresh_token: config.REFRESH_TOKEN });
+
 @Service()
 export class dynamicMailer {
     transporter;
@@ -14,22 +17,23 @@ export class dynamicMailer {
     public constructor() {
         this.transporter = (async () => {
             try {
+                const { token: accessToken } = await oauth2Client.getAccessToken();
                 return await nodemailer.createTransport({
                     service: 'gmail',
+                    host: config.SMTP_HOST,
                     auth: {
                         type: "OAuth2",
                         user: config.SMTP_USER,
                         clientId: config.CLIENT_ID,
                         clientSecret: config.CIPHER_SECRET,
                         refreshToken: config.REFRESH_TOKEN,
-                        accessToken: "accessToken",
+                        accessToken: accessToken,
                     },
                     tls: {
                         rejectUnauthorized: false
                     }
                 });
             } catch (error) {
-                console.log(error);
                 logger.error(error);
             }
         })();

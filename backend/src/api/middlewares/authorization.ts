@@ -32,7 +32,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
             const authTo = req.headers['authType'];
             if ((authTo === 'admin' && res.locals.jwtPayload.type != 'admin') || (authTo === 'user' && res.locals.jwtPayload.type != 'user')) return res.status(status_code.UNAUTHORISED).json({ status: status_code.UNAUTHORISED, message: l10n.t('AUTHORIZATION_MESSAGE') });
 
-            const reply = await redis.existKeys({ key: `${REDIS_KEYS.USER_TOKEN}${res.locals.jwtPayload.id}:${token}` });
+            const reply = await redis.existKeys({ key: `${REDIS_KEYS.USER_TOKEN}${res.locals.jwtPayload.user_id}:${token}` });
             if (reply) {
                 Container.set('auth-token', res.locals.jwtPayload);
                 Container.set('token-string', token);
@@ -64,7 +64,7 @@ export const isModifiedAuth = (req: Request, res: Response, next: NextFunction) 
             const authTo = req.headers['authType'];
             if ((authTo === 'admin' && res.locals.jwtPayload.type != 'admin') || (authTo === 'user' && res.locals.jwtPayload.type != 'user')) return res.status(status_code.UNAUTHORISED).json({ status: status_code.UNAUTHORISED, message: l10n.t('AUTHORIZATION_MESSAGE') });
 
-            const reply = await redis.existKeys({ key: `${REDIS_KEYS.USER_TOKEN}${res.locals.jwtPayload.id}:${token}` });
+            const reply = await redis.existKeys({ key: `${REDIS_KEYS.USER_TOKEN}${res.locals.jwtPayload.user_id}:${token}` });
             if (reply) {
                 Container.set('auth-token', res.locals.jwtPayload);
                 Container.set('token-string', token);

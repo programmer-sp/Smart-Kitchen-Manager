@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface Household_UsersAttributes {
+export interface Household_Users_Attributes {
     household_user_id: number;
     household_id: number;
     user_id: number;
@@ -10,14 +10,14 @@ export interface Household_UsersAttributes {
     updatedAt?: Date;
 };
 
-export interface Household_UsersModel extends Model<Household_UsersAttributes>, Household_UsersAttributes { };
+export interface Household_Users_Model extends Model<Household_Users_Attributes>, Household_Users_Attributes { };
 
-export type Household_UsersStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): Household_UsersModel;
+export type Household_Users_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Household_Users_Model;
 };
 
-export function Household_UsersFactory(sequelize: Sequelize): Household_UsersStatic {
-    return <Household_UsersStatic>sequelize.define('Household_Users', {
+export function Household_Users_Factory(sequelize: Sequelize): Household_Users_Static {
+    return <Household_Users_Static>sequelize.define('Household_Users', {
         household_user_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -32,7 +32,7 @@ export function Household_UsersFactory(sequelize: Sequelize): Household_UsersSta
             allowNull: false
         },
         user_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'Users',
                 key: 'user_id'

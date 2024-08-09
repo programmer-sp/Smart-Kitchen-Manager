@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface Household_IngredientsAttributes {
+export interface Household_Ingredients_Attributes {
     household_ingredient_id: number;
     household_id: number;
     ingredient_id: number;
@@ -12,14 +12,14 @@ export interface Household_IngredientsAttributes {
     updatedAt?: Date;
 };
 
-export interface Household_IngredientsModel extends Model<Household_IngredientsAttributes>, Household_IngredientsAttributes { };
+export interface Household_Ingredients_Model extends Model<Household_Ingredients_Attributes>, Household_Ingredients_Attributes { };
 
-export type Household_IngredientsStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): Household_IngredientsModel;
+export type Household_Ingredients_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Household_Ingredients_Model;
 };
 
-export function Household_IngredientsFactory(sequelize: Sequelize): Household_IngredientsStatic {
-    return <Household_IngredientsStatic>sequelize.define('Household_Ingredients', {
+export function Household_Ingredients_Factory(sequelize: Sequelize): Household_Ingredients_Static {
+    return <Household_Ingredients_Static>sequelize.define('Household_Ingredients', {
         household_ingredient_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -40,7 +40,7 @@ export function Household_IngredientsFactory(sequelize: Sequelize): Household_In
             },
         },
         quantity: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         unit: {
             type: DataTypes.STRING,

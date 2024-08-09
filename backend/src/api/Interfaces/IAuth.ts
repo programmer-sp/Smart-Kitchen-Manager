@@ -15,30 +15,30 @@ import { MODULE_NAME, RESPONSE_METHOD, REDIS_KEYS } from '../../common/utils/Con
 export class IAuth {
     static async registration(data: any, url: string) {
         try {
-            let moduleName = MODULE_NAME.USER, userType = 'user';
+            let moduleName = MODULE_NAME.USER, userType = data.role;
             const adminFlag = await IAuth.isAdmin(url);
             if (adminFlag) {
                 moduleName = MODULE_NAME.ADMIN;
-                userType = 'admin';
+                userType = 'administrator';
             }
 
-            const isExists = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()), type: userType } });
+            const isExists = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()) } });
             if (isExists) return { status: status_code.ALREADY_EXIST, message: l10n.t('ALREADY_EXISTS', { key: moduleName }) };
 
             const invitationToken = genHashToken(50);
             const userData = await Users.create({
-                firstName: data.firstName,
-                lastName: data.lastName,
+                username: data.email.split('@')[0],
                 email: data.email,
-                password: data.password,
-                type: userType,
-                invitationToken
+                password_hash: data.password_hash,
+                role: data.role,
+                invitation_token: invitationToken
             });
+
             if (userData) {
                 const serviceMailer = new dynamicMailer();
                 await serviceMailer.emailVerification({
                     receiverEmail: userData.email,
-                    receiverName: `${userData.firstName} ${userData.lastName}`,
+                    receiverName: `${userData.username}`,
                     invitationToken
                 });
             }
@@ -52,29 +52,28 @@ export class IAuth {
 
     static async login(data: any, url: string) {
         try {
-            let moduleName = MODULE_NAME.USER, userType = 'user';
+            let moduleName = MODULE_NAME.USER, userType = 'member';
             const adminFlag = await IAuth.isAdmin(url);
             if (adminFlag) {
                 moduleName = MODULE_NAME.ADMIN;
-                userType = 'admin';
+                userType = 'administrator';
             }
 
-            const userData = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()), type: userType } });
+            const userData = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()) } });
             if (!userData) return { status: status_code.BAD_REQUEST, message: l10n.t('NOT_EXISTS', { key: moduleName }) };
             else if (!userData.status) return { status: status_code.BAD_REQUEST, message: l10n.t('SUSPEND_MESSAGE') };
-            else if (!userData.emailVerified) return { status: status_code.BAD_REQUEST, message: l10n.t('VERIFY_EMAIL') };
+            else if (!userData.email_verified) return { status: status_code.BAD_REQUEST, message: l10n.t('VERIFY_EMAIL') };
 
             let responseData = {};
-            const check_pass = await verifyPassword(data['password'], userData.password);
+            const check_pass = await verifyPassword(data['password_hash'], userData.password_hash);
             if (!check_pass) return { status: status_code.BAD_REQUEST, message: l10n.t('INVALID_CREDENTIALS') };
             else responseData = {
-                _id: userData.id,
-                firstName: userData.firstName,
-                lastName: userData.lastName,
+                user_id: userData.user_id,
+                username: userData.username,
                 email: userData.email,
             };
 
-            const userAuthToken = await this.getUserTokens(responseData, userData.type);
+            const userAuthToken = await this.getUserTokens(responseData, userData.role);
             if (userAuthToken) responseData['token'] = userAuthToken;
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: moduleName, method: RESPONSE_METHOD.LOGGEDIN }), data: responseData };
@@ -86,27 +85,23 @@ export class IAuth {
 
     static async viewProfile(data: any, url: string) {
         try {
-            let moduleName = MODULE_NAME.USER, userType = 'user';
-
-            const tokenData: any = Container.get('auth-token');
-            if (tokenData.type != 'user') {
+            let moduleName = MODULE_NAME.USER, userType = 'member';
+            const adminFlag = await IAuth.isAdmin(url);
+            if (adminFlag) {
                 moduleName = MODULE_NAME.ADMIN;
-                userType = 'admin';
+                userType = 'administrator';
             }
 
+            const tokenData: any = Container.get('auth-token');
             const userData = await Users.findOne({
                 where: {
-                    id: tokenData.id
+                    user_id: tokenData.user_id
                 },
                 attributes: [
-                    'id',
-                    'firstName',
-                    'lastName',
+                    'user_id',
+                    'username',
                     'email',
-                    'cellPhone',
-                    'gender',
-                    'age',
-                    'address'
+                    'role',
                 ]
             });
             if (!userData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: moduleName }) };
@@ -120,21 +115,21 @@ export class IAuth {
 
     static async verifyEmail(invite_token: string, url: string) {
         try {
-            let moduleName = MODULE_NAME.USER, userType = 'user';
+            let moduleName = MODULE_NAME.USER, userType = 'member';
             const adminFlag = await IAuth.isAdmin(url);
             if (adminFlag) {
                 moduleName = MODULE_NAME.ADMIN;
-                userType = 'admin';
+                userType = 'administrator';
             }
 
-            const userData = await Users.findOne({ where: { invitationToken: invite_token, type: userType } });
+            const userData = await Users.findOne({ where: { invitation_token: invite_token } });
             if (!userData) return { status: status_code.BAD_REQUEST, message: l10n.t('INVITATION_EXPIRED') };
             else if (!userData.status) return { status: status_code.BAD_REQUEST, message: l10n.t('SUSPEND_MESSAGE') };
 
-            let responseData = { _id: userData.id, firstName: userData.firstName, lastName: userData.lastName, email: userData.email, };
-            await Users.update({ invitationToken: null, emailVerified: true }, { where: { id: userData.id } });
+            let responseData = { user_id: userData.user_id, username: userData.username, email: userData.email, role: userData.role };
+            await Users.update({ invitation_token: null, email_verified: true }, { where: { user_id: userData.user_id } });
 
-            const userAuthToken = await this.getUserTokens(responseData, userData.type);
+            const userAuthToken = await this.getUserTokens(responseData, userData.role);
             if (userAuthToken) responseData['token'] = userAuthToken;
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: moduleName, method: RESPONSE_METHOD.VERIFIED }), data: responseData };
@@ -146,23 +141,23 @@ export class IAuth {
 
     static async reinviteVerification(data: any, url: string) {
         try {
-            let moduleName = MODULE_NAME.USER, userType = 'user';
+            let moduleName = MODULE_NAME.USER, userType = 'member';
             const adminFlag = await IAuth.isAdmin(url);
             if (adminFlag) {
                 moduleName = MODULE_NAME.ADMIN;
-                userType = 'admin';
+                userType = 'administrator';
             }
 
-            const userData = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()), type: userType } });
+            const userData = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()) } });
             if (!userData) return { status: status_code.BAD_REQUEST, message: l10n.t('NOT_EXISTS', { key: moduleName }) };
 
             const invitationToken = genHashToken(50);
-            await Users.update({ invitationToken, emailVerified: false }, { where: { id: userData.id } });
+            await Users.update({ invitation_token: invitationToken, email_verified: false }, { where: { user_id: userData.user_id } });
 
             const serviceMailer = new dynamicMailer();
             await serviceMailer.emailVerification({
                 receiverEmail: userData.email,
-                receiverName: `${userData.firstName} ${userData.lastName}`,
+                receiverName: `${userData.username}`,
                 invitationToken
             });
 
@@ -192,15 +187,15 @@ export class IAuth {
 
 
 
-    static async getUserTokens(data: any, type: string) {
+    static async getUserTokens(data: any, role: string) {
         return new Promise(async (resolve, reject) => {
             try {
 
                 let token: string;
-                let tokenSlug = `${REDIS_KEYS.USER_TOKEN}${data._id}:`;
+                let tokenSlug = `${REDIS_KEYS.USER_TOKEN}${data.user_id}:`;
                 let tokenExists: any = await redis.getValueByPattern({ key: tokenSlug });
                 if (tokenExists.count > 0) token = (Object.keys(tokenExists.data[0])[0]).split(':')[1];
-                else token = await generateJWTToken({ id: data._id, email: data.email, name: data.name, type });
+                else token = await generateJWTToken({ user_id: data.user_id, email: data.email, username: data.username, role });
 
                 await redis.setValue({ key: tokenSlug + token, value: true, duration: ms(config.JWT_TTL) });
                 return resolve(token);

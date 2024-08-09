@@ -1,7 +1,7 @@
 import { BuildOptions, DataTypes, DATE, Model, Sequelize } from "sequelize";
 import config from '../config';
 
-export interface IngredientsAttributes {
+export interface Ingredients_Attributes {
     ingredient_id: number;
     name: string;
     category_id: number;
@@ -9,18 +9,18 @@ export interface IngredientsAttributes {
     updatedAt?: Date;
 };
 
-export interface IngredientsModel extends Model<IngredientsAttributes>, IngredientsAttributes { };
+export interface Ingredients_Model extends Model<Ingredients_Attributes>, Ingredients_Attributes { };
 
-export type IngredientsStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): IngredientsModel;
+export type Ingredients_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Ingredients_Model;
 };
 
 export const getImageUrlOfBucket = (value: any) => {
     return value && value !== '' ? `${config.ASSETS_URL}${value}` : '';
 };
 
-export function IngredientsFactory(sequelize: Sequelize): IngredientsStatic {
-    return <IngredientsStatic>sequelize.define('Ingredients', {
+export function Ingredients_Factory(sequelize: Sequelize): Ingredients_Static {
+    return <Ingredients_Static>sequelize.define('Ingredients', {
         ingredient_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface Ingredient_PricesAttributes {
+export interface Ingredient_Prices_Attributes {
     price_id: number;
     ingredient_id: number;
     store_id: number;
@@ -11,14 +11,14 @@ export interface Ingredient_PricesAttributes {
     updatedAt?: Date;
 };
 
-export interface Ingredient_PricesModel extends Model<Ingredient_PricesAttributes>, Ingredient_PricesAttributes { };
+export interface Ingredient_Prices_Model extends Model<Ingredient_Prices_Attributes>, Ingredient_Prices_Attributes { };
 
-export type Ingredient_PricesStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): Ingredient_PricesModel;
+export type Ingredient_Prices_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Ingredient_Prices_Model;
 };
 
-export function Ingredient_PricesFactory(sequelize: Sequelize): Ingredient_PricesStatic {
-    return <Ingredient_PricesStatic>sequelize.define('Ingredient_Prices', {
+export function Ingredient_Prices_Factory(sequelize: Sequelize): Ingredient_Prices_Static {
+    return <Ingredient_Prices_Static>sequelize.define('Ingredient_Prices', {
         price_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -39,7 +39,7 @@ export function Ingredient_PricesFactory(sequelize: Sequelize): Ingredient_Price
             },
         },
         price: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         unit: {
             type: DataTypes.STRING,

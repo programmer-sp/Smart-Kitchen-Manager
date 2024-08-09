@@ -1,6 +1,6 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
-export interface StoresAttributes {
+export interface Stores_Attributes {
     store_id: number;
     store_name: string;
     address: string;
@@ -10,14 +10,14 @@ export interface StoresAttributes {
     updatedAt?: Date;
 };
 
-export interface StoresModel extends Model<StoresAttributes>, StoresAttributes { };
+export interface Stores_Model extends Model<Stores_Attributes>, Stores_Attributes { };
 
-export type StoresStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): StoresModel;
+export type Stores_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Stores_Model;
 };
 
-export function StoresFactory(sequelize: Sequelize): StoresStatic {
-    return <StoresStatic>sequelize.define('Stores', {
+export function Stores_Factory(sequelize: Sequelize): Stores_Static {
+    return <Stores_Static>sequelize.define('Stores', {
         store_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -28,7 +28,7 @@ export function StoresFactory(sequelize: Sequelize): StoresStatic {
             allowNull: false
         },
         rating: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             defaultValue: 0
         },
         status: {

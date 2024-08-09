@@ -1,6 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 import config from '../config';
-import { aesEncryption, aesDcryption, encryptPassword } from '../utils/Encryption';
+import { aesEncryption, aesDcryption } from '../utils/Encryption';
+import bcrypt from 'bcryptjs';
 
 export const setEncrypt = (value: any) => {
     return value && value !== '' ? aesEncryption(value, config.ENC_KEY).toString() : '';
@@ -10,31 +11,27 @@ export const getDecrypt = (value: any) => {
     return value && value !== '' ? aesDcryption(value, config.ENC_KEY).toString() : '';
 };
 
-export const setPassword = (value: any) => {
-    return value && value !== '' ? encryptPassword(value).toString() : '';
-};
-
-export interface UsersAttributes {
+export interface Users_Attributes {
     user_id: number;
     username: string;
     email: string;
     role: string;
     status: boolean;
-    emailVerified: Boolean;
-    invitationToken: string;
+    email_verified: Boolean;
+    invitation_token: string;
     password_hash: string;
     createdAt?: Date;
     updatedAt?: Date;
 };
 
-export interface UsersModel extends Model<UsersAttributes>, UsersAttributes { };
+export interface Users_Model extends Model<Users_Attributes>, Users_Attributes { };
 
-export type UsersStatic = typeof Model & {
-    new(values?: object, options?: BuildOptions): UsersModel;
+export type Users_Static = typeof Model & {
+    new(values?: object, options?: BuildOptions): Users_Model;
 };
 
-export function UsersFactory(sequelize: Sequelize): UsersStatic {
-    return <UsersStatic>sequelize.define('Users', {
+export function Users_Factory(sequelize: Sequelize): Users_Static {
+    const User = <Users_Static>sequelize.define('Users', {
         user_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -67,26 +64,22 @@ export function UsersFactory(sequelize: Sequelize): UsersStatic {
             unique: true,
         },
         role: {
-            type: DataTypes.ENUM('Guest', 'Member', 'Owner', 'Moderator', 'Administrator', 'Content Creator', 'Viewer'),
-            defaultValue: 'Member',
+            type: DataTypes.ENUM('guest', 'member', 'owner', 'moderator', 'administrator', 'content creator', 'viewer'),
+            defaultValue: 'member',
         },
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
         },
-        emailVerified: {
+        email_verified: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
         password_hash: {
             type: DataTypes.STRING,
-            set(value) {
-                let setValue: any = setPassword(value);
-                this.setDataValue('password_hash', setValue);
-            },
             allowNull: false,
         },
-        invitationToken: {
+        invitation_token: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: null
@@ -94,4 +87,12 @@ export function UsersFactory(sequelize: Sequelize): UsersStatic {
     }, {
         timestamps: true
     });
+
+    User.addHook('beforeCreate', async (user: any, options) => {
+        const saltRounds = 10;
+        let salt = await bcrypt.genSaltSync(saltRounds);
+        user.password_hash = await bcrypt.hash(user.password_hash, salt);
+    });
+
+    return User;
 };

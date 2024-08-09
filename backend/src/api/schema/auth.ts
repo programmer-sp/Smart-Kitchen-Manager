@@ -5,23 +5,18 @@ const objectId = JoiObjectId(Joi);
 const AUTH_SCHEMA = {
     REGISTRATION: celebrate({
         body: Joi.object({
-            firstName: Joi.string().required().messages({
-                "string.empty": "firstName is not allowed to be empty",
-                "string.base": "firstName must be a string",
-                "any.required": "firstName is required"
-            }),
-            lastName: Joi.string().required().messages({
-                "string.empty": "lastName is not allowed to be empty",
-                "string.base": "lastName must be a string",
-                "any.required": "lastName is required"
-            }),
             email: Joi.string().email().required().lowercase().messages({
                 "string.empty": "email is not allowed to be empty",
                 "string.email": "Invalid email",
                 "string.base": "email must be a string",
                 "any.required": "email is required"
             }),
-            password: Joi.string().required().messages({
+            role: Joi.string().required().valid('guest', 'member', 'owner', 'moderator', 'administrator', 'content creator', 'viewer').lowercase().messages({
+                "string.empty": "role is not allowed to be empty",
+                "string.base": "role must be a string",
+                "any.required": "role is required"
+            }),
+            password_hash: Joi.string().required().messages({
                 "string.empty": "password is not allowed to be empty",
                 "string.base": "password must be a string",
                 "any.required": "password is required"
@@ -36,7 +31,7 @@ const AUTH_SCHEMA = {
                 "string.base": "email must be a string",
                 "any.required": "email is required"
             }),
-            password: Joi.string().required().messages({
+            password_hash: Joi.string().required().messages({
                 "string.empty": "password is not allowed to be empty",
                 "string.base": "password must be a string",
                 "any.required": "password is required"

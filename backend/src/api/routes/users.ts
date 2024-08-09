@@ -17,6 +17,9 @@ export default (app: Router) => {
     route.get('/profile', commonAuth, isAuth, viewProfile);
     route.get('/verify-email', verifyEmail);
     route.post('/reinvite-email', reinviteVerification);
+
+    // NOTE: This below routes are for backend use only
+    route.post('/test-email', mailTemplate);
 };
 
 async function registration(req: any, res: Response) {
@@ -75,6 +78,19 @@ async function reinviteVerification(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data: string = req.body;
     IAuth.reinviteVerification(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function mailTemplate(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data: string = req.body;
+    IAuth.mailTemplate(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

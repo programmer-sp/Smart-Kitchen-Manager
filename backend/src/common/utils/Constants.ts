@@ -25,7 +25,7 @@ export const BACKEND_SLUGS = {
   PURCHASE_DESCRIPTION: 'Purchase description'
 };
 
-export const APPLICATION_NAME = 'Ecomiq';
+export const APPLICATION_NAME = 'Smart-Kitchen-Helper';
 
 export const UNDER_MAINTANANCE = 'Under Maintenance';
 
@@ -71,16 +71,11 @@ export const EMAIL_CONSTANTS: object = {
   websiteName: config.NAME,
   websiteUrl: `https://localhost:${config.PORT}/`,
 
-  welcomeBanner: `https://account-files-bucket.s3.ap-south-1.amazonaws.com/universe/email-template-assets/welcome-banner.png`,
-  checkMarkImg: `https://account-files-bucket.s3.ap-south-1.amazonaws.com/universe/email-template-assets/check.png`,
-
-  playStoreImg: `https://account-files-bucket.s3.ap-south-1.amazonaws.com/universe/email-template-assets/google-app.png`,
-  appStoreImg: `https://account-files-bucket.s3.ap-south-1.amazonaws.com/universe/email-template-assets/app-store.png`,
-  /* welcomeBanner: path.join(__dirname, '../public/img', 'welcome-banner.png'),
+  welcomeBanner: path.join(__dirname, '../public/img', 'welcome-banner.png'),
   checkMarkImg: path.join(__dirname, '../public/img', 'check-mark.png'),
 
   playStoreImg: path.join(__dirname, '../public/img', 'google-app.png'),
-  appStoreImg: path.join(__dirname, '../public/img', 'app-store.png'), */
+  appStoreImg: path.join(__dirname, '../public/img', 'app-store.png'),
 
   playStoreUrl: `https://play.google.com/store/apps`,
   appStoreUrl: `https://apps.apple.com/in/developer`,
@@ -98,70 +93,3 @@ export const EMAIL_CONSTANTS: object = {
   privacyPolicy: `javascript:void(0);`,
   termsCondition: `javascript:void(0);`,
 };
-
-export const langCodesStopwords = [
-  "_123",
-  "afr",
-  "ara",
-  "hye",
-  "eus",
-  "ben",
-  "bre",
-  "bul",
-  "cat",
-  "zho",
-  "hrv",
-  "ces",
-  "dan",
-  "nld",
-  "eng",
-  "epo",
-  "est",
-  "fin",
-  "fra",
-  "glg",
-  "deu",
-  "ell",
-  "guj",
-  "hau",
-  "heb",
-  "hin",
-  "hun",
-  "ind",
-  "gle",
-  "ita",
-  "jpn",
-  "kor",
-  "kur",
-  "lat",
-  "lav",
-  "lit",
-  "lgg",
-  "lggNd",
-  "msa",
-  "mar",
-  "mya",
-  "nob",
-  "fas",
-  "pol",
-  "por",
-  "porBr",
-  "panGu",
-  "ron",
-  "rus",
-  "slk",
-  "slv",
-  "som",
-  "sot",
-  "spa",
-  "swa",
-  "swe",
-  "tgl",
-  "tha",
-  "tur",
-  "ukr",
-  "urd",
-  "vie",
-  "yor",
-  "zul",
-];
