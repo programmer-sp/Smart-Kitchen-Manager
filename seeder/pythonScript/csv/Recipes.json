@@ -1,0 +1,930 @@
+[
+    {
+        "recipe_id": 1,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d67"
+        },
+        "recipe_name": "Spaghetti Carbonara",
+        "cuisine": "Italian",
+        "preparation_time": 30,
+        "system_rating": 4.7,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-01-15T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 1,
+                "name": "Spaghetti",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 2,
+                "name": "Pancetta",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 3,
+                "name": "Eggs",
+                "quantity": 2,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 4,
+                "name": "Parmesan",
+                "quantity": 50,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Boil the spaghetti in salted water.",
+            "Fry the pancetta until crispy.",
+            "Mix eggs and Parmesan, then combine with spaghetti and pancetta."
+        ],
+        "images": [
+            "https://example.com/carbonara_step1.jpg",
+            "https://example.com/carbonara_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=3AAdKl1UYZs",
+        "ratings": [
+            {
+                "user_id": 1,
+                "rating": 4.7,
+                "review": "Classic and delicious!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 2,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d68"
+        },
+        "recipe_name": "Margherita Pizza",
+        "cuisine": "Italian",
+        "preparation_time": 25,
+        "system_rating": 4.5,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-02-10T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 5,
+                "name": "Pizza Dough",
+                "quantity": 1,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 6,
+                "name": "Tomato Sauce",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 7,
+                "name": "Mozzarella",
+                "quantity": 150,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 8,
+                "name": "Basil",
+                "quantity": 10,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Spread tomato sauce on the pizza dough.",
+            "Add mozzarella and bake in a preheated oven.",
+            "Garnish with fresh basil before serving."
+        ],
+        "images": [
+            "https://example.com/margherita_pizza_step1.jpg",
+            "https://example.com/margherita_pizza_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=d8twv4bR4Qo",
+        "ratings": [
+            {
+                "user_id": 2,
+                "rating": 4.5,
+                "review": "Simple and tasty!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 3,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d69"
+        },
+        "recipe_name": "Chicken Tikka Masala",
+        "cuisine": "Indian",
+        "preparation_time": 45,
+        "system_rating": 4.8,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-03-05T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 9,
+                "name": "Chicken",
+                "quantity": 500,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 10,
+                "name": "Yogurt",
+                "quantity": 150,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 11,
+                "name": "Tikka Masala Sauce",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 12,
+                "name": "Onions",
+                "quantity": 100,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Marinate the chicken with yogurt and spices.",
+            "Grill the marinated chicken until cooked.",
+            "Simmer the chicken in tikka masala sauce with onions."
+        ],
+        "images": [
+            "https://example.com/tikka_masala_step1.jpg",
+            "https://example.com/tikka_masala_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=a03U45jFxOI",
+        "ratings": [
+            {
+                "user_id": 3,
+                "rating": 4.8,
+                "review": "Absolutely delicious!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 4,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d70"
+        },
+        "recipe_name": "Paneer Butter Masala",
+        "cuisine": "Indian",
+        "preparation_time": 40,
+        "system_rating": 4.6,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-04-18T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 13,
+                "name": "Paneer",
+                "quantity": 250,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 14,
+                "name": "Butter",
+                "quantity": 50,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 15,
+                "name": "Tomato Puree",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 16,
+                "name": "Cream",
+                "quantity": 100,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Fry the paneer in butter until golden.",
+            "Prepare the tomato-based sauce and simmer with paneer.",
+            "Finish with cream for a rich texture."
+        ],
+        "images": [
+            "https://example.com/paneer_butter_masala_step1.jpg",
+            "https://example.com/paneer_butter_masala_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=2IOBlfsnm9I",
+        "ratings": [
+            {
+                "user_id": 4,
+                "rating": 4.6,
+                "review": "A vegetarian delight!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 5,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d71"
+        },
+        "recipe_name": "Sushi",
+        "cuisine": "Japanese",
+        "preparation_time": 60,
+        "system_rating": 4.9,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-05-20T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 17,
+                "name": "Sushi Rice",
+                "quantity": 300,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 18,
+                "name": "Nori Sheets",
+                "quantity": 5,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 19,
+                "name": "Salmon",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 20,
+                "name": "Avocado",
+                "quantity": 1,
+                "unit": "unit"
+            }
+        ],
+        "steps": [
+            "Cook the sushi rice and let it cool.",
+            "Place nori sheet on bamboo mat, spread rice over it.",
+            "Add salmon and avocado, then roll and slice."
+        ],
+        "images": [
+            "https://example.com/sushi_step1.jpg",
+            "https://example.com/sushi_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=QmhBjSpfMdA",
+        "ratings": [
+            {
+                "user_id": 5,
+                "rating": 4.9,
+                "review": "Perfect sushi every time!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 6,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d72"
+        },
+        "recipe_name": "Ramen",
+        "cuisine": "Japanese",
+        "preparation_time": 50,
+        "system_rating": 4.7,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-06-14T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 21,
+                "name": "Ramen Noodles",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 22,
+                "name": "Chicken Broth",
+                "quantity": 500,
+                "unit": "ml"
+            },
+            {
+                "ingredient_id": 23,
+                "name": "Pork Belly",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 24,
+                "name": "Egg",
+                "quantity": 1,
+                "unit": "unit"
+            }
+        ],
+        "steps": [
+            "Boil the ramen noodles until tender.",
+            "Simmer the pork belly in chicken broth.",
+            "Serve the noodles in broth, topped with pork and egg."
+        ],
+        "images": [
+            "https://example.com/ramen_step1.jpg",
+            "https://example.com/ramen_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=h0IPcqF2q9U",
+        "ratings": [
+            {
+                "user_id": 6,
+                "rating": 4.7,
+                "review": "Comforting and flavorful!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 7,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d73"
+        },
+        "recipe_name": "Beef Tacos",
+        "cuisine": "Mexican",
+        "preparation_time": 35,
+        "system_rating": 4.6,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-07-22T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 25,
+                "name": "Ground Beef",
+                "quantity": 500,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 26,
+                "name": "Taco Shells",
+                "quantity": 10,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 27,
+                "name": "Lettuce",
+                "quantity": 50,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 28,
+                "name": "Cheese",
+                "quantity": 100,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Cook the ground beef with taco seasoning.",
+            "Assemble the tacos with lettuce, cheese, and beef.",
+            "Serve with salsa and sour cream."
+        ],
+        "images": [
+            "https://example.com/beef_tacos_step1.jpg",
+            "https://example.com/beef_tacos_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=fxs1_aljKn8",
+        "ratings": [
+            {
+                "user_id": 7,
+                "rating": 4.6,
+                "review": "Tasty and easy to make!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 8,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d74"
+        },
+        "recipe_name": "Guacamole",
+        "cuisine": "Mexican",
+        "preparation_time": 15,
+        "system_rating": 4.5,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-08-03T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 29,
+                "name": "Avocados",
+                "quantity": 3,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 30,
+                "name": "Lime",
+                "quantity": 1,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 31,
+                "name": "Cilantro",
+                "quantity": 10,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 32,
+                "name": "Salt",
+                "quantity": 5,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Mash the avocados in a bowl.",
+            "Add lime juice, cilantro, and salt.",
+            "Mix until smooth and serve with chips."
+        ],
+        "images": [
+            "https://example.com/guacamole_step1.jpg",
+            "https://example.com/guacamole_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=I3T3TNPiPcc",
+        "ratings": [
+            {
+                "user_id": 8,
+                "rating": 4.5,
+                "review": "Fresh and delicious!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 9,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d75"
+        },
+        "recipe_name": "Croissants",
+        "cuisine": "French",
+        "preparation_time": 120,
+        "system_rating": 4.8,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-09-10T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 33,
+                "name": "Flour",
+                "quantity": 250,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 34,
+                "name": "Butter",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 35,
+                "name": "Yeast",
+                "quantity": 10,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 36,
+                "name": "Milk",
+                "quantity": 100,
+                "unit": "ml"
+            }
+        ],
+        "steps": [
+            "Prepare the dough and let it rise.",
+            "Layer with butter and fold repeatedly.",
+            "Shape the croissants and bake until golden."
+        ],
+        "images": [
+            "https://example.com/croissants_step1.jpg",
+            "https://example.com/croissants_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=ANKI177u6_A",
+        "ratings": [
+            {
+                "user_id": 9,
+                "rating": 4.8,
+                "review": "Buttery and flaky!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 10,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d76"
+        },
+        "recipe_name": "Coq au Vin",
+        "cuisine": "French",
+        "preparation_time": 90,
+        "system_rating": 4.7,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-10-01T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 37,
+                "name": "Chicken",
+                "quantity": 1,
+                "unit": "kg"
+            },
+            {
+                "ingredient_id": 38,
+                "name": "Red Wine",
+                "quantity": 500,
+                "unit": "ml"
+            },
+            {
+                "ingredient_id": 39,
+                "name": "Mushrooms",
+                "quantity": 150,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 40,
+                "name": "Onions",
+                "quantity": 100,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Marinate the chicken in red wine.",
+            "Cook with mushrooms, onions, and bacon.",
+            "Simmer until the chicken is tender."
+        ],
+        "images": [
+            "https://example.com/coq_au_vin_step1.jpg",
+            "https://example.com/coq_au_vin_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=EpDbcdDJPRU",
+        "ratings": [
+            {
+                "user_id": 10,
+                "rating": 4.7,
+                "review": "Rich and flavorful!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 11,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d77"
+        },
+        "recipe_name": "Bibimbap",
+        "cuisine": "Korean",
+        "preparation_time": 45,
+        "system_rating": 4.8,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-10-25T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 41,
+                "name": "Rice",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 42,
+                "name": "Vegetables",
+                "quantity": 150,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 43,
+                "name": "Gochujang",
+                "quantity": 50,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 44,
+                "name": "Egg",
+                "quantity": 1,
+                "unit": "unit"
+            }
+        ],
+        "steps": [
+            "Cook the rice and arrange in a bowl.",
+            "Stir-fry the vegetables and place on top of the rice.",
+            "Add the egg and gochujang sauce, then mix well."
+        ],
+        "images": [
+            "https://example.com/bibimbap_step1.jpg",
+            "https://example.com/bibimbap_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=6QQ67F8y2b8",
+        "ratings": [
+            {
+                "user_id": 11,
+                "rating": 4.8,
+                "review": "A perfect Korean dish!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 12,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d78"
+        },
+        "recipe_name": "Kimchi",
+        "cuisine": "Korean",
+        "preparation_time": 30,
+        "system_rating": 4.6,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-11-12T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 45,
+                "name": "Cabbage",
+                "quantity": 1,
+                "unit": "kg"
+            },
+            {
+                "ingredient_id": 46,
+                "name": "Salt",
+                "quantity": 50,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 47,
+                "name": "Gochugaru",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 48,
+                "name": "Garlic",
+                "quantity": 20,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Salt the cabbage and let it sit for a few hours.",
+            "Mix with gochugaru, garlic, and other spices.",
+            "Pack into jars and ferment for several days."
+        ],
+        "images": [
+            "https://example.com/kimchi_step1.jpg",
+            "https://example.com/kimchi_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=eTucCw1w6Ak",
+        "ratings": [
+            {
+                "user_id": 12,
+                "rating": 4.6,
+                "review": "Perfect for kimchi lovers!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 13,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d79"
+        },
+        "recipe_name": "Pad Thai",
+        "cuisine": "Thai",
+        "preparation_time": 30,
+        "system_rating": 4.7,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-11-30T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 49,
+                "name": "Rice Noodles",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 50,
+                "name": "Shrimp",
+                "quantity": 150,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 51,
+                "name": "Tofu",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 52,
+                "name": "Peanuts",
+                "quantity": 50,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Soak the rice noodles in warm water.",
+            "Stir-fry shrimp and tofu in a wok.",
+            "Add noodles and sauce, and top with peanuts."
+        ],
+        "images": [
+            "https://example.com/pad_thai_step1.jpg",
+            "https://example.com/pad_thai_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=3IMItGHeOpE",
+        "ratings": [
+            {
+                "user_id": 13,
+                "rating": 4.7,
+                "review": "Tastes like authentic Thai!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 14,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d80"
+        },
+        "recipe_name": "Tom Yum Soup",
+        "cuisine": "Thai",
+        "preparation_time": 25,
+        "system_rating": 4.5,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-12-05T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 53,
+                "name": "Shrimp",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 54,
+                "name": "Lemongrass",
+                "quantity": 2,
+                "unit": "stalks"
+            },
+            {
+                "ingredient_id": 55,
+                "name": "Mushrooms",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 56,
+                "name": "Tom Yum Paste",
+                "quantity": 50,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Boil water with lemongrass and tom yum paste.",
+            "Add shrimp and mushrooms, and simmer until cooked.",
+            "Serve hot with a squeeze of lime."
+        ],
+        "images": [
+            "https://example.com/tom_yum_soup_step1.jpg",
+            "https://example.com/tom_yum_soup_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=gXuegBZqCTY",
+        "ratings": [
+            {
+                "user_id": 14,
+                "rating": 4.5,
+                "review": "A burst of flavors!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 15,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d81"
+        },
+        "recipe_name": "Shakshuka",
+        "cuisine": "Middle Eastern",
+        "preparation_time": 40,
+        "system_rating": 4.6,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2023-12-20T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 57,
+                "name": "Tomatoes",
+                "quantity": 300,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 58,
+                "name": "Onions",
+                "quantity": 100,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 59,
+                "name": "Eggs",
+                "quantity": 4,
+                "unit": "unit"
+            },
+            {
+                "ingredient_id": 60,
+                "name": "Bell Peppers",
+                "quantity": 100,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Cook onions and bell peppers in a pan.",
+            "Add tomatoes and simmer until thickened.",
+            "Make wells in the sauce and crack eggs into them, then cook until the eggs are set."
+        ],
+        "images": [
+            "https://example.com/shakshuka_step1.jpg",
+            "https://example.com/shakshuka_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=618QsMaVXp8",
+        "ratings": [
+            {
+                "user_id": 15,
+                "rating": 4.6,
+                "review": "A hearty breakfast!"
+            }
+        ]
+    },
+    {
+        "recipe_id": 16,
+        "_id": {
+            "$oid": "64c72b2f9b1e8a4d5f8e4d82"
+        },
+        "recipe_name": "Falafel",
+        "cuisine": "Middle Eastern",
+        "preparation_time": 30,
+        "system_rating": 4.7,
+        "is_rated": true,
+        "status": "active",
+        "created_at": {
+            "$date": "2024-01-05T00:00:00Z"
+        },
+        "ingredients": [
+            {
+                "ingredient_id": 61,
+                "name": "Chickpeas",
+                "quantity": 200,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 62,
+                "name": "Garlic",
+                "quantity": 20,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 63,
+                "name": "Parsley",
+                "quantity": 30,
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 64,
+                "name": "Cumin",
+                "quantity": 5,
+                "unit": "g"
+            }
+        ],
+        "steps": [
+            "Blend chickpeas, garlic, parsley, and spices.",
+            "Form into balls and fry until golden.",
+            "Serve with pita bread and tahini sauce."
+        ],
+        "images": [
+            "https://example.com/falafel_step1.jpg",
+            "https://example.com/falafel_step2.jpg"
+        ],
+        "video_url": "https://www.youtube.com/watch?v=foB6bxhZYF0",
+        "ratings": [
+            {
+                "user_id": 16,
+                "rating": 4.7,
+                "review": "Crispy and delicious!"
+            }
+        ]
+    }
+]

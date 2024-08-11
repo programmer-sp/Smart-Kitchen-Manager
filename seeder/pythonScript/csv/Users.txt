@@ -1,0 +1,51 @@
+user_id,username,email,password_hash,role,created_at,updated_at,is_deleted
+1,jdoe,jdoe@example.com,$2b$12$g7vCk,Member,2024-08-12 01:00:00,2024-08-12 01:00:00,FALSE
+2,asmith,asmith@example.com,$2b$12$e7mDk,Owner,2024-08-12 01:30:00,2024-08-12 01:30:00,FALSE
+3,bwhite,bwhite@example.com,$2b$12$f4jKk,Guest,2024-08-12 02:00:00,2024-08-12 02:00:00,FALSE
+4,mgreen,mgreen@example.com,$2b$12$a3lMn,Moderator,2024-08-12 02:30:00,2024-08-12 02:30:00,FALSE
+5,tblack,tblack@example.com,$2b$12$b2lNz,Administrator,2024-08-12 03:00:00,2024-08-12 03:00:00,FALSE
+6,cmoore,cmoore@example.com,$2b$12$d1nKq,Content Creator,2024-08-12 03:30:00,2024-08-12 03:30:00,FALSE
+7,eyoung,eyoung@example.com,$2b$12$g9pRn,Viewer,2024-08-12 04:00:00,2024-08-12 04:00:00,FALSE
+8,pjackson,pjackson@example.com,$2b$12$r7vGk,Member,2024-08-12 04:30:00,2024-08-12 04:30:00,FALSE
+9,sharris,sharris@example.com,$2b$12$t3kLn,Owner,2024-08-12 05:00:00,2024-08-12 05:00:00,FALSE
+10,jmorris,jmorris@example.com,$2b$12$w5jKp,Guest,2024-08-12 05:30:00,2024-08-12 05:30:00,FALSE
+11,lmartin,lmartin@example.com,$2b$12$n1mRq,Moderator,2024-08-12 06:00:00,2024-08-12 06:00:00,FALSE
+12,kdavis,kdavis@example.com,$2b$12$k2nJz,Administrator,2024-08-12 06:30:00,2024-08-12 06:30:00,FALSE
+13,crodriguez,crodriguez@example.com,$2b$12$m3jKl,Content Creator,2024-08-12 07:00:00,2024-08-12 07:00:00,FALSE
+14,sgonzalez,sgonzalez@example.com,$2b$12$q1oNq,Viewer,2024-08-12 07:30:00,2024-08-12 07:30:00,FALSE
+15,jwilson,jwilson@example.com,$2b$12$f4kLn,Member,2024-08-12 08:00:00,2024-08-12 08:00:00,FALSE
+16,jlopez,jlopez@example.com,$2b$12$a6kMq,Owner,2024-08-12 08:30:00,2024-08-12 08:30:00,FALSE
+17,ewhite,ewhite@example.com,$2b$12$t2lQz,Guest,2024-08-12 09:00:00,2024-08-12 09:00:00,FALSE
+18,rrussell,rrussell@example.com,$2b$12$g4mRq,Moderator,2024-08-12 09:30:00,2024-08-12 09:30:00,FALSE
+19,cclark,cclark@example.com,$2b$12$s5lJn,Administrator,2024-08-12 10:00:00,2024-08-12 10:00:00,FALSE
+20,jhernandez,jhernandez@example.com,$2b$12$h1pQn,Content Creator,2024-08-12 10:30:00,2024-08-12 10:30:00,FALSE
+21,iramirez,iramirez@example.com,$2b$12$f3qLs,Viewer,2024-08-12 11:00:00,2024-08-12 11:00:00,FALSE
+22,vthompson,vthompson@example.com,$2b$12$s4kMq,Member,2024-08-12 11:30:00,2024-08-12 11:30:00,FALSE
+23,aperez,aperez@example.com,$2b$12$m5jRp,Owner,2024-08-12 12:00:00,2024-08-12 12:00:00,FALSE
+24,jbaker,jbaker@example.com,$2b$12$g6lNq,Guest,2024-08-12 12:30:00,2024-08-12 12:30:00,FALSE
+25,tking,tking@example.com,$2b$12$a1mRq,Moderator,2024-08-12 13:00:00,2024-08-12 13:00:00,FALSE
+26,sward,sward@example.com,$2b$12$t2kKq,Administrator,2024-08-12 13:30:00,2024-08-12 13:30:00,FALSE
+27,jtorres,jtorres@example.com,$2b$12$p3lLs,Content Creator,2024-08-12 14:00:00,2024-08-12 14:00:00,FALSE
+28,nmorgan,nmorgan@example.com,$2b$12$m2jRn,Viewer,2024-08-12 14:30:00,2024-08-12 14:30:00,FALSE
+29,lcook,lcook@example.com,$2b$12$s1kJp,Member,2024-08-12 15:00:00,2024-08-12 15:00:00,FALSE
+30,jmorris,jmorris@example.com,$2b$12$a9mSq,Owner,2024-08-12 15:30:00,2024-08-12 15:30:00,FALSE
+31,dmitchell,dmitchell@example.com,$2b$12$e8kPq,Guest,2024-08-12 16:00:00,2024-08-12 16:00:00,FALSE
+32,tbryant,tbryant@example.com,$2b$12$c1nKq,Moderator,2024-08-12 16:30:00,2024-08-12 16:30:00,FALSE
+33,crichardson,crichardson@example.com,$2b$12$d2kLn,Administrator,2024-08-12 17:00:00,2024-08-12 17:00:00,FALSE
+34,skelly,skelly@example.com,$2b$12$t9pRq,Content Creator,2024-08-12 17:30:00,2024-08-12 17:30:00,FALSE
+35,rdixon,rdixon@example.com,$2b$12$a3jKp,Viewer,2024-08-12 18:00:00,2024-08-12 18:00:00,FALSE
+36,lperry,lperry@example.com,$2b$12$g8mTn,Member,2024-08-12 18:30:00,2024-08-12 18:30:00,FALSE
+37,hjames,hjames@example.com,$2b$12$k7lMq,Owner,2024-08-12 19:00:00,2024-08-12 19:00:00,FALSE
+38,mchavez,mchavez@example.com,$2b$12$f6nRq,Guest,2024-08-12 19:30:00,2024-08-12 19:30:00,FALSE
+39,psullivan,psullivan@example.com,$2b$12$d9kJn,Moderator,2024-08-12 20:00:00,2024-08-12 20:00:00,FALSE
+40,hlong,hlong@example.com,$2b$12$s2lLp,Administrator,2024-08-12 20:30:00,2024-08-12 20:30:00,FALSE
+41,kmurphy,kmurphy@example.com,$2b$12$c1pMq,Content Creator,2024-08-12 21:00:00,2024-08-12 21:00:00,FALSE
+42,cjackson,cjackson@example.com,$2b$12$a7kQp,Viewer,2024-08-12 21:30:00,2024-08-12 21:30:00,FALSE
+43,ebrooks,ebrooks@example.com,$2b$12$g4mRq,Member,2024-08-12 22:00:00,2024-08-12 22:00:00,FALSE
+44,jgreen,jgreen@example.com,$2b$12$k5lKq,Owner,2024-08-12 22:30:00,2024-08-12 22:30:00,FALSE
+45,mtaylor,mtaylor@example.com,$2b$12$t1nJp,Guest,2024-08-12 23:00:00,2024-08-12 23:00:00,FALSE
+46,sallen,sallen@example.com,$2b$12$d3kLn,Moderator,2024-08-12 23:30:00,2024-08-12 23:30:00,FALSE
+47,jthomas,jthomas@example.com,$2b$12$a8pSq,Administrator,2024-08-13 00:00:00,2024-08-13 00:00:00,FALSE
+48,aedwards,aedwards@example.com,$2b$12$g6lJp,Content Creator,2024-08-13 00:30:00,2024-08-13 00:30:00,FALSE
+49,cflores,cflores@example.com,$2b$12$t4kTq,Viewer,2024-08-13 01:00:00,2024-08-13 01:00:00,FALSE
+50,jwright,jwright@example.com,$2b$12$m7jKq,Member,2024-08-13 01:30:00,2024-08-13 01:30:00,FALSE

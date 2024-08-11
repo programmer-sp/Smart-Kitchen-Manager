@@ -1,0 +1,1872 @@
+[
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567a"
+        },
+        "ingredient_id": 1,
+        "name": "Tomato",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 500,
+        "image_url": "https://images.unsplash.com/photo-1527325752894-f1b38b396f40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxUb21hdG98ZW58MHwyfHx8MTcyMzQwNzk5MXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 18,
+            "protein": "0.9g",
+            "fat": "0.2g",
+            "carbohydrates": "3.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567b"
+        },
+        "ingredient_id": 2,
+        "name": "Potato",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 1000,
+        "image_url": "https://images.unsplash.com/photo-1550950158-d0d960dff51b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQb3RhdG98ZW58MHwyfHx8MTcyMzQwNzk5Mnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 77,
+            "protein": "2.0g",
+            "fat": "0.1g",
+            "carbohydrates": "17.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567c"
+        },
+        "ingredient_id": 3,
+        "name": "Onion",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 300,
+        "image_url": "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxPbmlvbnxlbnwwfDJ8fHwxNzIzNDA3OTkyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 40,
+            "protein": "1.1g",
+            "fat": "0.1g",
+            "carbohydrates": "9.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567d"
+        },
+        "ingredient_id": 4,
+        "name": "Garlic",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1441861539200-6208cf4a122f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHYXJsaWN8ZW58MHwyfHx8MTcyMzQwNzk5M3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 149,
+            "protein": "6.4g",
+            "fat": "0.5g",
+            "carbohydrates": "33.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567e"
+        },
+        "ingredient_id": 5,
+        "name": "Ginger",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1682530016885-06053d5b10a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHaW5nZXJ8ZW58MHwyfHx8MTcyMzQwNzk5M3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 80,
+            "protein": "1.8g",
+            "fat": "0.8g",
+            "carbohydrates": "17.8g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434567f"
+        },
+        "ingredient_id": 6,
+        "name": "Green Chili",
+        "category": "Vegetable",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1599986937504-92aa9b0d2fac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHcmVlbiUyMENoaWxpfGVufDB8Mnx8fDE3MjM0MDc5OTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 40,
+            "protein": "2.0g",
+            "fat": "0.2g",
+            "carbohydrates": "9.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345680"
+        },
+        "ingredient_id": 7,
+        "name": "Cilantro",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1625938144595-4f5112c529b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaWxhbnRyb3xlbnwwfDJ8fHwxNzIzNDA3OTk0fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 23,
+            "protein": "2.1g",
+            "fat": "0.5g",
+            "carbohydrates": "3.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345681"
+        },
+        "ingredient_id": 8,
+        "name": "Cumin Seeds",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1573145757298-85c8a093545d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDdW1pbiUyMFNlZWRzfGVufDB8Mnx8fDE3MjM0MDc5OTV8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 375,
+            "protein": "17.8g",
+            "fat": "22.3g",
+            "carbohydrates": "44.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345682"
+        },
+        "ingredient_id": 9,
+        "name": "Turmeric Powder",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1698943510650-9232c98a5328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxUdXJtZXJpYyUyMFBvd2RlcnxlbnwwfDJ8fHwxNzIzNDA3OTk1fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 312,
+            "protein": "7.8g",
+            "fat": "3.3g",
+            "carbohydrates": "67.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345683"
+        },
+        "ingredient_id": 10,
+        "name": "Red Chili Powder",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1586347956109-8ea88e918ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxSZWQlMjBDaGlsaSUyMFBvd2RlcnxlbnwwfDJ8fHwxNzIzNDA3OTk2fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 282,
+            "protein": "12.0g",
+            "fat": "14.3g",
+            "carbohydrates": "48.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345684"
+        },
+        "ingredient_id": 11,
+        "name": "Cardamom",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1624351251625-cf02b018223c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDYXJkYW1vbXxlbnwwfDJ8fHwxNzIzNDA3OTk2fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 311,
+            "protein": "10.8g",
+            "fat": "6.7g",
+            "carbohydrates": "68.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345685"
+        },
+        "ingredient_id": 12,
+        "name": "Cloves",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1589536677029-c0aa1808fba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDbG92ZXN8ZW58MHwyfHx8MTcyMzQwNzk5Nnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 274,
+            "protein": "6.0g",
+            "fat": "13.0g",
+            "carbohydrates": "65.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345686"
+        },
+        "ingredient_id": 13,
+        "name": "Coriander Seeds",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1504714719475-0d316242a9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDb3JpYW5kZXIlMjBTZWVkc3xlbnwwfDJ8fHwxNzIzNDA3OTk3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 298,
+            "protein": "12.4g",
+            "fat": "17.8g",
+            "carbohydrates": "54.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345687"
+        },
+        "ingredient_id": 14,
+        "name": "Fennel Seeds",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1504714719475-0d316242a9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxGZW5uZWwlMjBTZWVkc3xlbnwwfDJ8fHwxNzIzNDA3OTk3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 345,
+            "protein": "15.8g",
+            "fat": "14.9g",
+            "carbohydrates": "52.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345688"
+        },
+        "ingredient_id": 15,
+        "name": "Mustard Seeds",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1667237977239-0c6ba87f4d30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNdXN0YXJkJTIwU2VlZHN8ZW58MHwyfHx8MTcyMzQwNzk5OHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 508,
+            "protein": "25.8g",
+            "fat": "36.2g",
+            "carbohydrates": "28.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345689"
+        },
+        "ingredient_id": 16,
+        "name": "Black Pepper",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1649951806971-ad0e00408773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCbGFjayUyMFBlcHBlcnxlbnwwfDJ8fHwxNzIzNDA3OTk4fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 251,
+            "protein": "10.4g",
+            "fat": "3.3g",
+            "carbohydrates": "64.8g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568a"
+        },
+        "ingredient_id": 17,
+        "name": "Cinnamon Stick",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1590080876209-c70d0f0bf6a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaW5uYW1vbiUyMFN0aWNrfGVufDB8Mnx8fDE3MjM0MDc5OTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 247,
+            "protein": "4.0g",
+            "fat": "1.2g",
+            "carbohydrates": "80.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568b"
+        },
+        "ingredient_id": 18,
+        "name": "Bay Leaf",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 10,
+        "image_url": "https://images.unsplash.com/photo-1601063458289-77247ba485ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCYXklMjBMZWFmfGVufDB8Mnx8fDE3MjM0MDc5OTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 313,
+            "protein": "7.6g",
+            "fat": "8.4g",
+            "carbohydrates": "74.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568c"
+        },
+        "ingredient_id": 19,
+        "name": "Fenugreek Seeds",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1504714719475-0d316242a9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxGZW51Z3JlZWslMjBTZWVkc3xlbnwwfDJ8fHwxNzIzNDA4MDAwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 323,
+            "protein": "23.0g",
+            "fat": "6.4g",
+            "carbohydrates": "58.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568d"
+        },
+        "ingredient_id": 20,
+        "name": "Curry Leaves",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 20,
+        "image_url": "https://images.unsplash.com/photo-1593329344473-6a9dfc15dc3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDdXJyeSUyMExlYXZlc3xlbnwwfDJ8fHwxNzIzNDA4MDAwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 108,
+            "protein": "6.1g",
+            "fat": "1.5g",
+            "carbohydrates": "18.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568e"
+        },
+        "ingredient_id": 21,
+        "name": "Mint",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1495908089371-3f0318f8878f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNaW50fGVufDB8Mnx8fDE3MjM0MDgwMDF8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 44,
+            "protein": "3.3g",
+            "fat": "0.6g",
+            "carbohydrates": "8.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434568f"
+        },
+        "ingredient_id": 22,
+        "name": "Basil",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1543364195-077a16c30ff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCYXNpbHxlbnwwfDJ8fHwxNzIzNDA4MDAxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 22,
+            "protein": "3.2g",
+            "fat": "0.6g",
+            "carbohydrates": "2.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345690"
+        },
+        "ingredient_id": 23,
+        "name": "Rosemary",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1714731596406-e144f725acc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxSb3NlbWFyeXxlbnwwfDJ8fHwxNzIzNDA4MDAyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 131,
+            "protein": "3.3g",
+            "fat": "5.9g",
+            "carbohydrates": "20.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345691"
+        },
+        "ingredient_id": 24,
+        "name": "Thyme",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1681330266932-391fd00f805f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxUaHltZXxlbnwwfDJ8fHwxNzIzNDA4MDAyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 101,
+            "protein": "5.6g",
+            "fat": "1.7g",
+            "carbohydrates": "24.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345692"
+        },
+        "ingredient_id": 25,
+        "name": "Oregano",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1570647556977-b77ee6f3fac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxPcmVnYW5vfGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 306,
+            "protein": "11.0g",
+            "fat": "10.3g",
+            "carbohydrates": "64.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345693"
+        },
+        "ingredient_id": 26,
+        "name": "Parsley",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1583116935690-eb4893c5de84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQYXJzbGV5fGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 36,
+            "protein": "2.9g",
+            "fat": "0.8g",
+            "carbohydrates": "6.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345694"
+        },
+        "ingredient_id": 27,
+        "name": "Dill",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1625943913273-54d24dda7197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxEaWxsfGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 43,
+            "protein": "3.5g",
+            "fat": "1.1g",
+            "carbohydrates": "7.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345695"
+        },
+        "ingredient_id": 28,
+        "name": "Chives",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1630289040942-737e46e22f19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaGl2ZXN8ZW58MHwyfHx8MTcyMzQwODAwNHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 30,
+            "protein": "3.3g",
+            "fat": "0.7g",
+            "carbohydrates": "4.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345696"
+        },
+        "ingredient_id": 29,
+        "name": "Tarragon",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://example.com/tarragon.jpg",
+        "nutritional_info": {
+            "calories": 295,
+            "protein": "22.8g",
+            "fat": "7.2g",
+            "carbohydrates": "50.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345697"
+        },
+        "ingredient_id": 30,
+        "name": "Bay Leaf",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 10,
+        "image_url": "https://images.unsplash.com/photo-1601063458289-77247ba485ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCYXklMjBMZWFmfGVufDB8Mnx8fDE3MjM0MDc5OTl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 313,
+            "protein": "7.6g",
+            "fat": "8.4g",
+            "carbohydrates": "74.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345698"
+        },
+        "ingredient_id": 31,
+        "name": "Basil",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1543364195-077a16c30ff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCYXNpbHxlbnwwfDJ8fHwxNzIzNDA4MDAxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 22,
+            "protein": "3.2g",
+            "fat": "0.6g",
+            "carbohydrates": "2.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c4345699"
+        },
+        "ingredient_id": 32,
+        "name": "Oregano",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1570647556977-b77ee6f3fac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxPcmVnYW5vfGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 306,
+            "protein": "11.0g",
+            "fat": "10.3g",
+            "carbohydrates": "64.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569a"
+        },
+        "ingredient_id": 33,
+        "name": "Parsley",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1583116935690-eb4893c5de84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQYXJzbGV5fGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 36,
+            "protein": "2.9g",
+            "fat": "0.8g",
+            "carbohydrates": "6.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569b"
+        },
+        "ingredient_id": 34,
+        "name": "Dill",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1625943913273-54d24dda7197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxEaWxsfGVufDB8Mnx8fDE3MjM0MDgwMDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 43,
+            "protein": "3.5g",
+            "fat": "1.1g",
+            "carbohydrates": "7.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569c"
+        },
+        "ingredient_id": 35,
+        "name": "Thyme",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1681330266932-391fd00f805f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxUaHltZXxlbnwwfDJ8fHwxNzIzNDA4MDAyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 101,
+            "protein": "5.6g",
+            "fat": "1.7g",
+            "carbohydrates": "24.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569d"
+        },
+        "ingredient_id": 36,
+        "name": "Sage",
+        "category": "Herb",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1544857925-9ed81cca46aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTYWdlfGVufDB8Mnx8fDE3MjM0MDgwMDd8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 315,
+            "protein": "10.6g",
+            "fat": "12.8g",
+            "carbohydrates": "60.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569e"
+        },
+        "ingredient_id": 37,
+        "name": "Chili Powder",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1613518972312-267f92ae4aa2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaGlsaSUyMFBvd2RlcnxlbnwwfDJ8fHwxNzIzNDA4MDA3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 282,
+            "protein": "12.0g",
+            "fat": "14.3g",
+            "carbohydrates": "48.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c434569f"
+        },
+        "ingredient_id": 38,
+        "name": "Cinnamon",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1509482560494-4126f8225994?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaW5uYW1vbnxlbnwwfDJ8fHwxNzIzNDA4MDA4fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 247,
+            "protein": "4.0g",
+            "fat": "1.2g",
+            "carbohydrates": "80.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a0"
+        },
+        "ingredient_id": 39,
+        "name": "Paprika",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1625944227313-4f7f68e6b3fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQYXByaWthfGVufDB8Mnx8fDE3MjM0MDgwMDh8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 282,
+            "protein": "14.1g",
+            "fat": "12.9g",
+            "carbohydrates": "54.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a1"
+        },
+        "ingredient_id": 40,
+        "name": "Nutmeg",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1669171942323-fd39a4cd9fa6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxOdXRtZWd8ZW58MHwyfHx8MTcyMzQwODAwOXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 525,
+            "protein": "5.8g",
+            "fat": "36.3g",
+            "carbohydrates": "49.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a2"
+        },
+        "ingredient_id": 41,
+        "name": "Star Anise",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1645075960701-573cbc669de6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTdGFyJTIwQW5pc2V8ZW58MHwyfHx8MTcyMzQwODAwOXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 337,
+            "protein": "18.0g",
+            "fat": "15.9g",
+            "carbohydrates": "50.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a3"
+        },
+        "ingredient_id": 42,
+        "name": "Garam Masala",
+        "category": "Spice",
+        "unit": "grams",
+        "value": 50,
+        "image_url": "https://images.unsplash.com/photo-1628702773947-1bcd12856811?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHYXJhbSUyME1hc2FsYXxlbnwwfDJ8fHwxNzIzNDA4MDEwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 355,
+            "protein": "12.0g",
+            "fat": "14.8g",
+            "carbohydrates": "49.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a4"
+        },
+        "ingredient_id": 43,
+        "name": "Coconut Milk",
+        "category": "Dairy",
+        "unit": "milliliters",
+        "value": 200,
+        "image_url": "https://images.unsplash.com/photo-1523473827533-2a64d0d36748?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDb2NvbnV0JTIwTWlsa3xlbnwwfDJ8fHwxNzIzNDA4MDEwfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 230,
+            "protein": "2.3g",
+            "fat": "23.8g",
+            "carbohydrates": "6.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a5"
+        },
+        "ingredient_id": 44,
+        "name": "Yogurt",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 200,
+        "image_url": "https://images.unsplash.com/photo-1568371676223-7e6fc0fa62b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxZb2d1cnR8ZW58MHwyfHx8MTcyMzQwODAxMXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 61,
+            "protein": "3.5g",
+            "fat": "3.3g",
+            "carbohydrates": "4.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a6"
+        },
+        "ingredient_id": 45,
+        "name": "Paneer",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1628462626251-dc8abf27ece0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQYW5lZXJ8ZW58MHwyfHx8MTcyMzQwODAxMXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 321,
+            "protein": "18.3g",
+            "fat": "25.0g",
+            "carbohydrates": "3.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a7"
+        },
+        "ingredient_id": 46,
+        "name": "Cheddar Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1603903631889-b5f3ba4d5b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaGVkZGFyJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MDgwMTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 402,
+            "protein": "24.9g",
+            "fat": "33.1g",
+            "carbohydrates": "1.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a8"
+        },
+        "ingredient_id": 47,
+        "name": "Mozzarella Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1714658663763-8a379d674619?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNb3p6YXJlbGxhJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MDgwMTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 300,
+            "protein": "22.2g",
+            "fat": "22.4g",
+            "carbohydrates": "2.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456a9"
+        },
+        "ingredient_id": 48,
+        "name": "Butter",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1590080876351-941da357bde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCdXR0ZXJ8ZW58MHwyfHx8MTcyMzQwODAxMnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 717,
+            "protein": "0.9g",
+            "fat": "81.1g",
+            "carbohydrates": "0.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456aa"
+        },
+        "ingredient_id": 49,
+        "name": "Milk",
+        "category": "Dairy",
+        "unit": "milliliters",
+        "value": 250,
+        "image_url": "https://images.unsplash.com/photo-1523473827533-2a64d0d36748?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNaWxrfGVufDB8Mnx8fDE3MjM0MDgwMTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 42,
+            "protein": "3.4g",
+            "fat": "1.0g",
+            "carbohydrates": "5.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ab"
+        },
+        "ingredient_id": 50,
+        "name": "Cream",
+        "category": "Dairy",
+        "unit": "milliliters",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDcmVhbXxlbnwwfDJ8fHwxNzIzNDA4MDEzfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 345,
+            "protein": "2.0g",
+            "fat": "37.0g",
+            "carbohydrates": "2.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ac"
+        },
+        "ingredient_id": 51,
+        "name": "Cottage Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1475565098700-683be99a9b61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDb3R0YWdlJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MDgwMTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 98,
+            "protein": "11.1g",
+            "fat": "4.3g",
+            "carbohydrates": "3.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ad"
+        },
+        "ingredient_id": 52,
+        "name": "Sour Cream",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1598528738936-c50861cc75a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTb3VyJTIwQ3JlYW18ZW58MHwyfHx8MTcyMzQwODAxNHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 214,
+            "protein": "2.4g",
+            "fat": "20.0g",
+            "carbohydrates": "4.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ae"
+        },
+        "ingredient_id": 53,
+        "name": "Parmesan Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1580981001482-61a9db9b8396?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQYXJtZXNhbiUyMENoZWVzZXxlbnwwfDJ8fHwxNzIzNDEwNzg5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 431,
+            "protein": "38.0g",
+            "fat": "29.0g",
+            "carbohydrates": "4.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456af"
+        },
+        "ingredient_id": 54,
+        "name": "Goat Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1578167732217-76eb7b9f10f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHb2F0JTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MTA3ODl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 364,
+            "protein": "21.6g",
+            "fat": "29.8g",
+            "carbohydrates": "0.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b0"
+        },
+        "ingredient_id": 55,
+        "name": "Brie Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1700760933494-8a322667a3f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCcmllJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MTA3OTB8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 334,
+            "protein": "20.8g",
+            "fat": "27.7g",
+            "carbohydrates": "0.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b1"
+        },
+        "ingredient_id": 56,
+        "name": "Camembert Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1700760933494-8a322667a3f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDYW1lbWJlcnQlMjBDaGVlc2V8ZW58MHwyfHx8MTcyMzQxMDc5MHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 300,
+            "protein": "19.8g",
+            "fat": "24.3g",
+            "carbohydrates": "0.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b2"
+        },
+        "ingredient_id": 57,
+        "name": "Gouda Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1695304777030-167556e5ecf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHb3VkYSUyMENoZWVzZXxlbnwwfDJ8fHwxNzIzNDEwNzkxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 356,
+            "protein": "24.9g",
+            "fat": "27.4g",
+            "carbohydrates": "2.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b3"
+        },
+        "ingredient_id": 58,
+        "name": "Blue Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1621634890180-0b93f32e10bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCbHVlJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MTA3OTF8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 353,
+            "protein": "21.4g",
+            "fat": "28.7g",
+            "carbohydrates": "2.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b4"
+        },
+        "ingredient_id": 59,
+        "name": "Feta Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1578167732217-76eb7b9f10f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxGZXRhJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MTA3OTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 264,
+            "protein": "14.2g",
+            "fat": "21.3g",
+            "carbohydrates": "4.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b5"
+        },
+        "ingredient_id": 60,
+        "name": "Ricotta Cheese",
+        "category": "Dairy",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1700760933494-8a322667a3f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxSaWNvdHRhJTIwQ2hlZXNlfGVufDB8Mnx8fDE3MjM0MTA3OTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 174,
+            "protein": "11.4g",
+            "fat": "13.0g",
+            "carbohydrates": "3.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b6"
+        },
+        "ingredient_id": 61,
+        "name": "Almonds",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1590080876351-941da357bde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxBbG1vbmRzfGVufDB8Mnx8fDE3MjM0MTA3OTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 579,
+            "protein": "21.2g",
+            "fat": "49.9g",
+            "carbohydrates": "21.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b7"
+        },
+        "ingredient_id": 62,
+        "name": "Cashews",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1622542086073-dcdc3350cc2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDYXNoZXdzfGVufDB8Mnx8fDE3MjM0MTA3OTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 553,
+            "protein": "18.2g",
+            "fat": "43.8g",
+            "carbohydrates": "30.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b8"
+        },
+        "ingredient_id": 63,
+        "name": "Walnuts",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1590080876351-941da357bde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxXYWxudXRzfGVufDB8Mnx8fDE3MjM0MTA3OTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 654,
+            "protein": "15.2g",
+            "fat": "65.2g",
+            "carbohydrates": "13.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456b9"
+        },
+        "ingredient_id": 64,
+        "name": "Pistachios",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1702043239331-da06c5c269e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQaXN0YWNoaW9zfGVufDB8Mnx8fDE3MjM0MTA3OTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 562,
+            "protein": "20.2g",
+            "fat": "45.4g",
+            "carbohydrates": "27.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ba"
+        },
+        "ingredient_id": 65,
+        "name": "Peanuts",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1590080874088-eec64895b423?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQZWFudXRzfGVufDB8Mnx8fDE3MjM0MTA3OTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 567,
+            "protein": "25.8g",
+            "fat": "49.2g",
+            "carbohydrates": "16.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456bb"
+        },
+        "ingredient_id": 66,
+        "name": "Hazelnuts",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1613992258436-7d744cb20893?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxIYXplbG51dHN8ZW58MHwyfHx8MTcyMzQxMDc5NXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 628,
+            "protein": "15.0g",
+            "fat": "60.8g",
+            "carbohydrates": "16.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456bc"
+        },
+        "ingredient_id": 67,
+        "name": "Macadamia Nuts",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1615485021362-5db597fbab1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNYWNhZGFtaWElMjBOdXRzfGVufDB8Mnx8fDE3MjM0MTA3OTV8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 718,
+            "protein": "7.9g",
+            "fat": "75.8g",
+            "carbohydrates": "13.8g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456bd"
+        },
+        "ingredient_id": 68,
+        "name": "Pecans",
+        "category": "Nuts",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1585670492648-f34b4044a718?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQZWNhbnN8ZW58MHwyfHx8MTcyMzQxMDc5Nnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 691,
+            "protein": "9.2g",
+            "fat": "72.0g",
+            "carbohydrates": "13.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456be"
+        },
+        "ingredient_id": 69,
+        "name": "Pumpkin Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1663921801167-b522c11d6cf4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQdW1wa2luJTIwU2VlZHN8ZW58MHwyfHx8MTcyMzQxMDc5Nnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 559,
+            "protein": "30.2g",
+            "fat": "49.1g",
+            "carbohydrates": "10.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456bf"
+        },
+        "ingredient_id": 70,
+        "name": "Sunflower Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1533598313300-ac574e6dd10d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTdW5mbG93ZXIlMjBTZWVkc3xlbnwwfDJ8fHwxNzIzNDEwNzk3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 584,
+            "protein": "20.8g",
+            "fat": "51.5g",
+            "carbohydrates": "20.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c0"
+        },
+        "ingredient_id": 71,
+        "name": "Chia Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1568625365131-079e026a927d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaGlhJTIwU2VlZHN8ZW58MHwyfHx8MTcyMzQxMDc5OHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 486,
+            "protein": "16.5g",
+            "fat": "30.7g",
+            "carbohydrates": "42.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c1"
+        },
+        "ingredient_id": 72,
+        "name": "Flax Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1504714719475-0d316242a9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxGbGF4JTIwU2VlZHN8ZW58MHwyfHx8MTcyMzQxMDc5OHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 534,
+            "protein": "18.3g",
+            "fat": "42.2g",
+            "carbohydrates": "28.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c2"
+        },
+        "ingredient_id": 73,
+        "name": "Sesame Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1656422046523-469409b2b4d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTZXNhbWUlMjBTZWVkc3xlbnwwfDJ8fHwxNzIzNDEwNzk5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 573,
+            "protein": "17.7g",
+            "fat": "49.7g",
+            "carbohydrates": "23.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c3"
+        },
+        "ingredient_id": 74,
+        "name": "Hemp Seeds",
+        "category": "Seeds",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1632831561458-00760cfe81fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxIZW1wJTIwU2VlZHN8ZW58MHwyfHx8MTcyMzQxMDc5OXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 553,
+            "protein": "31.6g",
+            "fat": "48.8g",
+            "carbohydrates": "8.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c4"
+        },
+        "ingredient_id": 75,
+        "name": "Quinoa",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1618414466256-4b62f39b5b30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxRdWlub2F8ZW58MHwyfHx8MTcyMzQxMDgwMHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 368,
+            "protein": "14.1g",
+            "fat": "6.1g",
+            "carbohydrates": "64.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c5"
+        },
+        "ingredient_id": 76,
+        "name": "Brown Rice",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1715854501867-5533189a5e71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCcm93biUyMFJpY2V8ZW58MHwyfHx8MTcyMzQxMDgwMHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 111,
+            "protein": "2.6g",
+            "fat": "0.9g",
+            "carbohydrates": "23.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c6"
+        },
+        "ingredient_id": 77,
+        "name": "White Rice",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1615485290628-c5033c657a8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxXaGl0ZSUyMFJpY2V8ZW58MHwyfHx8MTcyMzQxMDgwMXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 130,
+            "protein": "2.7g",
+            "fat": "0.3g",
+            "carbohydrates": "28.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c7"
+        },
+        "ingredient_id": 78,
+        "name": "Oats",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1590194360975-c250dde6520d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxPYXRzfGVufDB8Mnx8fDE3MjM0MTA4MDF8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 389,
+            "protein": "16.9g",
+            "fat": "6.9g",
+            "carbohydrates": "66.3g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c8"
+        },
+        "ingredient_id": 79,
+        "name": "Barley",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1415381850596-1d29bce989f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCYXJsZXl8ZW58MHwyfHx8MTcyMzQxMDgwMnww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 354,
+            "protein": "12.5g",
+            "fat": "2.3g",
+            "carbohydrates": "73.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456c9"
+        },
+        "ingredient_id": 80,
+        "name": "Cornmeal",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/dea7d3883d01396d.html",
+        "nutritional_info": {
+            "calories": 370,
+            "protein": "9.9g",
+            "fat": "4.7g",
+            "carbohydrates": "75.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ca"
+        },
+        "ingredient_id": 81,
+        "name": "Wheat Flour",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1415381850596-1d29bce989f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxXaGVhdCUyMEZsb3VyfGVufDB8Mnx8fDE3MjM0MTA4MDN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 340,
+            "protein": "13.2g",
+            "fat": "2.5g",
+            "carbohydrates": "72.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456cb"
+        },
+        "ingredient_id": 82,
+        "name": "Buckwheat Flour",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1583444560967-5bc0c8eaf6f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCdWNrd2hlYXQlMjBGbG91cnxlbnwwfDJ8fHwxNzIzNDEwODAzfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 343,
+            "protein": "13.3g",
+            "fat": "3.4g",
+            "carbohydrates": "71.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456cc"
+        },
+        "ingredient_id": 83,
+        "name": "Millet",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/375db4b678cc6319.html",
+        "nutritional_info": {
+            "calories": 378,
+            "protein": "11.0g",
+            "fat": "4.2g",
+            "carbohydrates": "72.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456cd"
+        },
+        "ingredient_id": 84,
+        "name": "Rye Flour",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1415381850596-1d29bce989f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxSeWUlMjBGbG91cnxlbnwwfDJ8fHwxNzIzNDEwODA1fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 338,
+            "protein": "8.5g",
+            "fat": "1.6g",
+            "carbohydrates": "76.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456ce"
+        },
+        "ingredient_id": 85,
+        "name": "Sorghum",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1447945702361-458a1d71f318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTb3JnaHVtfGVufDB8Mnx8fDE3MjM0MTA4MDV8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 329,
+            "protein": "11.3g",
+            "fat": "3.3g",
+            "carbohydrates": "72.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456cf"
+        },
+        "ingredient_id": 86,
+        "name": "Couscous",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1585238342070-61e1e768b1ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDb3VzY291c3xlbnwwfDJ8fHwxNzIzNDEwODA2fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 112,
+            "protein": "3.8g",
+            "fat": "0.2g",
+            "carbohydrates": "23.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d0"
+        },
+        "ingredient_id": 87,
+        "name": "Polenta",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://example.com/polenta.jpg",
+        "nutritional_info": {
+            "calories": 371,
+            "protein": "8.7g",
+            "fat": "1.1g",
+            "carbohydrates": "79.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d1"
+        },
+        "ingredient_id": 88,
+        "name": "Amaranth",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://example.com/amaranth.jpg",
+        "nutritional_info": {
+            "calories": 371,
+            "protein": "13.6g",
+            "fat": "7.0g",
+            "carbohydrates": "65.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d2"
+        },
+        "ingredient_id": 89,
+        "name": "Farro",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://example.com/farro.jpg",
+        "nutritional_info": {
+            "calories": 337,
+            "protein": "14.0g",
+            "fat": "2.0g",
+            "carbohydrates": "67.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d3"
+        },
+        "ingredient_id": 90,
+        "name": "Teff",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://example.com/teff.jpg",
+        "nutritional_info": {
+            "calories": 367,
+            "protein": "13.3g",
+            "fat": "2.4g",
+            "carbohydrates": "73.0g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d4"
+        },
+        "ingredient_id": 91,
+        "name": "Tapioca Flour",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1583444560967-5bc0c8eaf6f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxUYXBpb2NhJTIwRmxvdXJ8ZW58MHwyfHx8MTcyMzQxMDgwOXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 358,
+            "protein": "0.2g",
+            "fat": "0.2g",
+            "carbohydrates": "88.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d5"
+        },
+        "ingredient_id": 92,
+        "name": "Coconut Flour",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1629908011199-c57e22fe9207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDb2NvbnV0JTIwRmxvdXJ8ZW58MHwyfHx8MTcyMzQxMDgxMHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 320,
+            "protein": "19.3g",
+            "fat": "12.0g",
+            "carbohydrates": "48.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d6"
+        },
+        "ingredient_id": 93,
+        "name": "Arrowroot",
+        "category": "Grains",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/0486149c5bfa291c.html",
+        "nutritional_info": {
+            "calories": 357,
+            "protein": "0.3g",
+            "fat": "0.1g",
+            "carbohydrates": "88.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d7"
+        },
+        "ingredient_id": 94,
+        "name": "Lentils",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1615485500551-a968b29b07fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxMZW50aWxzfGVufDB8Mnx8fDE3MjM0MTA4MTF8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 116,
+            "protein": "9.0g",
+            "fat": "0.4g",
+            "carbohydrates": "20.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d8"
+        },
+        "ingredient_id": 95,
+        "name": "Chickpeas",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxDaGlja3BlYXN8ZW58MHwyfHx8MTcyMzQxMDgxMXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 164,
+            "protein": "8.9g",
+            "fat": "2.6g",
+            "carbohydrates": "27.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456d9"
+        },
+        "ingredient_id": 96,
+        "name": "Black Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1588012841523-08163e2b0c26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxCbGFjayUyMEJlYW5zfGVufDB8Mnx8fDE3MjM0MTA4MTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 132,
+            "protein": "8.9g",
+            "fat": "0.5g",
+            "carbohydrates": "23.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456da"
+        },
+        "ingredient_id": 97,
+        "name": "Kidney Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1602881917445-0b1ba001addf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxLaWRuZXklMjBCZWFuc3xlbnwwfDJ8fHwxNzIzNDEwODEyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 127,
+            "protein": "8.7g",
+            "fat": "0.5g",
+            "carbohydrates": "22.8g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456db"
+        },
+        "ingredient_id": 98,
+        "name": "Navy Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1561412075-3250fb782bfb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxOYXZ5JTIwQmVhbnN8ZW58MHwyfHx8MTcyMzQxMDgxM3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 140,
+            "protein": "8.2g",
+            "fat": "0.6g",
+            "carbohydrates": "26.4g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456dc"
+        },
+        "ingredient_id": 99,
+        "name": "Pinto Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1455134168668-4066045897c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQaW50byUyMEJlYW5zfGVufDB8Mnx8fDE3MjM0MTA4MTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 143,
+            "protein": "9.0g",
+            "fat": "0.7g",
+            "carbohydrates": "26.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456dd"
+        },
+        "ingredient_id": 100,
+        "name": "Soybeans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1575262599410-837a72005862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxTb3liZWFuc3xlbnwwfDJ8fHwxNzIzNDEwODE0fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 446,
+            "protein": "36.5g",
+            "fat": "19.9g",
+            "carbohydrates": "30.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456de"
+        },
+        "ingredient_id": 101,
+        "name": "Peas",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1516876902004-79f4bd1cb0dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQZWFzfGVufDB8Mnx8fDE3MjM0MTA4MTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 81,
+            "protein": "5.4g",
+            "fat": "0.4g",
+            "carbohydrates": "14.5g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456df"
+        },
+        "ingredient_id": 102,
+        "name": "Mung Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1519929676140-1384fc9052d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxNdW5nJTIwQmVhbnN8ZW58MHwyfHx8MTcyMzQxMDgxNXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 347,
+            "protein": "23.9g",
+            "fat": "1.2g",
+            "carbohydrates": "62.6g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e0"
+        },
+        "ingredient_id": 103,
+        "name": "Green Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/f8d1d49d7e3cf8e5.html",
+        "nutritional_info": {
+            "calories": 31,
+            "protein": "1.8g",
+            "fat": "0.1g",
+            "carbohydrates": "7.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e1"
+        },
+        "ingredient_id": 104,
+        "name": "Lima Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/3498333290dedc10.html",
+        "nutritional_info": {
+            "calories": 113,
+            "protein": "7.8g",
+            "fat": "0.4g",
+            "carbohydrates": "23.2g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e2"
+        },
+        "ingredient_id": 105,
+        "name": "Adzuki Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1455134168668-4066045897c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxBZHp1a2klMjBCZWFuc3xlbnwwfDJ8fHwxNzIzNDEzOTMyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 329,
+            "protein": "19.9g",
+            "fat": "0.5g",
+            "carbohydrates": "62.9g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e3"
+        },
+        "ingredient_id": 106,
+        "name": "White Beans",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/297ddc6ce6c7b44b.html",
+        "nutritional_info": {
+            "calories": 336,
+            "protein": "21.4g",
+            "fat": "0.8g",
+            "carbohydrates": "62.8g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e4"
+        },
+        "ingredient_id": 107,
+        "name": "Green Lentils",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1627894005439-90c66a39a819?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxHcmVlbiUyMExlbnRpbHN8ZW58MHwyfHx8MTcyMzQxMzkzM3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 116,
+            "protein": "9.0g",
+            "fat": "0.4g",
+            "carbohydrates": "20.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e5"
+        },
+        "ingredient_id": 108,
+        "name": "Red Lentils",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1604908814792-f3d42c558764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxSZWQlMjBMZW50aWxzfGVufDB8Mnx8fDE3MjM0MTM5MzN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 116,
+            "protein": "9.0g",
+            "fat": "0.4g",
+            "carbohydrates": "20.1g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e6"
+        },
+        "ingredient_id": 109,
+        "name": "Pigeon Peas",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "https://images.unsplash.com/photo-1505862063223-5c8d38bbad87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI2OTh8MHwxfHNlYXJjaHwxfHxQaWdlb24lMjBQZWFzfGVufDB8Mnx8fDE3MjM0MTM5MzN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "nutritional_info": {
+            "calories": 343,
+            "protein": "21.7g",
+            "fat": "1.5g",
+            "carbohydrates": "62.7g"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "64d1f13f3f5f9c62c43456e7"
+        },
+        "ingredient_id": 110,
+        "name": "Split Peas",
+        "category": "Legumes",
+        "unit": "grams",
+        "value": 100,
+        "image_url": "http://images.google.com/hosted/life/92f1cbbf888569c5.html",
+        "nutritional_info": {
+            "calories": 352,
+            "protein": "24.6g",
+            "fat": "1.2g",
+            "carbohydrates": "60.7g"
+        }
+    }
+]

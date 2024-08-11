@@ -1,0 +1,19 @@
+recipe_id,recipe_name,cuisine,preparation_time,system_rating,is_rated,status,created_at
+1,Spaghetti Carbonara,Italian,30,4.7,TRUE,active,2023-01-15
+2,Margherita Pizza,Italian,25,4.5,TRUE,active,2023-02-10
+3,Chicken Tikka Masala,Indian,45,4.8,TRUE,active,2023-03-05
+4,Paneer Butter Masala,Indian,40,4.6,TRUE,active,2023-04-18
+5,Sushi,Japanese,60,4.9,TRUE,active,2023-05-20
+6,Ramen,Japanese,50,4.7,TRUE,active,2023-06-14
+7,Beef Tacos,Mexican,35,4.6,TRUE,active,2023-07-22
+8,Guacamole,Mexican,15,4.5,TRUE,active,2023-08-03
+9,Croissants,French,120,4.8,TRUE,active,2023-09-10
+10,Coq au Vin,French,90,4.7,TRUE,active,2023-10-01
+11,Bibimbap,Korean,45,4.8,TRUE,active,2023-10-25
+12,Kimchi, Korean,30,4.6,TRUE,active,2023-11-12
+13,Pad Thai,Thai,30,4.7,TRUE,active,2023-11-30
+14,Tom Yum Soup,Thai,25,4.5,TRUE,active,2023-12-05
+15,Shakshuka,Middle Eastern,40,4.6,TRUE,active,2023-12-20
+16,Falafel,Middle Eastern,30,4.7,TRUE,active,2024-01-05
+17,Paella,Spanish,90,4.8,TRUE,active,2024-01-15
+18,Tortilla Española,Spanish,45,4.5,TRUE,active,2024-02-10
