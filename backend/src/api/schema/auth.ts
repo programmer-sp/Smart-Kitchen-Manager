@@ -1,6 +1,4 @@
 import { celebrate, Joi } from 'celebrate';
-import JoiObjectId from "joi-objectid";
-const objectId = JoiObjectId(Joi);
 
 const AUTH_SCHEMA = {
     REGISTRATION: celebrate({

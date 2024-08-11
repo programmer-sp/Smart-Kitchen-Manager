@@ -2,22 +2,31 @@ import { Router, Request, Response } from 'express';
 import * as l10n from 'jm-ez-l10n';
 import status_code from '../../common/utils/statusCode';
 import logger from '../../common/loaders/logger';
-import { USER_SCHEMA } from '../schema/users';
-import { IUsers } from '../Interfaces/IUsers';
-import { isAuth } from '../middlewares/authorization';
+import { IAuth } from '../Interfaces/IAuth';
+import {
+    clearCacheData,
+    deleteKeyData,
+    getDataByPattern,
+    unwrapToken
+} from '../middlewares/authorization';
 
 const route = Router();
 
 export default (app: Router) => {
-    app.use('/user', route);
+    app.use('/admin', route);
 
-    route.put('/preference', USER_SCHEMA.UPDATE, isAuth, updatePreference);
+    // ------------------------------------------------------- for backend use only
+    route.get('/get-pattern-data', getDataByPattern);
+    route.get('/unwrap-token', unwrapToken);
+    route.get('/delete-keys', deleteKeyData);
+    route.get('/clear-cache', clearCacheData);
+    route.get('/mail-template', mailTemplate);
 };
 
-async function updatePreference(req: any, res: Response) {
+async function mailTemplate(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
-    const data = req.body;
-    IUsers.updatePreference(data, url)
+    const data: string = req.query;
+    IAuth.mailTemplate(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

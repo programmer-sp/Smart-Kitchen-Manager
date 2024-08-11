@@ -16,7 +16,9 @@ export enum MODULE_NAME {
   CART = 'Cart',
   ORDER = 'Order',
   REVIEW = 'Review',
-  VENDOR = 'Vendor'
+  VENDOR = 'Vendor',
+  HOUSEHOLD = 'Household',
+  HOUSE = 'House'
 };
 
 export const BACKEND_SLUGS = {

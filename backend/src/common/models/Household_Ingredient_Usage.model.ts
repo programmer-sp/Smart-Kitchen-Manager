@@ -24,7 +24,7 @@ const householdIngredientUsageSchema: Schema = new Schema(
         },
     },
     {
-        collection: 'household_ingredient_Usage',
+        collection: 'household_ingredient_usage',
         versionKey: false,
         timestamps: true,
         toObject: {

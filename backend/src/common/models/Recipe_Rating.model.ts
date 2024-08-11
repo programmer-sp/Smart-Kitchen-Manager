@@ -23,7 +23,7 @@ const recipeRatingSchema: Schema = new Schema(
         },
     },
     {
-        collection: 'recipe_rating',
+        collection: 'recipe_ratings',
         versionKey: false,
         timestamps: true,
         toObject: {

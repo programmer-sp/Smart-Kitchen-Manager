@@ -14,7 +14,7 @@ const userPreferencesSchema: Schema = new Schema(
         },
     },
     {
-        collection: 'user_preference',
+        collection: 'user_preferences',
         versionKey: false,
         timestamps: true,
         toObject: {

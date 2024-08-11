@@ -40,8 +40,8 @@ export function Household_Users_Factory(sequelize: Sequelize): Household_Users_S
             allowNull: false
         },
         role: {
-            type: DataTypes.ENUM('Guest', 'Member', 'Owner', 'Moderator', 'Administrator', 'Content Creator', 'Viewer'),
-            defaultValue: 'Member',
+            type: DataTypes.ENUM('guest', 'member', 'owner', 'moderator', 'administrator', 'content creator', 'viewer'),
+            defaultValue: 'member',
         },
         status: {
             type: DataTypes.BOOLEAN,

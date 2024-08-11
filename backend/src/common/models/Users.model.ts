@@ -65,7 +65,7 @@ export function Users_Factory(sequelize: Sequelize): Users_Static {
         },
         role: {
             type: DataTypes.ENUM('guest', 'member', 'owner', 'moderator', 'administrator', 'content creator', 'viewer'),
-            defaultValue: 'member',
+            defaultValue: 'viewer',
         },
         status: {
             type: DataTypes.BOOLEAN,
