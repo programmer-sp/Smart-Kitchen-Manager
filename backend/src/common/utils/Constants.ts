@@ -17,7 +17,9 @@ export enum MODULE_NAME {
   VENDOR = 'Vendor',
   HOUSEHOLD = 'Household',
   HOUSE = 'House',
-  INGREDIENT = 'Ingredient'
+  INGREDIENT = 'Ingredient',
+  PRICE = 'Price',
+  STORE = 'Store'
 };
 
 export const BACKEND_SLUGS = {
@@ -57,7 +59,7 @@ export const REDIS_KEYS = {
   USER_VERIFICATION_CODE: 'user-vc-',
   CATEGORY_LIST: `${APPLICATION_NAME.toLowerCase()}:category-list`,
   INGREDIENT_LIST: `${APPLICATION_NAME.toLowerCase()}:ingredient-list`,
-  COUPON_LIST: `${APPLICATION_NAME.toLowerCase()}:coupon-list`,
+  INGREDIENT_PRICE_LIST: `${APPLICATION_NAME.toLowerCase()}:ingredient-price-list`,
   VENDOR_LIST: `${APPLICATION_NAME.toLowerCase()}:vendor-list`,
   USER_CART: `${APPLICATION_NAME.toLowerCase()}:user-cart`,
   USER_REVIEW: `${APPLICATION_NAME.toLowerCase()}:user-review`,

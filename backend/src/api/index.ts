@@ -5,6 +5,7 @@ import user from './routes/users';
 import household from './routes/households';
 import category from './routes/category';
 import ingredient from './routes/ingredient';
+import store from './routes/store';
 
 export default () => {
     const app = Router();
@@ -16,6 +17,7 @@ export default () => {
     household(app);
     category(app);
     ingredient(app);
+    store(app);
 
     return app;
 };
