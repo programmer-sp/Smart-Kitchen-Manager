@@ -56,7 +56,7 @@ export const REDIS_KEYS = {
   USER_INVITE_RESEND: 'user-rsd-',
   USER_VERIFICATION_CODE: 'user-vc-',
   CATEGORY_LIST: `${APPLICATION_NAME.toLowerCase()}:category-list`,
-  PRODUCT_LIST: `${APPLICATION_NAME.toLowerCase()}:product-list`,
+  INGREDIENT_LIST: `${APPLICATION_NAME.toLowerCase()}:ingredient-list`,
   COUPON_LIST: `${APPLICATION_NAME.toLowerCase()}:coupon-list`,
   VENDOR_LIST: `${APPLICATION_NAME.toLowerCase()}:vendor-list`,
   USER_CART: `${APPLICATION_NAME.toLowerCase()}:user-cart`,

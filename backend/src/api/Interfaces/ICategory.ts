@@ -41,10 +41,10 @@ export class ICategory {
                     order: [['createdAt', 'DESC']],
                 };
 
-                let categoryData: any = [], count = 0;
+                let categoryData: any = [];
                 if (page != 1 || limit != 10 || search) {
-                    if (search) condition['category_name'] = { [Op.iLike]: `%${search}%` };
-                    
+                    if (search) condition['where'] = { category_name: { [Op.iLike]: `%${search}%` } };
+
                     categoryData = await Ingredient_Categories.findAndCountAll(condition);
                 } else {
                     const isExists: any = await redis.getValue({ key: REDIS_KEYS.CATEGORY_LIST });
@@ -53,8 +53,8 @@ export class ICategory {
 
                         await redis.setValue({ key: REDIS_KEYS.CATEGORY_LIST, value: { data: categoryData.rows, count: categoryData.count }, duration: ms(config.JWT_TTL) });
                     } else {
-                        categoryData = isExists.data;
-                        count = isExists.count;
+                        categoryData['rows'] = isExists.data;
+                        categoryData['count'] = isExists.count;
                     }
                 }
 

@@ -121,8 +121,6 @@ export class IHouseholds {
 
     static async getHouseholdUser(data: any, url: string) {
         try {
-            const tokenData: any = Container.get('auth-token');
-
             let responseData = {};
             let count = 0;
             if (data.household_user_id) {
