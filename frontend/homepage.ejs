@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Smart Kitchen Helper</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Global Styles */
         body {
@@ -16,7 +20,8 @@
             color: #E0E0E0;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -225,23 +230,22 @@
             <button onclick="location.href='find_recipes.html'">Find Recipes</button>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        $(document).ready(function () {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            $('#welcomeMessage').text(`Welcome, ${userData.username}`);
+        });
         // Function to get the query parameter value by name
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        // On DOMContentLoaded, update the welcome message
-        document.addEventListener('DOMContentLoaded', function() {
-            const username = getQueryParam('username');
-            if (username) {
-                document.getElementById('welcomeMessage').textContent = `Welcome, ${username}`;
-            }
-        });
-
         // Logout button functionality
-        document.getElementById('logoutButton').addEventListener('click', function() {
+        document.getElementById('logoutButton').addEventListener('click', function () {
             // Simulate clearing user session (could involve clearing cookies or local storage)
             window.location.href = 'login.html';
         });

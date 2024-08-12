@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Smart Kitchen Helper</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Global Styles */
         body {
@@ -20,7 +24,8 @@
             height: 100vh;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -148,45 +153,58 @@
         <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo">
         <h2>Create Your Account</h2>
         <!-- Update the form action to submit to the server -->
-        <form id="signupForm" action="signup.html" method="POST">
-            <label for="firstname">First Name:</label>
-            <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
-
-            <label for="lastname">Last Name:</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+        <form id="signupForm" action="javascript:void(0);">
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Create a password" required>
 
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
-
-            <div class="error-message" id="error-message"></div>
-
-            <button type="submit">Sign Up</button>
+            <div class="button-container">
+                <button type="submit" class="voidRegister">Sign Up</button>
+            </div>
         </form>
         <a href="login.html">Already have an account? Login here</a>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const errorMessage = document.getElementById('error-message');
+        $('body').on('click', '.voidclass', function () {
+            toastr.info('Coming Soon', '', {
+                "preventDuplicates": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right"
+            });
+        });
 
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = "Passwords do not match!";
-            } else {
-                errorMessage.style.display = 'none';
-            }
+        $('body').on('click', '.voidRegister', function () {
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            $.ajax({
+                url: 'auth/registration',
+                method: 'POST',
+                dataType: 'json',
+                data: { email, password_hash: password, role: 'guest' },
+                success: function (data) {
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
         });
     </script>
 </body>

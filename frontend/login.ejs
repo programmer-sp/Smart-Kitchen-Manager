@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Smart Kitchen Helper</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Global Styles */
         body {
@@ -20,7 +24,8 @@
             height: 100vh;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -146,7 +151,7 @@
     <div class="login-container">
         <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo">
         <h2>Login to Your Account</h2>
-        <form id="loginForm" action="login.html" method="POST">
+        <form id="loginForm" action="javascript:void(0);">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
@@ -154,23 +159,57 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <div class="button-container">
-                <button type="submit">Login</button>
-                <button type="button" onclick="window.location.href='signup.html'">Sign Up</button>
+                <button type="submit" class="voidLogin">Login</button>
+                <button onclick="location.href='./signup'">Sign Up</button>
             </div>
-
-            <div class="error-message" id="error-message">{{ error or request.args.get('error', '') }}</div>
         </form>
         <a href="forgot_password.html">Forgot Password?</a>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const errorMessage = document.getElementById("error-message");
-            if (errorMessage.textContent.trim() !== "") {
-                errorMessage.style.display = "block";
-            } else {
-                errorMessage.style.display = "none";
-            }
+        $('body').on('click', '.voidclass', function () {
+            toastr.info('Coming Soon', '', {
+                "preventDuplicates": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right"
+            });
+        });
+
+        $('body').on('click', '.voidLogin', function () {
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            $.ajax({
+                url: 'auth/login',
+                method: 'POST',
+                dataType: 'json',
+                data: { email, password_hash: password },
+                success: function (data) {
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                    localStorage.setItem('user', JSON.stringify({
+                        token: data.data.token,
+                        email: data.data.email,
+                        username: data.data.username
+                    }));
+                    setTimeout(function () { window.location = "homepage"; }, 3000);
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
         });
     </script>
 </body>

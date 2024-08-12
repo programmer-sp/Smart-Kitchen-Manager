@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Smart Kitchen Helper</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1DB954, #191414);
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Content Styling */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .content img {
+            width: 50%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .content h1 {
+            color: #1DB954;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-container button {
+            background: linear-gradient(135deg, #1DB954, #191414);
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin: 0 10px;
+        }
+
+        .button-container button:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+        }
+
+        .button-container button:active {
+            transform: translateY(1px);
+        }
+
+        .credits {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            .content h1 {
+                font-size: 28px;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .button-container button {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <img src="./assets/images/SmartKitchenHelper.webp" alt="Smart Kitchen Helper">
+        <h1>Welcome to Smart Kitchen Helper</h1>
+        <p>
+            Your ultimate kitchen companion to manage ingredients, discover recipes, and plan meals effortlessly.
+            Prepared by Durham College students, this project aims to make your culinary experience smarter and more
+            efficient.
+        </p>
+        <div class="button-container">
+            <button onclick="location.href='./login'">Let's Get Started!</button>
+        </div>
+        <div class="credits">
+            Project by Durham College Students
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            const url = window.location.href;
+            const token = url.split('/verify/')[1];
+
+            $.ajax({
+                url: `https://localhost:4005/auth/verify-email/?invite_token=${token}`,
+                method: 'get',
+                success: function (data) {
+                    console.log({ data });
+
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                    localStorage.setItem('user', JSON.stringify({
+                        token: data.data.token,
+                        email: data.data.email,
+                        username: data.data.username
+                    }));
+                    setTimeout(function () { window.location = "homepage"; });
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
