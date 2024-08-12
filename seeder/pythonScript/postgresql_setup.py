@@ -280,28 +280,65 @@ def create_tables(conn_string):
         cursor.close()
         conn.close()
 
+# def create_indexes(conn_string):
+#     """Create indexes on the PostgreSQL database."""
+#     conn = psycopg2.connect(conn_string)
+#     cursor = conn.cursor()
+
+#     indexes = [
+#         'CREATE INDEX idx_recipe_ingredient ON Recipe_Ingredients(recipe_id, ingredient_id);',
+#         'CREATE INDEX idx_recipe_name ON Recipes USING GIN (to_tsvector(\'english\', recipe_name));',
+#         'CREATE INDEX idx_household_user ON Household_Users(household_id, user_id);',
+#         'CREATE INDEX idx_store_rating ON Stores(rating);',
+#     ]
+
+#     try:
+#         for index in indexes:
+#             cursor.execute(index)
+#         conn.commit()
+#         print("Indexes created successfully.")
+#     except Exception as e:
+#         print(f"An error occurred while creating indexes: {e}")
+#     finally:
+#         cursor.close()
+#         conn.close()
+
 def create_indexes(conn_string):
     """Create indexes on the PostgreSQL database."""
     conn = psycopg2.connect(conn_string)
     cursor = conn.cursor()
 
     indexes = [
-        'CREATE INDEX idx_recipe_ingredient ON Recipe_Ingredients(recipe_id, ingredient_id);',
-        'CREATE INDEX idx_recipe_name ON Recipes USING GIN (to_tsvector(\'english\', recipe_name));',
-        'CREATE INDEX idx_household_user ON Household_Users(household_id, user_id);',
-        'CREATE INDEX idx_store_rating ON Stores(rating);',
+        {'name': 'idx_recipe_ingredient', 'table': 'Recipe_Ingredients', 'definition': 'CREATE INDEX idx_recipe_ingredient ON Recipe_Ingredients(recipe_id, ingredient_id);'},
+        {'name': 'idx_recipe_name', 'table': 'Recipes', 'definition': 'CREATE INDEX idx_recipe_name ON Recipes USING GIN (to_tsvector(\'english\', recipe_name));'},
+        {'name': 'idx_household_user', 'table': 'Household_Users', 'definition': 'CREATE INDEX idx_household_user ON Household_Users(household_id, user_id);'},
+        {'name': 'idx_store_rating', 'table': 'Stores', 'definition': 'CREATE INDEX idx_store_rating ON Stores(rating);'},
     ]
 
     try:
         for index in indexes:
-            cursor.execute(index)
+            # Check if the index already exists
+            cursor.execute("""
+                SELECT 1 FROM pg_indexes WHERE tablename = %s AND indexname = %s;
+            """, (index['table'].lower(), index['name'].lower()))
+
+            if cursor.fetchone():
+                # If the index exists, drop it
+                cursor.execute(sql.SQL("DROP INDEX IF EXISTS {};").format(sql.Identifier(index['name'])))
+                print(f"Index '{index['name']}' on table '{index['table']}' dropped successfully.")
+
+            # Create the index
+            cursor.execute(index['definition'])
+            print(f"Index '{index['name']}' created successfully.")
+
         conn.commit()
-        print("Indexes created successfully.")
+        print("All indexes created successfully.")
     except Exception as e:
         print(f"An error occurred while creating indexes: {e}")
     finally:
         cursor.close()
         conn.close()
+
 
 if __name__ == "__main__":
     drop_and_create_db(conn_string)

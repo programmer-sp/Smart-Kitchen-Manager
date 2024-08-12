@@ -1,0 +1,162 @@
+[
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d101"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d001"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d201"),
+        "used_quantity": 250,
+        "unit": "grams",
+        "used_at": ISODate("2024-01-10T14:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d102"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d001"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d202"),
+        "used_quantity": 100,
+        "unit": "grams",
+        "used_at": ISODate("2024-01-12T10:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d103"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d002"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d203"),
+        "used_quantity": 2,
+        "unit": "unit",
+        "used_at": ISODate("2024-02-05T16:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d104"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d002"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d204"),
+        "used_quantity": 500,
+        "unit": "ml",
+        "used_at": ISODate("2024-02-10T12:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d105"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d003"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d205"),
+        "used_quantity": 1.5,
+        "unit": "kg",
+        "used_at": ISODate("2024-03-15T18:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d106"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d003"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d206"),
+        "used_quantity": 750,
+        "unit": "grams",
+        "used_at": ISODate("2024-03-20T14:30:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d107"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d004"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d207"),
+        "used_quantity": 300,
+        "unit": "grams",
+        "used_at": ISODate("2024-04-10T11:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d108"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d004"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d208"),
+        "used_quantity": 2.5,
+        "unit": "kg",
+        "used_at": ISODate("2024-04-15T13:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d109"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d005"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d209"),
+        "used_quantity": 1,
+        "unit": "unit",
+        "used_at": ISODate("2024-05-05T15:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d110"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d005"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d210"),
+        "used_quantity": 200,
+        "unit": "grams",
+        "used_at": ISODate("2024-05-10T14:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d111"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d006"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d211"),
+        "used_quantity": 350,
+        "unit": "grams",
+        "used_at": ISODate("2024-05-15T16:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d112"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d006"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d212"),
+        "used_quantity": 4,
+        "unit": "unit",
+        "used_at": ISODate("2024-05-20T18:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d113"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d007"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d213"),
+        "used_quantity": 2.2,
+        "unit": "kg",
+        "used_at": ISODate("2024-06-01T14:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d114"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d007"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d214"),
+        "used_quantity": 1000,
+        "unit": "ml",
+        "used_at": ISODate("2024-06-05T12:30:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d115"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d008"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d215"),
+        "used_quantity": 650,
+        "unit": "grams",
+        "used_at": ISODate("2024-06-10T17:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d116"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d008"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d216"),
+        "used_quantity": 3,
+        "unit": "unit",
+        "used_at": ISODate("2024-06-15T19:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d117"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d009"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d217"),
+        "used_quantity": 5,
+        "unit": "kg",
+        "used_at": ISODate("2024-06-20T16:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d118"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d009"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d218"),
+        "used_quantity": 450,
+        "unit": "grams",
+        "used_at": ISODate("2024-06-25T14:00:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d119"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d010"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d219"),
+        "used_quantity": 250,
+        "unit": "ml",
+        "used_at": ISODate("2024-07-01T13:30:00Z")
+    },
+    {
+        "usage_id": ObjectId("64d1e1f9b1e8a4d5f8e4d120"),
+        "household_id": ObjectId("64d1e1f9b1e8a4d5f8e4d010"),
+        "ingredient_id": ObjectId("64d1e1f9b1e8a4d5f8e4d220"),
+        "used_quantity": 300,
+        "unit": "grams",
+        "used_at": ISODate("2024-07-05T15:00:00Z")
+    }
+]

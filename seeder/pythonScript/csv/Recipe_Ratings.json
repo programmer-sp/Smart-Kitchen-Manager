@@ -1,51 +1,262 @@
-user_id,username,email,password_hash,role,created_at,updated_at,is_deleted
-1,jdoe,jdoe@example.com,$2b$12$g7vCk,Member,2024-08-12 01:00:00,2024-08-12 01:00:00,FALSE
-2,asmith,asmith@example.com,$2b$12$e7mDk,Owner,2024-08-12 01:30:00,2024-08-12 01:30:00,FALSE
-3,bwhite,bwhite@example.com,$2b$12$f4jKk,Guest,2024-08-12 02:00:00,2024-08-12 02:00:00,FALSE
-4,mgreen,mgreen@example.com,$2b$12$a3lMn,Moderator,2024-08-12 02:30:00,2024-08-12 02:30:00,FALSE
-5,tblack,tblack@example.com,$2b$12$b2lNz,Administrator,2024-08-12 03:00:00,2024-08-12 03:00:00,FALSE
-6,cmoore,cmoore@example.com,$2b$12$d1nKq,Content Creator,2024-08-12 03:30:00,2024-08-12 03:30:00,FALSE
-7,eyoung,eyoung@example.com,$2b$12$g9pRn,Viewer,2024-08-12 04:00:00,2024-08-12 04:00:00,FALSE
-8,pjackson,pjackson@example.com,$2b$12$r7vGk,Member,2024-08-12 04:30:00,2024-08-12 04:30:00,FALSE
-9,sharris,sharris@example.com,$2b$12$t3kLn,Owner,2024-08-12 05:00:00,2024-08-12 05:00:00,FALSE
-10,jmorris,jmorris@example.com,$2b$12$w5jKp,Guest,2024-08-12 05:30:00,2024-08-12 05:30:00,FALSE
-11,lmartin,lmartin@example.com,$2b$12$n1mRq,Moderator,2024-08-12 06:00:00,2024-08-12 06:00:00,FALSE
-12,kdavis,kdavis@example.com,$2b$12$k2nJz,Administrator,2024-08-12 06:30:00,2024-08-12 06:30:00,FALSE
-13,crodriguez,crodriguez@example.com,$2b$12$m3jKl,Content Creator,2024-08-12 07:00:00,2024-08-12 07:00:00,FALSE
-14,sgonzalez,sgonzalez@example.com,$2b$12$q1oNq,Viewer,2024-08-12 07:30:00,2024-08-12 07:30:00,FALSE
-15,jwilson,jwilson@example.com,$2b$12$f4kLn,Member,2024-08-12 08:00:00,2024-08-12 08:00:00,FALSE
-16,jlopez,jlopez@example.com,$2b$12$a6kMq,Owner,2024-08-12 08:30:00,2024-08-12 08:30:00,FALSE
-17,ewhite,ewhite@example.com,$2b$12$t2lQz,Guest,2024-08-12 09:00:00,2024-08-12 09:00:00,FALSE
-18,rrussell,rrussell@example.com,$2b$12$g4mRq,Moderator,2024-08-12 09:30:00,2024-08-12 09:30:00,FALSE
-19,cclark,cclark@example.com,$2b$12$s5lJn,Administrator,2024-08-12 10:00:00,2024-08-12 10:00:00,FALSE
-20,jhernandez,jhernandez@example.com,$2b$12$h1pQn,Content Creator,2024-08-12 10:30:00,2024-08-12 10:30:00,FALSE
-21,iramirez,iramirez@example.com,$2b$12$f3qLs,Viewer,2024-08-12 11:00:00,2024-08-12 11:00:00,FALSE
-22,vthompson,vthompson@example.com,$2b$12$s4kMq,Member,2024-08-12 11:30:00,2024-08-12 11:30:00,FALSE
-23,aperez,aperez@example.com,$2b$12$m5jRp,Owner,2024-08-12 12:00:00,2024-08-12 12:00:00,FALSE
-24,jbaker,jbaker@example.com,$2b$12$g6lNq,Guest,2024-08-12 12:30:00,2024-08-12 12:30:00,FALSE
-25,tking,tking@example.com,$2b$12$a1mRq,Moderator,2024-08-12 13:00:00,2024-08-12 13:00:00,FALSE
-26,sward,sward@example.com,$2b$12$t2kKq,Administrator,2024-08-12 13:30:00,2024-08-12 13:30:00,FALSE
-27,jtorres,jtorres@example.com,$2b$12$p3lLs,Content Creator,2024-08-12 14:00:00,2024-08-12 14:00:00,FALSE
-28,nmorgan,nmorgan@example.com,$2b$12$m2jRn,Viewer,2024-08-12 14:30:00,2024-08-12 14:30:00,FALSE
-29,lcook,lcook@example.com,$2b$12$s1kJp,Member,2024-08-12 15:00:00,2024-08-12 15:00:00,FALSE
-30,jmorris,jmorris@example.com,$2b$12$a9mSq,Owner,2024-08-12 15:30:00,2024-08-12 15:30:00,FALSE
-31,dmitchell,dmitchell@example.com,$2b$12$e8kPq,Guest,2024-08-12 16:00:00,2024-08-12 16:00:00,FALSE
-32,tbryant,tbryant@example.com,$2b$12$c1nKq,Moderator,2024-08-12 16:30:00,2024-08-12 16:30:00,FALSE
-33,crichardson,crichardson@example.com,$2b$12$d2kLn,Administrator,2024-08-12 17:00:00,2024-08-12 17:00:00,FALSE
-34,skelly,skelly@example.com,$2b$12$t9pRq,Content Creator,2024-08-12 17:30:00,2024-08-12 17:30:00,FALSE
-35,rdixon,rdixon@example.com,$2b$12$a3jKp,Viewer,2024-08-12 18:00:00,2024-08-12 18:00:00,FALSE
-36,lperry,lperry@example.com,$2b$12$g8mTn,Member,2024-08-12 18:30:00,2024-08-12 18:30:00,FALSE
-37,hjames,hjames@example.com,$2b$12$k7lMq,Owner,2024-08-12 19:00:00,2024-08-12 19:00:00,FALSE
-38,mchavez,mchavez@example.com,$2b$12$f6nRq,Guest,2024-08-12 19:30:00,2024-08-12 19:30:00,FALSE
-39,psullivan,psullivan@example.com,$2b$12$d9kJn,Moderator,2024-08-12 20:00:00,2024-08-12 20:00:00,FALSE
-40,hlong,hlong@example.com,$2b$12$s2lLp,Administrator,2024-08-12 20:30:00,2024-08-12 20:30:00,FALSE
-41,kmurphy,kmurphy@example.com,$2b$12$c1pMq,Content Creator,2024-08-12 21:00:00,2024-08-12 21:00:00,FALSE
-42,cjackson,cjackson@example.com,$2b$12$a7kQp,Viewer,2024-08-12 21:30:00,2024-08-12 21:30:00,FALSE
-43,ebrooks,ebrooks@example.com,$2b$12$g4mRq,Member,2024-08-12 22:00:00,2024-08-12 22:00:00,FALSE
-44,jgreen,jgreen@example.com,$2b$12$k5lKq,Owner,2024-08-12 22:30:00,2024-08-12 22:30:00,FALSE
-45,mtaylor,mtaylor@example.com,$2b$12$t1nJp,Guest,2024-08-12 23:00:00,2024-08-12 23:00:00,FALSE
-46,sallen,sallen@example.com,$2b$12$d3kLn,Moderator,2024-08-12 23:30:00,2024-08-12 23:30:00,FALSE
-47,jthomas,jthomas@example.com,$2b$12$a8pSq,Administrator,2024-08-13 00:00:00,2024-08-13 00:00:00,FALSE
-48,aedwards,aedwards@example.com,$2b$12$g6lJp,Content Creator,2024-08-13 00:30:00,2024-08-13 00:30:00,FALSE
-49,cflores,cflores@example.com,$2b$12$t4kTq,Viewer,2024-08-13 01:00:00,2024-08-13 01:00:00,FALSE
-50,jwright,jwright@example.com,$2b$12$m7jKq,Member,2024-08-13 01:30:00,2024-08-13 01:30:00,FALSE
+[
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b151"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b001"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b021"),
+        "rating": 4.5,
+        "review": "Absolutely delicious! Will make it again."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b152"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b002"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b022"),
+        "rating": 3.8,
+        "review": "Tasty, but a bit too spicy for my taste."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b153"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b003"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b023"),
+        "rating": 4.9,
+        "review": "Perfect! Just like the one I had in a restaurant."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b154"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b004"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b024"),
+        "rating": 4.2,
+        "review": "Great recipe, easy to follow and the result was delicious."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b155"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b005"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b025"),
+        "rating": 3.5,
+        "review": "Good, but I had to tweak it a bit to suit my taste."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b156"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b006"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b026"),
+        "rating": 5.0,
+        "review": "This was a hit at our dinner party!"
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b157"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b007"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b027"),
+        "rating": 4.0,
+        "review": "Very good, but could use a bit more seasoning."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b158"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b008"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b028"),
+        "rating": 3.7,
+        "review": "Not bad, but I've had better."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b159"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b009"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b029"),
+        "rating": 4.3,
+        "review": "Loved it! Will definitely make it again."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b160"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b010"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b030"),
+        "rating": 4.8,
+        "review": "This was amazing, and my family loved it!"
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b161"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b011"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b031"),
+        "rating": 3.2,
+        "review": "It was okay, but nothing special."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b162"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b012"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b032"),
+        "rating": 4.6,
+        "review": "Great flavor and texture, will make again."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b163"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b013"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b033"),
+        "rating": 5.0,
+        "review": "Best recipe I've tried this year!"
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b164"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b014"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b034"),
+        "rating": 3.9,
+        "review": "Good, but needed a little extra spice."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b165"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b015"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b035"),
+        "rating": 4.4,
+        "review": "Very satisfying, would recommend."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b166"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b016"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b036"),
+        "rating": 4.7,
+        "review": "Delicious, perfect for a family meal."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b167"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b017"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b037"),
+        "rating": 3.4,
+        "review": "It was decent, but I've had better."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b168"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b018"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b038"),
+        "rating": 4.9,
+        "review": "Amazing! My new go-to recipe."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b169"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b019"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b039"),
+        "rating": 3.7,
+        "review": "Good, but needs a few tweaks."
+    },
+    {
+        "rating_id": ObjectId("64d9f0c1fa9fc1e8f9b0b170"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b020"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b040"),
+        "rating": 4.8,
+        "review": "Everyone loved it, will make again!"
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b201"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b021"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b041"),
+        "rating": 4.2,
+        "review": "Very good, but needed a little more seasoning.",
+        "rated_at": ISODate("2024-06-10T10:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b202"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b022"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b042"),
+        "rating": 4.8,
+        "review": "Amazing recipe! Will definitely make again.",
+        "rated_at": ISODate("2024-06-15T12:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b203"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b023"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b043"),
+        "rating": 3.6,
+        "review": "It was okay, but nothing special.",
+        "rated_at": ISODate("2024-06-20T14:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b204"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b024"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b044"),
+        "rating": 4.9,
+        "review": "Delicious, one of the best I've tried.",
+        "rated_at": ISODate("2024-06-25T16:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b205"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b025"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b045"),
+        "rating": 3.9,
+        "review": "Good, but I had to adjust the seasoning.",
+        "rated_at": ISODate("2024-06-30T18:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b206"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b026"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b046"),
+        "rating": 4.7,
+        "review": "Really good, my family loved it.",
+        "rated_at": ISODate("2024-07-05T10:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b207"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b027"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b047"),
+        "rating": 4.3,
+        "review": "Solid recipe, will make again.",
+        "rated_at": ISODate("2024-07-10T12:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b208"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b028"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b048"),
+        "rating": 4.1,
+        "review": "Very tasty, but could use more garlic.",
+        "rated_at": ISODate("2024-07-15T14:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b209"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b029"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b049"),
+        "rating": 4.5,
+        "review": "Great flavor, easy to make.",
+        "rated_at": ISODate("2024-07-20T16:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b210"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b030"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b050"),
+        "rating": 4.0,
+        "review": "Good, but needed a little more spice.",
+        "rated_at": ISODate("2024-07-25T18:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b211"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b031"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b051"),
+        "rating": 4.9,
+        "review": "Fantastic! This will be a regular in my kitchen.",
+        "rated_at": ISODate("2024-07-30T10:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b212"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b032"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b052"),
+        "rating": 3.5,
+        "review": "Decent, but I've had better.",
+        "rated_at": ISODate("2024-08-01T12:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b213"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b033"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b053"),
+        "rating": 4.4,
+        "review": "Very satisfying, would recommend to friends.",
+        "rated_at": ISODate("2024-08-05T14:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b214"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b034"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b054"),
+        "rating": 4.2,
+        "review": "Good, but needed a few tweaks.",
+        "rated_at": ISODate("2024-08-10T16:00:00Z")
+    },
+    {
+        "rating_id": ObjectId("64da01fefa9fc1e8f9b0b215"),
+        "user_id": ObjectId("64d8f0c1fa9fc1e8f9b0b035"),
+        "recipe_id": ObjectId("64d8f0c1fa9fc1e8f9b0b055"),
+        "rating": 4.7,
+        "review": "Delicious and easy to prepare.",
+        "rated_at": ISODate("2024-08-15T18:00:00Z")
+    }
+]
