@@ -39,10 +39,12 @@ export default ({ app }: { app: express.Application }) => {
 		})
 	);
 
-	if (config.API_MODE) app.set('views', 'src/views');
+	if (config.API_MODE === 'true') app.set('views', 'src/views');
 	else {
-		app.set('views', path.join(__dirname, '..', 'views'));
-		app.use(express.static(path.join(__dirname, '..', 'public')));
+		// app.set('views', path.join(__dirname, '..', 'views'));
+		// app.use(express.static(path.join(__dirname, '..', 'public')));
+		app.set('views', path.join(__dirname, '..', '..', '..', '..', 'frontend'));
+		app.use(express.static(path.join(__dirname, '..', '..', '..', '..', 'frontend')));
 	}
 	app.set('view engine', 'ejs');
 

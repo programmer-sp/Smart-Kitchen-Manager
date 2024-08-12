@@ -21,5 +21,12 @@ export default () => {
     store(app);
     recipe(app);
 
+    // Web-Page routes
+    app.get('/', function (req, res) { return res.render('index.ejs'); });
+    app.get('/login', function (req, res) { return res.render('login.ejs'); });
+    app.get('/signup', function (req, res) { return res.render('signup.ejs'); });
+    app.get('/homepage', function (req, res) { return res.render('homepage.ejs'); });
+    app.get('/verify/:invite_token', function (req, res) { return res.render('verify.ejs'); });
+
     return app;
 };
