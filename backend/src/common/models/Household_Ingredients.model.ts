@@ -49,7 +49,8 @@ export function Household_Ingredients_Factory(sequelize: Sequelize): Household_I
             type: DataTypes.DATE
         },
         is_expired: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     }, {
         timestamps: true

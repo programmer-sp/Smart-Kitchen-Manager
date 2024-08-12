@@ -13,12 +13,11 @@ export enum MODULE_NAME {
   TOKEN = 'Token',
   AUTH = 'Authorization',
   CATEGORY = 'Category',
-  CART = 'Cart',
-  ORDER = 'Order',
   REVIEW = 'Review',
   VENDOR = 'Vendor',
   HOUSEHOLD = 'Household',
-  HOUSE = 'House'
+  HOUSE = 'House',
+  INGREDIENT = 'Ingredient'
 };
 
 export const BACKEND_SLUGS = {
@@ -40,6 +39,7 @@ export enum RESPONSE_METHOD {
   ACTIVE = 'active',
   INACTIVE = 'inactive',
   ADDED = 'added',
+  ADD = 'add',
   APPLIED = 'applied',
   REMOVED = 'removed',
   PLACED = 'placed',

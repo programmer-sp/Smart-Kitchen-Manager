@@ -4,7 +4,7 @@ import path from 'path';
 import * as nodemailer from 'nodemailer';
 import logger from '../loaders/logger';
 import { Service } from 'typedi';
-import { EMAIL_CONSTANTS } from '../utils/Constants';
+import { EMAIL_CONSTANTS, APPLICATION_NAME } from '../utils/Constants';
 import { google } from 'googleapis';
 
 const oauth2Client = new google.auth.OAuth2(config.CLIENT_ID, config.CLIENT_SECRET, config.REDIRECT_URI);
@@ -40,17 +40,16 @@ export class dynamicMailer {
     }
 
     public async APIBackendService(data: any) {
-        await this.transporter.sendMail({
+        const trans = await this.transporter;
+        await trans.sendMail({
             from: {
-                name: "Ecomiq",
+                name: APPLICATION_NAME,
                 address: config.SMTP_FROM,
             },
             to: data.to,
             cc: data.cc,
             subject: data.subject,
             html: data.body,
-        }, function (error: any, info: any) {
-            if (error) logger.error(error);
         });
     }
 
