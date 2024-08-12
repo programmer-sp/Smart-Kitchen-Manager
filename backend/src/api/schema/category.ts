@@ -14,8 +14,7 @@ const CATEGORY_SCHEMA = {
         query: Joi.object({
             category_id: Joi.number().integer().optional().messages({
                 "number.empty": "category_id is not allowed to be empty",
-                "number.base": "category_id must be a number",
-                "any.required": "category_id is required"
+                "number.base": "category_id must be a number"
             }),
             search: Joi.string().optional().messages({
                 "string.empty": "Search not allowed to be empty"
