@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Smart Kitchen Helper</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="<%= baseUrl %>assets/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
@@ -135,6 +135,10 @@
             transform: scale(1.1);
         }
 
+        .hidden {
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .signup-container {
@@ -150,7 +154,7 @@
 
 <body>
     <div class="signup-container">
-        <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo">
+        <img src="<%= baseUrl %>assets/images/logo.png" alt="Smart Kitchen Helper Logo">
         <h2>Create Your Account</h2>
         <!-- Update the form action to submit to the server -->
         <form id="signupForm" action="javascript:void(0);">
@@ -161,17 +165,23 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Create a password" required>
 
-            <div class="button-container">
-                <button type="submit" class="voidRegister">Sign Up</button>
-            </div>
+            <button type="submit" class="voidReinvite hidden">Reinvite for verification</button>
+            <button type="submit" class="voidRegister">Sign Up</button>
         </form>
-        <a href="login.html">Already have an account? Login here</a>
+        <a href="<%= baseUrl %>login">Already have an account? Login here</a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
+        $(document).ready(function () {
+            $('.voidRegister').click(function () {
+                $(this).hide();
+                $('.voidReinvite').show();
+            });
+        });
+
         $('body').on('click', '.voidclass', function () {
             toastr.info('Coming Soon', '', {
                 "preventDuplicates": true,
@@ -184,12 +194,39 @@
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            $('#password').val('');
 
             $.ajax({
-                url: 'auth/registration',
+                url: '<%= baseUrl %>auth/registration',
                 method: 'POST',
                 dataType: 'json',
                 data: { email, password_hash: password, role: 'guest' },
+                success: function (data) {
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
+        });
+
+        $('body').on('click', '.voidReinvite', function () {
+
+            const email = document.getElementById('email').value;
+
+            $.ajax({
+                url: '<%= baseUrl %>auth/reinvite-email',
+                method: 'POST',
+                dataType: 'json',
+                data: { email },
                 success: function (data) {
                     toastr.success(data.message, '', {
                         "preventDuplicates": true,

@@ -1,44 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-Find Recipes - Smart Kitchen Helper
-</title>
-<link rel="stylesheet" href="../assets/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Recipes - Smart Kitchen Helper</title>
+    <link rel="stylesheet" href="<%= baseUrl %>assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1DB954, #191414);
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Content Styling */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .content h1 {
+            color: #1DB954;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .content form {
+            margin-bottom: 30px;
+        }
+
+        .content label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #E0E0E0;
+        }
+
+        .content select,
+        .content input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #E0E0E0;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content button {
+            background: linear-gradient(135deg, #1DB954, #191414);
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .content button:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+        }
+
+        .content button:active {
+            transform: translateY(1px);
+        }
+
+        #recipeResults {
+            margin-top: 40px;
+        }
+
+        #recipeResults h2 {
+            font-size: 28px;
+            color: #1DB954;
+            margin-bottom: 20px;
+        }
+
+        #recipeResults ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #recipeResults ul li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: #E0E0E0;
+            text-align: left;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            .content h1 {
+                font-size: 28px;
+            }
+
+            .content form {
+                margin-bottom: 20px;
+            }
+
+            #recipeResults h2 {
+                font-size: 24px;
+            }
+        }
+
+        #ingredientsContainer {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        #ingredientsInput {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.1);
+            color: #E0E0E0;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        #selectedIngredients div {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 5px 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #selectedIngredients label {
+            cursor: pointer;
+            color: #E0E0E0;
+        }
+
+        /* Styles for the cuisine section */
+        #cuisineSelectContainer {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        #cuisineSelectLabel {
+            display: block;
+            font-size: 18px;
+            color: #E0E0E0;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #cuisineSelect {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.1);
+            color: #E0E0E0;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        #cuisineSelect:focus {
+            outline: none;
+            border-color: #1DB954;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #cuisineSelect option {
+            background-color: #191414;
+            color: #E0E0E0;
+        }
+
+        /* Styles for number input */
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.1);
+            color: #E0E0E0;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            margin-bottom: 20px;
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"]::placeholder {
+            color: #aaa;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #1DB954;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Recipe Results Styling */
+        #recipeResults {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #recipeResults h2 {
+            font-size: 28px;
+            color: #1DB954;
+            margin-bottom: 20px;
+        }
+
+        #recipeList {
+            max-height: 400px;
+            /* Adjust height as needed */
+            overflow-y: auto;
+            /* Adds vertical scroll */
+            padding-right: 10px;
+            /* Adds padding to avoid text being hidden behind scrollbar */
+        }
+
+        #recipeList ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #recipeList ul li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: #E0E0E0;
+            text-align: left;
+        }
+
+        #recipeList ul li strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
+
 <body>
-<header class="main-header">
-<h1>
-Find Recipes
-</h1>
-</header>
-<main>
-<form id="findRecipesForm">
-<p><label for="ingredientsSelect">Select Available Ingredients:</label>
-<select id="ingredientsSelect" name="ingredientsSelect" multiple>
-<!-- Options for ingredients will be dynamically loaded here -->
-</select></p>
-<p><label for="cuisineSelect">Cuisine:</label>
-<select id="cuisineSelect" name="cuisineSelect">
-<option value="">Any</option>
-<!-- Cuisine options will be dynamically loaded here --> </select></p>
-<p><label for="maxPrepTime">Maximum Preparation Time (minutes):</label>
-<input type="number" id="maxPrepTime" name="maxPrepTime"></p>
-<button type="submit" class="btn">
-Find Recipes
-</button>
-</form>
-<section id="recipeResults">
-<h2>
-Recipes You Can Make
-</h2>
-<ul>
-<!-- Recipe results will be dynamically loaded here -->
-</ul>
-<pre><code>&lt;/section&gt;
-&lt;/main&gt;
-&lt;script src=&quot;../assets/js/find_recipes.js&quot;&gt;&lt;/script&gt;</code></pre>
+    <div class="content">
+        <h1>Find Recipes</h1>
+        <form id="findRecipesForm" action="javascript:void(0);">
+            <label for="ingredientsInput">Available Ingredients:</label>
+            <div id="ingredientsContainer">
+                <input type="text" id="ingredientsInput" placeholder="Type to add ingredients..."
+                    list="ingredientsList">
+                <datalist id="ingredientsList">
+                    <option value="Tomatoes">
+                    <option value="Garlic">
+                    <option value="Pasta">
+                </datalist>
+                <div id="selectedIngredients">
+                    <!-- Selected ingredients will appear here as tags -->
+                </div>
+            </div>
+
+            <label for="cuisineSelect" id="cuisineSelectLabel">Cuisine:</label>
+            <div id="cuisineSelectContainer">
+                <select id="cuisineSelect" name="cuisineSelect">
+                    <option value="italian">Italian</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="indian">Indian</option>
+                    <option value="chinese">Chinese</option>
+                </select>
+            </div>
+
+            <label for="maxPrepTime">Maximum Preparation Time (minutes):</label>
+            <input type="number" id="maxPrepTime" name="maxPrepTime" placeholder="Enter time in minutes">
+
+            <button type="submit" class="voidRecipe">Find Recipes</button>
+        </form>
+
+        <section id="recipeResults">
+            <h2>Recipes You Can Make</h2>
+            <div id="recipeList">
+                <ul>
+                    <!-- <li>
+                        <strong>Spaghetti with Tomato Basil Sauce</strong><br>
+                        A simple and delicious Italian pasta dish with a rich tomato and basil sauce.
+                    </li> -->
+                </ul>
+            </div>
+        </section>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.getElementById('ingredientsInput').addEventListener('change', function () {
+            const ingredient = this.value;
+            if (ingredient) {
+                // Create an ingredient tag with a remove button
+                const ingredientTag = document.createElement('div');
+                ingredientTag.className = 'ingredient-tag';
+                ingredientTag.textContent = ingredient;
+                ingredientTag.style.display = 'inline-block';
+                ingredientTag.style.margin = '5px';
+                ingredientTag.style.padding = '5px 10px';
+                ingredientTag.style.backgroundColor = '#1DB954';
+                ingredientTag.style.color = '#fff';
+
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = 'x';
+                removeBtn.style.marginLeft = '10px';
+                removeBtn.style.cursor = 'pointer';
+                removeBtn.addEventListener('click', function () {
+                    // Remove the tag
+                    ingredientTag.remove();
+
+                    // Add the ingredient back to the datalist
+                    const option = document.createElement('option');
+                    option.value = ingredient;
+                    document.getElementById('ingredientsList').appendChild(option);
+                });
+
+                ingredientTag.appendChild(removeBtn);
+                document.getElementById('selectedIngredients').appendChild(ingredientTag);
+
+                // Remove the selected ingredient from the datalist
+                const datalist = document.getElementById('ingredientsList');
+                const options = Array.from(datalist.options);
+                options.forEach(option => {
+                    if (option.value.toLowerCase() === ingredient.toLowerCase()) {
+                        option.remove();
+                    }
+                });
+
+                // Clear the input field
+                this.value = '';
+            }
+        });
+
+        let cuisineData = null;
+        $(document).ready(function () {
+            userData = JSON.parse(localStorage.getItem('user'));
+
+            $.ajax({
+                url: '<%= baseUrl %>household/ingredient',
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + userData.token,
+                },
+                success: function (data) {
+                    toastr.success('Household available Ingredients get succesfully', '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+
+                    const ingredientsList = document.getElementById('ingredientsList');
+                    ingredientsList.innerHTML = '';
+
+                    data.data.forEach(item => {
+                        item.Ingredients.forEach(ingredient => {
+                            const option = document.createElement('option');
+                            option.value = ingredient.name;
+                            ingredientsList.appendChild(option);
+                        });
+                    });
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
+
+            $.ajax({
+                url: '<%= baseUrl %>recipe',
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + userData.token,
+                },
+                success: function (data) {
+                    toastr.success('Cuisine get successfully', '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+
+                    cuisineData = data.data;
+                    const cuisineList = document.getElementById('cuisineSelect');
+                    cuisineList.innerHTML = '';
+
+                    data.data.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.cuisine;
+                        option.text = item.cuisine;
+                        cuisineList.appendChild(option);
+                    });
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
+        });
+
+        $('body').on('click', '.voidRecipe', function () {
+
+            let selectedIngredients = [];
+            $('#selectedIngredients div').each(function () {
+                selectedIngredients.push($(this).text().replace('x', '').trim());
+            });
+
+            const selectedCuisine = $('#cuisineSelect').val();
+            const maxPrepTime = $('#maxPrepTime').val();
+
+            let selectedRecipe = null;
+            for (let i = 0; i < cuisineData.length; i++) {
+                if (selectedCuisine == cuisineData[i].cuisine) selectedRecipe = cuisineData[i].recipe_name;
+            }
+
+            if (selectedRecipe) {
+                $('#recipeList ul').empty();
+                $('#recipeList ul').append(`
+                    <li>
+                        <strong>${selectedRecipe}</strong><br>
+                    </li>
+                `);
+            }
+        });
+    </script>
 </body>
+
 </html>

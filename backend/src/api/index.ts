@@ -1,3 +1,4 @@
+import config from '../common/config';
 import { Router } from 'express';
 import auth from './routes/auth';
 import admin from './routes/admin';
@@ -22,11 +23,12 @@ export default () => {
     recipe(app);
 
     // Web-Page routes
-    app.get('/', function (req, res) { return res.render('index.ejs'); });
-    app.get('/login', function (req, res) { return res.render('login.ejs'); });
-    app.get('/signup', function (req, res) { return res.render('signup.ejs'); });
-    app.get('/homepage', function (req, res) { return res.render('homepage.ejs'); });
-    app.get('/verify/:invite_token', function (req, res) { return res.render('verify.ejs'); });
+    app.get('/', function (req, res) { return res.render('index.ejs', { baseUrl: config.BASE_URL }); });
+    app.get('/login', function (req, res) { return res.render('login.ejs', { baseUrl: config.BASE_URL }); });
+    app.get('/signup', function (req, res) { return res.render('signup.ejs', { baseUrl: config.BASE_URL }); });
+    app.get('/homepage', function (req, res) { return res.render('homepage.ejs', { baseUrl: config.BASE_URL }); });
+    app.get('/verify/:invite_token', function (req, res) { return res.render('verify.ejs', { baseUrl: config.BASE_URL }); });
+    app.get('/find_recipes', function (req, res) { return res.render('find_recipes.ejs', { baseUrl: config.BASE_URL }); });
 
     return app;
 };

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Smart Kitchen Helper</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="<%= baseUrl %>assets/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
@@ -149,7 +149,7 @@
 
 <body>
     <div class="login-container">
-        <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo">
+        <img src="<%= baseUrl %>assets/images/logo.png" alt="Smart Kitchen Helper Logo">
         <h2>Login to Your Account</h2>
         <form id="loginForm" action="javascript:void(0);">
             <label for="email">Email:</label>
@@ -158,12 +158,10 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-            <div class="button-container">
-                <button type="submit" class="voidLogin">Login</button>
-                <button onclick="location.href='./signup'">Sign Up</button>
-            </div>
+            <button type="submit" class="voidLogin">Login</button>
+            <button onclick="location.href='<%= baseUrl %>signup'">Sign Up</button>
         </form>
-        <a href="forgot_password.html">Forgot Password?</a>
+        <a href="<%= baseUrl %>forgot_password">Forgot Password?</a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
@@ -185,7 +183,7 @@
             const password = document.getElementById('password').value;
 
             $.ajax({
-                url: 'auth/login',
+                url: '<%= baseUrl %>auth/login',
                 method: 'POST',
                 dataType: 'json',
                 data: { email, password_hash: password },
@@ -200,7 +198,7 @@
                         email: data.data.email,
                         username: data.data.username
                     }));
-                    setTimeout(function () { window.location = "homepage"; }, 3000);
+                    setTimeout(function () { window.location.href = `<%= baseUrl %>homepage`; }, 3000);
                 },
                 error: function (error) {
                     toastr.error(error.responseJSON.message, '', {

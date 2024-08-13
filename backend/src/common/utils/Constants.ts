@@ -39,6 +39,7 @@ export enum RESPONSE_METHOD {
   UPDATE = 'updated',
   DELETE = 'deleted',
   LOGGEDIN = 'logged in',
+  LOGGEDOUT = 'logged out',
   ACTIVE = 'active',
   INACTIVE = 'inactive',
   ADDED = 'added',

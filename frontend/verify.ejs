@@ -118,7 +118,7 @@
 
 <body>
     <div class="content">
-        <img src="./assets/images/SmartKitchenHelper.webp" alt="Smart Kitchen Helper">
+        <img src='<%= baseUrl %>assets/images/SmartKitchenHelper.webp' alt="Smart Kitchen Helper">
         <h1>Welcome to Smart Kitchen Helper</h1>
         <p>
             Your ultimate kitchen companion to manage ingredients, discover recipes, and plan meals effortlessly.
@@ -126,7 +126,7 @@
             efficient.
         </p>
         <div class="button-container">
-            <button onclick="location.href='./login'">Let's Get Started!</button>
+            <button onclick="location.href='<%= baseUrl %>login'">Let's Get Started!</button>
         </div>
         <div class="credits">
             Project by Durham College Students
@@ -141,32 +141,32 @@
             const url = window.location.href;
             const token = url.split('/verify/')[1];
 
-            $.ajax({
-                url: `https://localhost:4005/auth/verify-email/?invite_token=${token}`,
-                method: 'get',
-                success: function (data) {
-                    console.log({ data });
-
-                    toastr.success(data.message, '', {
-                        "preventDuplicates": true,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right"
-                    });
-                    localStorage.setItem('user', JSON.stringify({
-                        token: data.data.token,
-                        email: data.data.email,
-                        username: data.data.username
-                    }));
-                    setTimeout(function () { window.location = "homepage"; });
-                },
-                error: function (error) {
-                    toastr.error(error.responseJSON.message, '', {
-                        "preventDuplicates": true,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right"
-                    });
-                }
-            });
+            setTimeout(function () {
+                $.ajax({
+                    url: `<%= baseUrl %>auth/verify-email?invite_token=${token}`,
+                    method: 'GET',
+                    success: function (data) {
+                        toastr.success(data.message, '', {
+                            "preventDuplicates": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right"
+                        });
+                        localStorage.setItem('user', JSON.stringify({
+                            token: data.data.token,
+                            email: data.data.email,
+                            username: data.data.username
+                        }));
+                        setTimeout(function () { window.location.href = `<%= baseUrl %>homepage`; }, 2000);
+                    },
+                    error: function (error) {
+                        toastr.error(error.responseJSON.message, '', {
+                            "preventDuplicates": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right"
+                        });
+                    }
+                });
+            }, 2000);
         });
     </script>
 </body>

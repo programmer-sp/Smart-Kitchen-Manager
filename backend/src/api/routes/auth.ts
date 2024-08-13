@@ -17,6 +17,7 @@ export default (app: Router) => {
     route.get('/profile', commonAuth, isAuth, viewProfile);
     route.get('/verify-email', verifyEmail);
     route.post('/reinvite-email', reinviteVerification);
+    route.get('/logout', isAuth, logout);
 };
 
 async function registration(req: any, res: Response) {
@@ -36,6 +37,18 @@ async function login(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.body;
     IAuth.login(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function logout(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    IAuth.logout(null, url)
         .then(response => {
             res.status(response.status).json(response);
         })

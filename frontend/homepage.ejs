@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Smart Kitchen Helper</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="<%= baseUrl %>assets/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
@@ -205,14 +205,14 @@
 
 <body>
     <header class="main-header">
-        <img src="../assets/images/logo.png" alt="Smart Kitchen Helper Logo" class="logo" width="150">
+        <img src="<%= baseUrl %>assets/images/logo.png" alt="Smart Kitchen Helper Logo" class="logo" width="150">
         <h1 id="welcomeMessage">Welcome, [User’s Name]</h1>
         <nav>
             <ul>
-                <li><a href="households.html">Households</a></li>
-                <li><a href="ingredients.html">Ingredients</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="profile.html">Profile</a></li>
+                <li><a href="<%= baseUrl %>households">Households</a></li>
+                <li><a href="<%= baseUrl %>ingredients">Ingredients</a></li>
+                <li><a href="<%= baseUrl %>recipes">Recipes</a></li>
+                <li><a href="<%= baseUrl %>profile">Profile</a></li>
             </ul>
         </nav>
         <button class="logout-button" id="logoutButton">Logout</button>
@@ -226,28 +226,43 @@
         </section>
         <section class="quick-actions">
             <h2>Quick Actions</h2>
-            <button onclick="location.href='add_ingredient.html'">Add New Ingredient</button>
-            <button onclick="location.href='find_recipes.html'">Find Recipes</button>
+            <button onclick="location.href='<%= baseUrl %>add_ingredient'">Add New Ingredient</button>
+            <button onclick="location.href='<%= baseUrl %>find_recipes'">Find Recipes</button>
         </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        let userData = {};
         $(document).ready(function () {
-            const userData = JSON.parse(localStorage.getItem('user'));
+            userData = JSON.parse(localStorage.getItem('user'));
             $('#welcomeMessage').text(`Welcome, ${userData.username}`);
         });
-        // Function to get the query parameter value by name
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
 
-        // Logout button functionality
-        document.getElementById('logoutButton').addEventListener('click', function () {
-            // Simulate clearing user session (could involve clearing cookies or local storage)
-            window.location.href = 'login.html';
+        $('body').on('click', '.logout-button', function () {
+            $.ajax({
+                url: '<%= baseUrl %>auth/logout',
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + userData.token,
+                },
+                success: function (data) {
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                    setTimeout(function () { window.location.href = `<%= baseUrl %>`; }, 1500);
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
         });
     </script>
 </body>

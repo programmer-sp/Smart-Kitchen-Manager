@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Smart Kitchen Helper</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="<%= baseUrl %>assets/css/styles.css">
     <style>
         /* Global Styles */
         body {
@@ -22,7 +22,8 @@
             text-align: center;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -113,14 +114,15 @@
 
 <body>
     <div class="content">
-        <img src="./assets/images/SmartKitchenHelper.webp" alt="Smart Kitchen Helper">
+        <img src="<%= baseUrl %>assets/images/SmartKitchenHelper.webp" alt="Smart Kitchen Helper">
         <h1>Welcome to Smart Kitchen Helper</h1>
         <p>
             Your ultimate kitchen companion to manage ingredients, discover recipes, and plan meals effortlessly.
-            Prepared by Durham College students, this project aims to make your culinary experience smarter and more efficient.
+            Prepared by Durham College students, this project aims to make your culinary experience smarter and more
+            efficient.
         </p>
         <div class="button-container">
-            <button onclick="location.href='./login'">Let's Get Started!</button>
+            <button onclick="location.href='<%= baseUrl %>login'">Let's Get Started!</button>
         </div>
         <div class="credits">
             Project by Durham College Students

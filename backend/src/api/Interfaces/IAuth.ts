@@ -83,6 +83,26 @@ export class IAuth {
         }
     }
 
+    static async logout(data: any, url: string) {
+        try {
+            let moduleName = MODULE_NAME.USER, userType = 'member';
+            const adminFlag = await IAuth.isAdmin(url);
+            if (adminFlag) {
+                moduleName = MODULE_NAME.ADMIN;
+                userType = 'administrator';
+            }
+
+            const tokenData: any = Container.get('auth-token');
+            let tokenExists: any = await redis.getValueByPattern({ key: `${REDIS_KEYS.USER_TOKEN}${tokenData.user_id}:` });
+            if (tokenExists.count > 0) await redis.delKeyByPattern({ key: `${REDIS_KEYS.USER_TOKEN}${tokenData.user_id}:` });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: moduleName, method: RESPONSE_METHOD.LOGGEDOUT }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "logout" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
     static async viewProfile(data: any, url: string) {
         try {
             let moduleName = MODULE_NAME.USER, userType = 'member';

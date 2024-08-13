@@ -14,6 +14,7 @@ export default {
 	VERSION: process.env.VERSION,
 
 	PORT: parseInt(process.env.PORT, 10),
+	BASE_URL: process.env.BASE_URL,
 
 	/* Ecryption Secret Keys */
 	ENC_KEY: process.env.ENC_KEY,

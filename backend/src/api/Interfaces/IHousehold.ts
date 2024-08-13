@@ -271,6 +271,33 @@ export class IHouseholds {
                 });
                 responseData = tempData.rows;
                 count = tempData.count;
+            } else {
+                const tokenData: any = Container.get('auth-token');
+
+                // TODO: user can join multiple household
+                const householdUserData = await Household_Users.findOne({ where: { user_id: tokenData.user_id } });
+                if (!householdUserData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER }) };
+
+                const HouseholdIngdData = await Household_Ingredients.findAll({
+                    where: { household_id: householdUserData.household_id },
+                    include: [
+                        {
+                            model: Households,
+                            attributes: ['household_name', 'address']
+                        },
+                        {
+                            model: Ingredients,
+                            attributes: ['ingredient_id', 'name', 'category_id'],
+                            include: [
+                                {
+                                    model: Ingredient_Categories,
+                                    attributes: ['category_id', 'category_name']
+                                }
+                            ]
+                        }
+                    ]
+                });
+                responseData = HouseholdIngdData;
             }
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.READ }), count, data: responseData };
