@@ -86,6 +86,11 @@ export default ({ app }: { app: express.Application }) => {
 		next(err);
 	});
 
+	// Health check endpoint
+	app.get('/health', (req, res) => {
+		res.status(200).json({ status: 'UP', message: 'Health check passed' });
+	});
+
 	/* Catch 404 and forward to error handler */
 	app.use((req, res, next) => {
 		// Global.routeError = true;
