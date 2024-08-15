@@ -25,6 +25,11 @@ async function startServer() {
 		cert: fs.readFileSync("server.cert"),
 	};
 
+    // Health check endpoint
+	app.get('/health', (req, res) => {
+		res.status(200).json({ status: 'UP', message: 'Health check passed' });
+	});
+
 	https.createServer(options, app).listen(config.PORT, (err?: any) => {
 		if (err) {
 			logger.info(err);
@@ -36,7 +41,6 @@ async function startServer() {
 	################################################################
 		`);
 	});
-
 }
 
 startServer();

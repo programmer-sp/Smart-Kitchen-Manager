@@ -1,177 +1,139 @@
 import psycopg2
-import pymongo
-import os
-import pandas as pd
 import json
-import logging
+import os
+import csv
+from pymongo import MongoClient
+from dotenv import load_dotenv
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+class DataInsertion:
+    """
+    Manages data insertion into PostgreSQL and MongoDB databases.
+    
+    Methods:
+        insert_sql_data() -> None:
+            Inserts data into PostgreSQL from CSV files.
+        insert_mongo_data() -> None:
+            Inserts data into MongoDB from JSON files.
+    """
 
-# PostgreSQL connection parameters
-PG_DATABASE = 'smart_kitchen_helper'
-PG_USER = 'postgres'
-PG_PASSWORD = 'root'
-PG_HOST = 'localhost'
-PG_PORT = '5432'
+    def __init__(self):
+        """
+        Initializes the DataInsertion class by loading environment variables and establishing database connections.
+        """
+        load_dotenv(override=True)
+        self.sql_connection = self.connect_postgresql()
+        self.mongo_client = self.connect_mongodb()
+        self.mongo_db = self.mongo_client[os.getenv("MONGO_DB")]
 
-# MongoDB connection parameters
-MONGO_URI = 'mongodb://localhost:27017/'
-MONGO_DATABASE = 'smart_kitchen_helper'
+    def connect_postgresql(self):
+        """
+        Establishes a connection to the PostgreSQL database.
 
-# Directories for CSV and JSON files
-CSV_DIR = '../csv'
-JSON_DIR = '../json'
+        Returns:
+            connection (psycopg2.extensions.connection): A connection to the PostgreSQL database.
+        """
+        try:
+            connection = psycopg2.connect(
+                dbname=os.getenv("POSTGRES_DB"),
+                user=os.getenv("POSTGRES_USERNAME"),
+                password=os.getenv("POSTGRES_PASSWORD"),
+                host=os.getenv("POSTGRES_HOST"),
+                port=os.getenv("POSTGRES_PORT")
+            )
+            connection.autocommit = True
+            print("Connected to PostgreSQL database.")
+            return connection
+        except Exception as e:
+            print(f"Error connecting to PostgreSQL: {e}")
+            raise
 
-def insert_data_from_csv(table_name):
-    """Inserts data into the specified table from a CSV file."""
-    csv_file = os.path.join(CSV_DIR, f'{table_name}.csv')
-    
-    if not os.path.exists(csv_file):
-        logger.error(f"CSV file for table '{table_name}' not found.")
-        return
+    def connect_mongodb(self):
+        """
+        Establishes a connection to the MongoDB database.
 
-    df = pd.read_csv(csv_file)
-    
-    columns = df.columns.tolist()
-    columns_str = ', '.join(columns)
-    placeholders = ', '.join(['%s'] * len(columns))
-    query = f"INSERT INTO {table_name} ({columns_str}) VALUES ({placeholders})"
-    
-    try:
-        with psycopg2.connect(dbname=PG_DATABASE, user=PG_USER, password=PG_PASSWORD, host=PG_HOST, port=PG_PORT) as conn:
-            with conn.cursor() as cursor:
-                for index, row in df.iterrows():
-                    try:
-                        cursor.execute(query, tuple(row))
-                    except psycopg2.IntegrityError as e:
-                        logger.error(f"Integrity error inserting into table '{table_name}': {e}")
-                        conn.rollback()
-                    except Exception as e:
-                        logger.error(f"Error inserting data into table '{table_name}': {e}")
-                        conn.rollback()
-                conn.commit()
-                logger.info(f"Data inserted into table '{table_name}' successfully.")
-    except Exception as e:
-        logger.error(f"Error connecting to PostgreSQL: {e}")
+        Returns:
+            MongoClient: A client connected to the MongoDB database.
+        """
+        try:
+            mongo_uri = os.getenv("MONGO_URI_TEMPLATE").format(
+                username=os.getenv("MONGO_USERNAME"),
+                password=os.getenv("MONGO_PASSWORD"),
+                host=os.getenv("MONGO_HOST"),
+                dbname=os.getenv("MONGO_DB")
+            )
+            client = MongoClient(mongo_uri)
+            print("Connected to MongoDB.")
+            return client
+        except Exception as e:
+            print(f"Error connecting to MongoDB: {e}")
+            raise
 
-def update_json_with_pg_data():
-    """Updates JSON files with new values from PostgreSQL."""
-    id_map = {}
+    def insert_sql_data(self):
+        """
+        Inserts data into PostgreSQL from CSV files located in the ../csv directory.
+        """
+        csv_directory = '../csv'
+        table_files = {
+            "users": "Users.csv",
+            "households": "Households.csv",
+            "household_users": "Household_Users.csv",
+            "ingredient_categories": "Ingredient_Categories.csv",
+            "ingredients": "Ingredients.csv",
+            "stores": "Stores.csv",
+            "ingredient_prices": "Ingredient_Prices.csv",
+            "household_ingredients": "Household_Ingredients.csv",
+            "recipes": "Recipes.csv",
+            "recipe_ingredients": "Recipe_Ingredients.csv",
+            "user_recipe_history": "User_Recipe_History.csv",
+            "user_ratings": "User_Ratings.csv"
+        }
 
-    try:
-        with psycopg2.connect(dbname=PG_DATABASE, user=PG_USER, password=PG_PASSWORD, host=PG_HOST, port=PG_PORT) as conn:
-            with conn.cursor() as cursor:
-                # Example for Household data
-                cursor.execute("SELECT household_id, household_name FROM households")
-                id_map['Households'] = {household_name: household_id for household_id, household_name in cursor.fetchall()}
-                
-                cursor.execute("SELECT ingredient_id, name FROM ingredients")
-                id_map['Ingredients'] = {name: ingredient_id for ingredient_id, name in cursor.fetchall()}
-                
-                # Update JSON files
-                update_json_file('household_ingredient_usage', id_map)
-                update_json_file('recipe_ingredients', id_map)
-                update_json_file('recipe_ratings', id_map)
-                update_json_file('user_preferences', id_map)
-                
-    except Exception as e:
-        logger.error(f"Error updating JSON with PostgreSQL data: {e}")
+        for table, filename in table_files.items():
+            file_path = os.path.join(csv_directory, filename)
+            if not os.path.exists(file_path):
+                print(f"File not found: {file_path}")
+                continue
 
-def update_json_file(collection_name, id_map):
-    """Update JSON data with IDs from PostgreSQL."""
-    json_file = os.path.join(JSON_DIR, f'{collection_name}.json')
-    
-    if not os.path.exists(json_file):
-        logger.error(f"JSON file for collection '{collection_name}' not found.")
-        return
+            with open(file_path, 'r') as file:
+                reader = csv.reader(file)
+                headers = next(reader)  # Skip the header row
+                placeholders = ', '.join(['%s'] * len(headers))
+                query = f"INSERT INTO {table} ({', '.join(headers)}) VALUES ({placeholders})"
 
-    with open(json_file, 'r') as file:
-        data = json.load(file)
-    
-    updated_data = []
-    
-    for item in data:
-        if 'household_name' in item:
-            household_name = item['household_name']
-            if household_name in id_map['Households']:
-                item['household_id'] = id_map['Households'][household_name]
-            else:
-                logger.warning(f"Missing 'household_name' in item: {item}")
-        
-        if 'ingredient_name' in item:
-            ingredient_name = item['ingredient_name']
-            if ingredient_name in id_map['Ingredients']:
-                item['ingredient_id'] = id_map['Ingredients'][ingredient_name]
-            else:
-                logger.warning(f"Missing 'ingredient_name' in item: {item}")
-        
-        updated_data.append(item)
-    
-    with open(json_file, 'w') as file:
-        json.dump(updated_data, file, indent=4)
-    
-    logger.info(f"Updated JSON file '{json_file}' with new values.")
+                with self.sql_connection.cursor() as cursor:
+                    for row in reader:
+                        cursor.execute(query, row)
+                    print(f"Inserted data into {table} from {filename}")
 
-def insert_data_from_json(collection_name):
-    """Inserts data into the specified MongoDB collection from a JSON file."""
-    json_file = os.path.join(JSON_DIR, f'{collection_name}.json')
-    
-    if not os.path.exists(json_file):
-        logger.error(f"JSON file for collection '{collection_name}' not found.")
-        return
+    def insert_mongo_data(self):
+        """
+        Inserts data into MongoDB from JSON files located in the ../json directory.
+        """
+        json_directory = '../json'
+        collection_files = {
+            "recipes_mongo": "recipes.json",
+            "ingredients_mongo": "ingredients.json",
+            "household_ingredient_usage": "household_ingredient_usage.json",
+            "recipe_ratings": "recipe_ratings.json",
+            "user_preferences": "user_preferences.json"
+        }
 
-    with open(json_file, 'r') as file:
-        data = json.load(file)
-    
-    client = pymongo.MongoClient(MONGO_URI)
-    db = client[MONGO_DATABASE]
-    
-    try:
-        if isinstance(data, list):
-            db[collection_name].insert_many(data)
-        else:
-            db[collection_name].insert_one(data)
-        logger.info(f"Data inserted into collection '{collection_name}' successfully.")
-    except Exception as e:
-        logger.error(f"Error inserting data into collection '{collection_name}': {e}")
-    finally:
-        client.close()
+        for collection_name, filename in collection_files.items():
+            file_path = os.path.join(json_directory, filename)
+            if not os.path.exists(file_path):
+                print(f"File not found: {file_path}")
+                continue
 
-def main():
-    # Insert data into Users table first
-    insert_data_from_csv('Users')
-    
-    # Insert data into remaining tables
-    tables = [
-        'Households',
-        'Household_Users',
-        'Ingredient_Categories',
-        'Ingredients',
-        'Stores',
-        'Ingredient_Prices',
-        'Household_Ingredients',
-        'Recipes',
-        'Recipe_Ingredients',
-        'User_Recipe_History'
-    ]
-    
-    for table in tables:
-        insert_data_from_csv(table)
-    
-    update_json_with_pg_data()
-    
-    collections = [
-        'household_ingredient_usage',
-        'ingredients',
-        'recipe_ratings',
-        'recipes',
-        'user_preferences'
-    ]
-    
-    for collection in collections:
-        insert_data_from_json(collection)
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+                collection = self.mongo_db[collection_name]
+                if isinstance(data, list):
+                    collection.insert_many(data)
+                else:
+                    collection.insert_one(data)
+                print(f"Inserted data into {collection_name} from {filename}")
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    data_inserter = DataInsertion()
+    data_inserter.insert_sql_data()
+    data_inserter.insert_mongo_data()

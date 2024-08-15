@@ -1,31 +1,503 @@
-category_id,category_name
-1,Vegetables
-2,Fruits
-3,Dairy
-4,Meat
-5,Seafood
-6,Grains
-7,Legumes
-8,Nuts and Seeds
-9,Herbs and Spices
-10,Oils and Fats
-11,Beverages
-12,Condiments
-13,Sweeteners
-14,Baking Ingredients
-15,Sauces
-16,Canned Goods
-17,Frozen Foods
-18,Snacks
-19,Pasta and Noodles
-20,Bread and Bakery
-21,Breakfast Foods
-22,Soups and Broths
-23,Deli
-24,Prepared Foods
-25,Seasonings
-26,Dressings
-27,Marinades
-28,Pickled Foods
-29,Fermented Foods
-30,Specialty Ingredient
+category_id,category_name,parent_category_id
+1,Vegetables,NULL
+2,Fruits,NULL
+3,Grains,NULL
+4,Spices,NULL
+5,Dairy,NULL
+6,Meat,NULL
+7,Seafood,NULL
+8,Poultry,NULL
+9,Legumes,NULL
+10,Oils,NULL
+11,Nuts,NULL
+12,Condiments,NULL
+13,Beverages,NULL
+14,Sweets,NULL
+15,Breads,NULL
+16,Herbs,NULL
+17,Sauces,NULL
+18,Dry Fruits,NULL
+19,Pulses,NULL
+20,Rice,3
+21,Wheat,3
+22,Indian Spices,4
+23,Chinese Spices,4
+24,Mexican Spices,4
+25,Italian Spices,4
+26,American Spices,4
+27,Butter,5
+28,Cheese,5
+29,Yogurt,5
+30,Paneer,5
+31,Milk,5
+32,Ghee,5
+33,Chicken,8
+34,Mutton,6
+35,Beef,6
+36,Pork,6
+37,Lamb,6
+38,Fish,7
+39,Shrimp,7
+40,Crab,7
+41,Lobster,7
+42,Tuna,7
+43,Salmon,7
+44,Eggs,8
+45,Beans,9
+46,Lentils,9
+47,Chickpeas,9
+48,Peas,9
+49,Olive Oil,10
+50,Sesame Oil,10
+51,Peanut Oil,10
+52,Sunflower Oil,10
+53,Mustard Oil,10
+54,Cashews,11
+55,Almonds,11
+56,Peanuts,11
+57,Walnuts,11
+58,Honey,12
+59,Sugar,12
+60,Soy Sauce,17
+61,Oyster Sauce,17
+62,Tomato Sauce,17
+63,Barbecue Sauce,17
+64,Hot Sauce,17
+65,Mint,16
+66,Basil,16
+67,Cilantro,16
+68,Parsley,16
+69,Thyme,16
+70,Rosemary,16
+71,Oregano,16
+72,Bay Leaves,16
+73,Ginger,22
+74,Garlic,22
+75,Cinnamon,22
+76,Cardamom,22
+77,Cloves,22
+78,Cumin,22
+79,Coriander,22
+80,Turmeric,22
+81,Fennel,22
+82,Chili Powder,22
+83,Asafoetida,22
+84,Star Anise,23
+85,Sichuan Peppercorn,23
+86,Five-Spice Powder,23
+87,Ginger,23
+88,Garlic,23
+89,Cumin,24
+90,Coriander,24
+91,Chili Powder,24
+92,Oregano,25
+93,Basil,25
+94,Parsley,25
+95,Thyme,25
+96,Bay Leaves,25
+97,Saffron,25
+98,Black Pepper,26
+99,Paprika,26
+100,Bay Leaves,26
+101,Broccoli,1
+102,Bell Peppers,1
+103,Carrots,1
+104,Potatoes,1
+105,Onions,1
+106,Tomatoes,1
+107,Spinach,1
+108,Lettuce,1
+109,Cabbage,1
+110,Apples,2
+111,Bananas,2
+112,Grapes,2
+113,Oranges,2
+114,Lemons,2
+115,Limes,2
+116,Mangoes,2
+117,Pineapple,2
+118,Avocado,2
+119,Coconut,2
+120,Rice,20
+121,Whole Wheat,21
+122,Basmati Rice,20
+123,Jasmine Rice,20
+124,Quinoa,3
+125,Pasta,3
+126,Tortilla,3
+127,Naan,15
+128,Chapati,15
+129,Paratha,15
+130,Corn Tortilla,15
+131,Flour Tortilla,15
+132,Baguette,15
+133,Sourdough Bread,15
+134,Croissant,15
+135,Chicken Tikka,14
+136,Samosa,14
+137,Paneer Butter Masala,14
+138,Butter Chicken,14
+139,Falafel,14
+140,Tacos,14
+141,Enchiladas,14
+142,Burritos,14
+143,Quesadilla,14
+144,Pizza,14
+145,Pasta,14
+146,Lasagna,14
+147,Fettuccine Alfredo,14
+148,Spaghetti,14
+149,Fried Rice,14
+150,Chow Mein,14
+151,Dumplings,14
+152,Spring Rolls,14
+153,Kung Pao Chicken,14
+154,General Tso's Chicken,14
+155,Orange Chicken,14
+156,Hot and Sour Soup,14
+157,Dim Sum,14
+158,Sushi,14
+159,Sashimi,14
+160,Miso Soup,14
+161,Ramen,14
+162,Udon,14
+163,Tonkatsu,14
+164,Tempura,14
+165,Beef Jerky,14
+166,Barbecue Ribs,14
+167,Grilled Steak,14
+168,Fried Chicken,14
+169,Biscuits and Gravy,14
+170,Macaroni and Cheese,14
+171,Cheeseburger,14
+172,Hot Dog,14
+173,Apple Pie,14
+174,Chocolate Chip Cookies,14
+175,Brownies,14
+176,Pancakes,14
+177,Waffles,14
+178,Ice Cream,14
+179,Milkshake,14
+180,Doughnut,14
+181,Ajwain Seeds,22
+182,Amchur Powder,22
+183,Anardana (Dried Pomegranate Seeds),22
+184,Aniseed,22
+185,Asafoetida,22
+186,Besan (Chickpea Flour),3
+187,Bhindi (Okra),1
+188,Bhutta (Corn),1
+189,Biryani Masala,22
+190,Black Cardamom,22
+191,Black Mustard Seeds,22
+192,Bottle Gourd,1
+193,Chana Dal,19
+194,Channa (Chickpeas),19
+195,Chhena (Fresh Paneer),30
+196,Chironji (Cuddapah Almond),11
+197,Chironji Seeds,11
+198,Coconut Milk,5
+199,Colocasia (Arbi),1
+200,Coriander Powder,22
+201,Cucumber Seeds,11
+202,Curry Leaves,16
+203,Dalchini (Cinnamon),22
+204,Drumstick,1
+205,Farali (Fasting) Flour,3
+206,Fennel Seeds,22
+207,Fenugreek Seeds,22
+208,Fish Curry Masala,22
+209,Garam Masala,22
+210,Goat Meat,6
+211,Godambi (Dried Mango Powder),22
+212,Gondh (Edible Gum),11
+213,Gondh (Tragacanth Gum),11
+214,Gondh (Tree Gum),11
+215,Haldi (Turmeric),22
+216,Hing (Asafoetida),22
+217,Imli (Tamarind),12
+218,Jaiphal (Nutmeg),22
+219,Jeera (Cumin Seeds),22
+220,Jowar Flour,3
+221,Jowar,3
+222,Kala Chana (Black Chickpeas),19
+223,Kala Jeera (Black Cumin),22
+224,Kalonji (Nigella Seeds),22
+225,Karela (Bitter Gourd),1
+226,Kashmiri Chili Powder,22
+227,Kesar (Saffron),22
+228,Khajoor (Dates),18
+229,Khichdi Masala,22
+230,Khus Khus (Poppy Seeds),11
+231,Kokum,12
+232,Kulfi Mix,14
+233,Kulthi Dal (Horse Gram),19
+234,Kumquats,2
+235,Lasooni (Garlic),22
+236,Lavang (Cloves),22
+237,Lobia (Black-eyed Peas),19
+238,Magaz (Melon Seeds),11
+239,Malai Paneer,30
+240,Masoor Dal,19
+241,Matki (Moth Beans),19
+242,Methi (Fenugreek),1
+243,Moong Dal,19
+244,Moong Sprouts,19
+245,Moringa Leaves,16
+246,Moth Beans,19
+247,Mugwort,16
+248,Murgh Masala,22
+249,Nachni (Finger Millet),3
+250,Nachni Flour,3
+251,Neem Leaves,16
+252,Niger Seeds,11
+253,Nutmeg Powder,22
+254,Panch Phoran,22
+255,Parval (Pointed Gourd),1
+256,Pathar ka Phool (Stone Flower),22
+257,Pine Nuts,11
+258,Poha (Flattened Rice),3
+259,Pudina (Mint),16
+260,Puffed Rice,3
+261,Quinoa Seeds,3
+262,Ragi,3
+263,Ragi Flour,3
+264,Rajgira (Amaranth),3
+265,Rajgira Flour,3
+266,Rajma (Kidney Beans),19
+267,Raw Mango Powder,22
+268,Red Chana,19
+269,Red Chili Powder,22
+270,Rice Flour,3
+271,Rice Vermicelli,3
+272,Roasted Bengal Gram,19
+273,Roasted Chana,19
+274,Rock Salt,12
+275,Rose Petals,18
+276,Sabja Seeds (Basil Seeds),11
+277,Sabudana (Tapioca Pearls),3
+278,Safflower Oil,10
+279,Samai Rice,3
+280,Sarson (Mustard Greens),1
+281,Sevai (Vermicelli),3
+282,Shahi Jeera,22
+283,Shallots,1
+284,Shikakai,16
+285,Shirmp Powder,7
+286,Soak Fenugreek Seeds,19
+287,Soak Moong Dal,19
+288,Soy Chunks,9
+289,Soy Granules,9
+290,Spinach,1
+291,Suva Bhaji (Dill Leaves),16
+292,Tandoori Masala,22
+293,Tapioca Flour,3
+294,Tej Patta (Bay Leaves),16
+295,Thalipeeth Bhajani,3
+296,Til Seeds (Sesame Seeds),11
+297,Toor Dal,19
+298,Turmeric Powder,22
+299,Urad Dal,19
+300,Varagu Rice,20
+301,Vinegar,12
+302,Water Chestnut Flour,3
+303,White Pepper,22
+304,Whole Masoor Dal,19
+305,Yam (Suran),1
+306,Zucchini,1
+307,Aliv Seeds,11
+308,Apple Cider Vinegar,12
+309,Asalio,11
+310,Avarebele,19
+311,Avarekalu (Hyacinth Beans),19
+312,Badaam (Almond),11
+313,Bajra (Pearl Millet),3
+314,Bakri Atta,3
+315,Banana Stem,1
+316,Barnyard Millet,3
+317,Bay Leaf Powder,22
+318,Black Raisins,18
+319,Black Rice,20
+320,Black Salt,12
+321,Black Sesame Seeds,11
+322,Black Urad Dal,19
+323,Breadfruit,1
+324,Brown Basmati Rice,20
+325,Brown Rice,20
+326,Buttermilk,31
+327,Cabbage,1
+328,Cane Sugar,12
+329,Carom Seeds,22
+330,Chana Sattu,19
+331,Chaulai (Amaranth),3
+332,Chaulai Flour,3
+333,Cheese,27
+334,Cucumber,1
+335,Dahi (Yogurt),29
+336,Dalchini,22
+337,Dalia (Broken Wheat),3
+338,Dark Jaggery,12
+339,Desiccated Coconut,11
+340,Dhokla Flour,3
+341,Dill Seeds,16
+342,Dried Amla,18
+343,Dried Fenugreek Leaves,16
+344,Dry Coconut,18
+345,Dry Red Chili,22
+346,Drumstick Leaves,16
+347,Figs,18
+348,Foxtail Millet,3
+349,Fried Gram,19
+350,Ful Medames,19
+351,Garlic,22
+352,Ghee,32
+353,Gond (Tragacanth Gum),11
+354,Green Chili,22
+355,Green Gram,19
+356,Groundnut Oil,10
+357,Honey,12
+358,Horse Gram,19
+359,Idli Rice,20
+360,Indian Bay Leaf,16
+361,Indian Cucumber,1
+362,Indian Gooseberry,2
+363,Indian Jujube,18
+364,Indian Mustard,10
+365,Indian Red Chili,22
+366,Indian Sandalwood,16
+367,Indian Spikenard,16
+368,Indian Turmeric,22
+369,Indrayani Rice,20
+370,Ivy Gourd,1
+371,Jackfruit,2
+372,Jaggery,12
+373,Jamun (Java Plum),2
+374,Jeera Powder,22
+375,Jowar,3
+376,Kachri (Wild Melon),1
+377,Kachumber Salad,1
+378,Kaddu (Pumpkin),1
+379,Kaffir Lime Leaves,16
+380,Kalonji,22
+381,Karonda,2
+382,Kashmiri Red Chili,22
+383,Kesar,22
+384,Kesar Mango,2
+385,Kesar Powder,22
+386,Kesar Syrup,12
+387,Khajur,18
+388,Khajur Peeth,12
+389,Khichdi,15
+390,Khus,16
+391,Khus Powder,22
+392,Kokum,12
+393,Kokum Agal,12
+394,Kokum Syrup,12
+395,Kulfi,14
+396,Kulfi Falooda,14
+397,Kulfi Mix,14
+398,Lacha,15
+399,Lal Mirch,22
+400,Lavang,22
+401,Lehsun,22
+402,Lehsun Powder,22
+403,Lemon Juice,12
+404,Lemon Pickle,12
+405,Lemon Rice,15
+406,Lemon Syrup,12
+407,Lemongrass,16
+408,Lettuce,1
+409,Long Beans,1
+410,Mace,16
+411,Malai,31
+412,Malvani Masala,22
+413,Manathakkali Vathal,22
+414,Mango,2
+415,Mango Pickle,12
+416,Mango Powder,22
+417,Mango Rice,15
+418,Mango Syrup,12
+419,Mango Tree Leaves,16
+420,Marathi Moggu,22
+421,Methi,1
+422,Mint,16
+423,Mixed Pickle,12
+424,Mogra Rice,20
+425,Moong Dal,19
+426,Moti Choor Ladoo,14
+427,Moti Choor Laddu,14
+428,Moth Beans,19
+429,Mujj Gaad,22
+430,Multigrain Flour,3
+431,Multigrain Rice,20
+432,Murukku,15
+433,Mutton Masala,22
+434,Nachni (Ragi),3
+435,Nachni Flour,3
+436,Nalli Nihari Masala,22
+437,Nan Khatai,14
+438,Neem,16
+439,Niger Seeds,11
+440,Olive Oil,10
+441,Onion Seeds,22
+442,Onions,1
+443,Orange,2
+444,Orange Peel Powder,22
+445,Palak (Spinach),1
+446,Paneer,30
+447,Parboiled Rice,20
+448,Parsley,16
+449,Peas,9
+450,Pepper,22
+451,Peppere,22
+452,Phool Makhana,18
+453,Phool Methi,22
+454,Pistachio,11
+455,Poha,3
+456,Pomegranate,2
+457,Potatoes,1
+458,Prawns,7
+459,Pumpkin Seeds,11
+460,Pure Ghee,32
+461,Quinoa,3
+462,Rajgira,3
+463,Rice Bran Oil,10
+464,Rice Flour,3
+465,Rice Bran,3
+466,Roasted Chickpeas,19
+467,Rock Salt,12
+468,Rose Petals,18
+469,Sabja,11
+470,Safflower,16
+471,Safflower Seeds,11
+472,Sage,16
+473,Saindhava Lavan,12
+474,Sago,3
+475,Salt,12
+476,Sesame Oil,10
+477,Shahi Jeera,22
+478,Shallots,1
+479,Shepu (Dill Leaves),16
+480,Shikakai,16
+481,Silk Cotton Tree Flowers,16
+482,Sindhav Salt,12
+483,Soaked Bengal Gram,19
+484,Soaked Peas,9
+485,Soaked Rajma,19
+486,Soaked Toor Dal,19
+487,Soan Papdi,14
+488,Sorghum,3
+489,Star Anise,16
+490,Sunflower Oil,10
+491,Sweet Lime,2
+492,Tagar,12
+493,Tamarind,12
+494,Tandoori Masala,22
+495,Tapioca,9
+496,Turmeric,22
+497,Urad Dal,19
+498,Veggie,1
+499,Wheat Bran,3
+500,Yam,1
+501,Yellow Moong Dal,19
+502,Zinger,22
