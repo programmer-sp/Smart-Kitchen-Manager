@@ -83,6 +83,88 @@ const RECIPE_SCHEMA = {
             })
         })
     }),
+    CREATE_INGREDIENT: celebrate({
+        body: Joi.object({
+            recipe_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number",
+                "any.required": "recipe_id is required"
+            }),
+            ingredient_id: Joi.number().integer().required().messages({
+                "number.empty": "ingredient_id is not allowed to be empty",
+                "number.base": "ingredient_id must be a number",
+                "any.required": "ingredient_id is required"
+            }),
+            quantity: Joi.number().integer().required().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number",
+                "any.required": "quantity is required"
+            }),
+            unit: Joi.string().required().messages({
+                "string.empty": "unit is not allowed to be empty",
+                "string.base": "unit must be a string",
+                "any.required": "unit is required"
+            }),
+        })
+    }),
+    READ_INGREDIENT: celebrate({
+        query: Joi.object({
+            recipe_ingredient_id: Joi.number().integer().optional().messages({
+                "number.empty": "recipe_ingredient_id is not allowed to be empty",
+                "number.base": "recipe_ingredient_id must be a number"
+            }),
+            recipe_id: Joi.number().integer().optional().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number"
+            }),
+            search: Joi.string().optional().messages({
+                "string.empty": "Search not allowed to be empty"
+            }),
+            page: Joi.number().integer().min(1).optional().messages({
+                "number.base": "Page must be a number",
+                "number.min": "Page must be greater than or equal to 1"
+            }),
+            limit: Joi.number().integer().optional().messages({
+                "number.base": "Limit must be a number"
+            })
+        })
+    }),
+    UPDATE_INGREDIENT: celebrate({
+        params: Joi.object({
+            recipe_ingredient_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_ingredient_id is not allowed to be empty",
+                "number.base": "recipe_ingredient_id must be a number",
+                "any.required": "recipe_ingredient_id is required"
+            })
+        }),
+        body: Joi.object({
+            recipe_id: Joi.number().integer().optional().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number"
+            }),
+            ingredient_id: Joi.number().integer().optional().messages({
+                "number.empty": "ingredient_id is not allowed to be empty",
+                "number.base": "ingredient_id must be a number"
+            }),
+            quantity: Joi.number().integer().optional().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number"
+            }),
+            unit: Joi.string().messages({
+                "string.empty": "unit is not allowed to be empty",
+                "string.base": "unit must be a string"
+            }),
+        })
+    }),
+    DELETE_INGREDIENT: celebrate({
+        query: Joi.object({
+            recipe_ingredient_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_ingredient_id is not allowed to be empty",
+                "number.base": "recipe_ingredient_id must be a number",
+                "any.required": "recipe_ingredient_id is required"
+            })
+        })
+    }),
 };
 
 export { RECIPE_SCHEMA };

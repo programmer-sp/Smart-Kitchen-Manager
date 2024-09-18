@@ -62,7 +62,7 @@ export default {
 	CLIENT_SECRET: process.env.CLIENT_SECRET,
 	ACCESS_TOKEN: process.env.ACCESS_TOKEN,
 	REFRESH_TOKEN: process.env.REFRESH_TOKEN,
-	GOOGLE_AUTH_code: process.env.GOOGLE_AUTH_code,
+	GOOGLE_AUTH_CODE: process.env.GOOGLE_AUTH_CODE,
 
 	/* Developer Emails */
 	DEV_EMAILS: process.env.DEV_EMAILS.split(','),
