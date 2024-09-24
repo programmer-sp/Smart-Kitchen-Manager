@@ -29,24 +29,25 @@ export class IRecipe {
                 if (!recipeData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE }) };
 
                 return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE, method: RESPONSE_METHOD.READ }), data: recipeData };
-            } else {
-                const page = +data.page || 1;
-                const limit = +data.limit || 10;
-                const search = data.search;
-                const condition: any = {
-                    offset: (page - 1) * limit,
-                    limit: limit,
-                    order: [['createdAt', 'DESC']],
-                };
-
-                if (search) condition['where'] = {
-                    recipe_name: { [Op.iLike]: `%${search}%` },
-                    cuisine: { [Op.iLike]: `%${search}%` }
-                };
-                const recipeData = await Recipes.findAndCountAll(condition);
-
-                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE, method: RESPONSE_METHOD.READ }), count: recipeData.count, data: recipeData.rows };
             }
+
+            const page = +data.page || 1;
+            const limit = +data.limit || 10;
+            const search = data.search;
+            const condition: any = {
+                offset: (page - 1) * limit,
+                limit: limit,
+                order: [['createdAt', 'DESC']],
+            };
+
+            if (search) condition['where'] = {
+                recipe_name: { [Op.iLike]: `%${search}%` },
+                cuisine: { [Op.iLike]: `%${search}%` }
+            };
+            const recipeData = await Recipes.findAndCountAll(condition);
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE, method: RESPONSE_METHOD.READ }), count: recipeData.count, data: recipeData.rows };
+
         } catch (error) {
             logger.errorAndMail({ e: error, routeName: url, functionName: "getRecipe" });
             return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };

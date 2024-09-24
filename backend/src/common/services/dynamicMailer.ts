@@ -5,16 +5,16 @@ import * as nodemailer from 'nodemailer';
 import logger from '../loaders/logger';
 import { Service } from 'typedi';
 import { EMAIL_CONSTANTS, APPLICATION_NAME } from '../utils/Constants';
-import { google } from 'googleapis';
+// import { google } from 'googleapis';
 
-const oauth2Client = new google.auth.OAuth2(config.CLIENT_ID, config.CLIENT_SECRET, config.REDIRECT_URI);
-oauth2Client.setCredentials({ refresh_token: config.REFRESH_TOKEN });
+// const oauth2Client = new google.auth.OAuth2(config.CLIENT_ID, config.CLIENT_SECRET, config.REDIRECT_URI);
+// oauth2Client.setCredentials({ refresh_token: config.REFRESH_TOKEN });
 
 @Service()
 export class dynamicMailer {
     transporter;
 
-    public constructor() {
+    /* public constructor() {
         this.transporter = (async () => {
             try {
                 const { token: accessToken } = await oauth2Client.getAccessToken();
@@ -32,6 +32,25 @@ export class dynamicMailer {
                     tls: {
                         rejectUnauthorized: false
                     }
+                });
+            } catch (error) {
+                logger.error(error);
+            }
+        })();
+    } */
+
+    public constructor() {
+        this.transporter = (async () => {
+            try {
+                return await nodemailer.createTransport({
+                    host: config.SMTP_HOST,
+                    port: config.SMTP_PORT,
+                    secure: false,
+                    service: 'gmail',
+                    auth: {
+                        user: config.SMTP_USER,
+                        pass: config.SMTP_PASSWORD,
+                    },
                 });
             } catch (error) {
                 logger.error(error);

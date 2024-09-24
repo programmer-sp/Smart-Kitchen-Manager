@@ -73,7 +73,7 @@ export class IAuth {
                 email: userData.email,
             };
 
-            const userAuthToken = await this.getUserTokens(responseData, userData.role);
+            const userAuthToken = await this.getUserTokens(responseData, { role: userData.role, type: userData.role === 'administrator' ? 'admin' : 'user' });
             if (userAuthToken) responseData['token'] = userAuthToken;
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: moduleName, method: RESPONSE_METHOD.LOGGEDIN }), data: responseData };
@@ -149,7 +149,7 @@ export class IAuth {
             let responseData = { user_id: userData.user_id, username: userData.username, email: userData.email, role: userData.role };
             await Users.update({ invitation_token: null, email_verified: true }, { where: { user_id: userData.user_id } });
 
-            const userAuthToken = await this.getUserTokens(responseData, userData.role);
+            const userAuthToken = await this.getUserTokens(responseData, { role: userData.role, type: userType != 'member' ? 'admin' : 'user' });
             if (userAuthToken) responseData['token'] = userAuthToken;
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: moduleName, method: RESPONSE_METHOD.VERIFIED }), data: responseData };
@@ -207,7 +207,7 @@ export class IAuth {
 
 
 
-    static async getUserTokens(data: any, role: string) {
+    static async getUserTokens(data: any, metaData: any) {
         return new Promise(async (resolve, reject) => {
             try {
 
@@ -215,7 +215,7 @@ export class IAuth {
                 let tokenSlug = `${REDIS_KEYS.USER_TOKEN}${data.user_id}:`;
                 let tokenExists: any = await redis.getValueByPattern({ key: tokenSlug });
                 if (tokenExists.count > 0) token = (Object.keys(tokenExists.data[0])[0]).split(':')[1];
-                else token = await generateJWTToken({ user_id: data.user_id, email: data.email, username: data.username, role });
+                else token = await generateJWTToken({ user_id: data.user_id, email: data.email, username: data.username, role: metaData.role, type: metaData.type });
 
                 await redis.setValue({ key: tokenSlug + token, value: true, duration: ms(config.JWT_TTL) });
                 return resolve(token);

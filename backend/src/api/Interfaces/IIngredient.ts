@@ -58,7 +58,7 @@ export class IIngredient {
                     if (!isExists) {
                         ingredientData = await Ingredients.findAndCountAll(condition);
 
-                        await redis.setValue({ key: REDIS_KEYS.INGREDIENT_LIST, value: { data: ingredientData.rows, count: ingredientData.count }, duration: ms(config.JWT_TTL) });
+                        await redis.setValue({ key: REDIS_KEYS.INGREDIENT_LIST, value: { data: ingredientData.rows, count: ingredientData.count }, duration: ms(config.REDIS_TTL) });
                     } else {
                         ingredientData['rows'] = isExists.data;
                         ingredientData['count'] = isExists.count;
@@ -251,7 +251,7 @@ export class IIngredient {
                             ]
                         });
 
-                        await redis.setValue({ key: REDIS_KEYS.INGREDIENT_PRICE_LIST, value: { data: ingredientPriceData.rows, count: ingredientPriceData.count }, duration: ms(config.JWT_TTL) });
+                        await redis.setValue({ key: REDIS_KEYS.INGREDIENT_PRICE_LIST, value: { data: ingredientPriceData.rows, count: ingredientPriceData.count }, duration: ms(config.REDIS_TTL) });
                     } else {
                         ingredientPriceData['rows'] = isExists.data;
                         ingredientPriceData['count'] = isExists.count;

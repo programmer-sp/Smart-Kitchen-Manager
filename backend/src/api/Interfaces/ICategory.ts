@@ -51,7 +51,7 @@ export class ICategory {
                     if (!isExists) {
                         categoryData = await Ingredient_Categories.findAndCountAll(condition);
 
-                        await redis.setValue({ key: REDIS_KEYS.CATEGORY_LIST, value: { data: categoryData.rows, count: categoryData.count }, duration: ms(config.JWT_TTL) });
+                        await redis.setValue({ key: REDIS_KEYS.CATEGORY_LIST, value: { data: categoryData.rows, count: categoryData.count }, duration: ms(config.REDIS_TTL) });
                     } else {
                         categoryData['rows'] = isExists.data;
                         categoryData['count'] = isExists.count;

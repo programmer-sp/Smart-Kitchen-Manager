@@ -2,6 +2,7 @@ import path from 'path';
 import config from '../config';
 
 export enum MODULE_NAME {
+  REDIS_DATA = 'Redis data',
   GLOBAL_SETTINGS = 'Global settings',
   ADMIN = 'Admin',
   USER = 'User',
@@ -62,7 +63,7 @@ export const REDIS_KEYS = {
   CATEGORY_LIST: `${APPLICATION_NAME.toLowerCase()}:category-list`,
   INGREDIENT_LIST: `${APPLICATION_NAME.toLowerCase()}:ingredient-list`,
   INGREDIENT_PRICE_LIST: `${APPLICATION_NAME.toLowerCase()}:ingredient-price-list`,
-  VENDOR_LIST: `${APPLICATION_NAME.toLowerCase()}:vendor-list`,
+  USER_LIST: `${APPLICATION_NAME.toLowerCase()}:user-list`,
   USER_CART: `${APPLICATION_NAME.toLowerCase()}:user-cart`,
   USER_REVIEW: `${APPLICATION_NAME.toLowerCase()}:user-review`,
 };

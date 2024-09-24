@@ -8,6 +8,8 @@
     "INVALID_CREDENTIALS": "Please enter a valid Email or Password",
     "SUSPEND_MESSAGE": "Your account is suspended, please contact with higher authority",
     "AUTHORIZATION_MESSAGE": "Invalid authorization token",
+    "UNAUTHORIZED": "You are not authorized to access, please check your request",
+    "SESSION_OUT": "It seems your session is expired, please login again",
     "COMMON_ALREADY": "{{key}} already {{method}}",
     "COMMON_INACTIVE": "{{key}} is inactive",
     "VERIFY_EMAIL": "Please verify your email before login",
