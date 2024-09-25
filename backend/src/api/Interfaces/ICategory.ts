@@ -41,7 +41,7 @@ export class ICategory {
                     order: [['createdAt', 'DESC']],
                 };
 
-                let categoryData: any = [];
+                let categoryData: any = {};
                 if (page != 1 || limit != 10 || search) {
                     if (search) condition['where'] = { category_name: { [Op.iLike]: `%${search}%` } };
 

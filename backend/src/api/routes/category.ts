@@ -7,14 +7,16 @@ import { ICategory } from '../Interfaces/ICategory';
 import { CATEGORY_SCHEMA } from '../schema/category';
 
 const route = Router();
+const commonAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "common" }); next(); };
+const adminAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "admin" }); next(); };
 
 export default (app: Router) => {
     app.use('/category', route);
 
-    route.post('/', CATEGORY_SCHEMA.CREATE, isAuth, addCategory);
-    route.get('/', CATEGORY_SCHEMA.READ, isAuth, getCategory);
-    route.put('/:category_id', CATEGORY_SCHEMA.UPDATE, isAuth, updateCategory);
-    route.delete('/', CATEGORY_SCHEMA.DELETE, isAuth, deleteCategory);
+    route.post('/', CATEGORY_SCHEMA.CREATE, adminAuth, isAuth, addCategory);
+    route.get('/', CATEGORY_SCHEMA.READ, commonAuth, isAuth, getCategory);
+    route.put('/:category_id', CATEGORY_SCHEMA.UPDATE, adminAuth, isAuth, updateCategory);
+    route.delete('/', CATEGORY_SCHEMA.DELETE, adminAuth, isAuth, deleteCategory);
 };
 
 async function addCategory(req: any, res: Response) {

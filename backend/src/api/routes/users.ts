@@ -9,7 +9,6 @@ import { isAuth } from '../middlewares/authorization';
 const route = Router();
 const userAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "user" }); next(); };
 const adminAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "admin" }); next(); };
-const commonAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "common" }); next(); };
 
 export default (app: Router) => {
     app.use('/user', route);
