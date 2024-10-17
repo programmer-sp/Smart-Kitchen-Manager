@@ -1,1 +1,0 @@
-# Smart-Kitchen-Manager
