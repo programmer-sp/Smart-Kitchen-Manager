@@ -17,10 +17,9 @@ const HOUSEHOLD_SCHEMA = {
     }),
     READ: celebrate({
         query: Joi.object({
-            household_id: Joi.number().integer().required().messages({
+            household_id: Joi.number().integer().messages({
                 "number.empty": "household_id is not allowed to be empty",
-                "number.base": "household_id must be a number",
-                "any.required": "household_id is required"
+                "number.base": "household_id must be a number"
             }),
         })
     }),

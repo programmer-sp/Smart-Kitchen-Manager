@@ -7,14 +7,13 @@ import { IAuth } from '../Interfaces/IAuth';
 import { isAuth } from '../middlewares/authorization';
 
 const route = Router();
-const commonAuth = (req: Request, res: Response, next: any) => { Object.assign(req.headers, { authType: "common" }); next(); };
 
 export default (app: Router) => {
     app.use('/auth', route);
 
     route.post('/registration', AUTH_SCHEMA.REGISTRATION, registration);
     route.post('/login', AUTH_SCHEMA.LOGIN, login);
-    route.get('/profile', commonAuth, isAuth, viewProfile);
+    route.get('/profile', isAuth, viewProfile);
     route.get('/verify-email', verifyEmail);
     route.post('/reinvite-email', reinviteVerification);
     route.get('/logout', isAuth, logout);
