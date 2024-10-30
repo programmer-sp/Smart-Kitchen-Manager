@@ -11,7 +11,7 @@ const route = Router();
 export default (app: Router) => {
     app.use('/store', route);
 
-    route.get('/', STORE_SCHEMA.READ, isAuth, getStore);
+    route.get('/', isAuth, STORE_SCHEMA.READ, getStore);
 };
 
 async function getStore(req: any, res: Response) {

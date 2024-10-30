@@ -11,7 +11,7 @@ const route = Router();
 export default (app: Router) => {
     app.use('/user', route);
 
-    route.put('/preference', USER_SCHEMA.UPDATE, isAuth, updatePreference);
+    route.put('/preference', isAuth, USER_SCHEMA.UPDATE, updatePreference);
 };
 
 async function updatePreference(req: any, res: Response) {

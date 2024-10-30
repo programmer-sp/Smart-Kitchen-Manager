@@ -16,5 +16,6 @@
     "INVITATION_EXPIRED": "Your verification is failed due to expired or invalid invitation",
     "VERFIY_EMAIL_SENT": "Verification mail has been sent to your mail Id, please check",
     "INFO_MISMATCH": "{{key}} information is invalid",
-    "COMMON_NO_ACCESS": "Your ability to {{key}} has been {{method}}"
+    "COMMON_NO_ACCESS": "Your ability to {{key}} has been {{method}}",
+    "INVALID_PERMISSION": "Unable to {{method}} {{key}} due to invalid permissions"
 }

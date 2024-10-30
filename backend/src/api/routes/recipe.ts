@@ -11,15 +11,15 @@ const route = Router();
 export default (app: Router) => {
     app.use('/recipe', route);
 
-    route.post('/', RECIPE_SCHEMA.CREATE, isAuth, addRecipe);
-    route.get('/', RECIPE_SCHEMA.READ, isAuth, getRecipe);
-    route.put('/:recipe_id', RECIPE_SCHEMA.UPDATE, isAuth, updateRecipe);
-    route.delete('/', RECIPE_SCHEMA.DELETE, isAuth, deleteRecipe);
+    route.post('/', isAuth, RECIPE_SCHEMA.CREATE, addRecipe);
+    route.get('/', isAuth, RECIPE_SCHEMA.READ, getRecipe);
+    route.put('/:recipe_id', isAuth, RECIPE_SCHEMA.UPDATE, updateRecipe);
+    route.delete('/', isAuth, RECIPE_SCHEMA.DELETE, deleteRecipe);
 
-    route.post('/ingredient', RECIPE_SCHEMA.CREATE_INGREDIENT, isAuth, addRecipeIngd);
-    route.get('/ingredient', RECIPE_SCHEMA.READ_INGREDIENT, isAuth, getRecipeIngd);
-    route.put('/:recipe_ingredient_id', RECIPE_SCHEMA.UPDATE_INGREDIENT, isAuth, updateRecipeIngd);
-    route.delete('/', RECIPE_SCHEMA.DELETE_INGREDIENT, isAuth, deleteRecipeIngd);
+    route.post('/ingredient', isAuth, RECIPE_SCHEMA.CREATE_INGREDIENT, addRecipeIngd);
+    route.get('/ingredient', isAuth, RECIPE_SCHEMA.READ_INGREDIENT, getRecipeIngd);
+    route.put('/:recipe_ingredient_id', isAuth, RECIPE_SCHEMA.UPDATE_INGREDIENT, updateRecipeIngd);
+    route.delete('/', isAuth, RECIPE_SCHEMA.DELETE_INGREDIENT, deleteRecipeIngd);
 };
 
 async function addRecipe(req: any, res: Response) {

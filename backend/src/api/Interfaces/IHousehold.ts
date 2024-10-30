@@ -31,8 +31,46 @@ export class IHouseholds {
 
     static async getHousehold(data: any, url: string) {
         try {
-            const householdData = await Households.findOne({ where: { household_id: data.household_id } });
-            if (!householdData) return { status: status_code.BAD_REQUEST, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD }) };
+            if (data.household_id) {
+                const householdData = await Household_Users.findOne({
+                    where: { household_id: data.household_id },
+                    include: [
+                        {
+                            model: Households,
+                            attributes: ['household_name', 'address', 'status']
+                        },
+                        {
+                            model: Users,
+                            attributes: ['username', 'role', 'email'],
+                        }
+                    ]
+                });
+                if (!householdData) return { status: status_code.BAD_REQUEST, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD }) };
+
+                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD, method: RESPONSE_METHOD.READ }), data: householdData };
+            }
+
+            const tokenData: any = Container.get('auth-token');
+            const page = +data.page || 1;
+            const limit = +data.limit || 10;
+            const search = data.search;
+            const condition: any = {
+                offset: (page - 1) * limit,
+                limit: limit,
+                order: [['createdAt', 'DESC']],
+            };
+
+            let householdData: any = [];
+            if (search) condition['where'] = { household_name: { [Op.iLike]: `%${search}%` }, address: { [Op.iLike]: `%${search}%` } };
+            householdData = await Household_Users.findAll({
+                where: { user_id: tokenData.user_id },
+                include: [
+                    {
+                        model: Households,
+                        where: condition
+                    },
+                ]
+            });
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD, method: RESPONSE_METHOD.READ }), data: householdData };
         } catch (error) {
@@ -95,6 +133,13 @@ export class IHouseholds {
 
     static async addHouseholdUser(data: any, url: string) {
         try {
+            const tokenData: any = Container.get('auth-token');
+            const restrictedUser = ['guest', 'content creator', 'viewer'];
+            if (restrictedUser.includes(tokenData.role)) return { status: status_code.BAD_REQUEST, message: l10n.t('INVALID_PERMISSION', { key: MODULE_NAME.USER, method: RESPONSE_METHOD.ADD }) };
+
+            const householdUserRole = await Household_Users.findOne({ where: { user_id: tokenData.user_id } });
+            if (restrictedUser.includes(householdUserRole.role)) return { status: status_code.BAD_REQUEST, message: l10n.t('INVALID_PERMISSION', { key: MODULE_NAME.USER, method: RESPONSE_METHOD.ADD }) };
+
             const userData = await Users.findOne({ where: { email: setEncrypt(data['email'].toLowerCase()) } });
             if (!userData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.USER }) };
 
@@ -102,7 +147,6 @@ export class IHouseholds {
             if (!isHousehold) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD }) };
             else if (isHousehold.status === false) return { status: status_code.BAD_REQUEST, message: l10n.t('COMMON_INACTIVE', { key: MODULE_NAME.HOUSEHOLD }) };
 
-            // TODO: restrict user to add house hold user based on role
             const isHouseholdUser = await Household_Users.findOne({ where: { user_id: userData.user_id, household_id: data.household_id } });
             if (isHouseholdUser) return { status: status_code.BAD_REQUEST, message: l10n.t('COMMON_ALREADY', { key: MODULE_NAME.USER, method: RESPONSE_METHOD.ADDED }) };
 
@@ -165,6 +209,13 @@ export class IHouseholds {
 
     static async updateHouseholdUser(data: any, url: string) {
         try {
+            const tokenData: any = Container.get('auth-token');
+            const restrictedUser = ['guest', 'content creator', 'viewer'];
+            if (restrictedUser.includes(tokenData.role)) return { status: status_code.BAD_REQUEST, message: l10n.t('INVALID_PERMISSION', { key: MODULE_NAME.USER, method: RESPONSE_METHOD.ADD }) };
+
+            const householdUserRole = await Household_Users.findOne({ where: { user_id: tokenData.user_id } });
+            if (restrictedUser.includes(householdUserRole.role)) return { status: status_code.BAD_REQUEST, message: l10n.t('INVALID_PERMISSION', { key: MODULE_NAME.USER, method: RESPONSE_METHOD.ADD }) };
+
             const householdUserData = await Household_Users.findOne({ where: { household_user_id: data.household_user_id } });
             if (!householdUserData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER }) };
 
@@ -187,6 +238,21 @@ export class IHouseholds {
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER, method: RESPONSE_METHOD.DELETE }) };
         } catch (error) {
             logger.errorAndMail({ e: error, routeName: url, functionName: "deleteHouseholdUser" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async activeInactiveHouseholdUser(data: any, url: string) {
+        try {
+            const householdUserData = await Household_Users.findOne({ where: { household_user_id: data.household_user_id } });
+            if (!householdUserData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER }) };
+            else if (householdUserData.status === data.active) return { status: status_code.BAD_REQUEST, message: l10n.t('COMMON_ALREADY', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER, method: data.active ? RESPONSE_METHOD.ACTIVE : RESPONSE_METHOD.INACTIVE }) };
+
+            await Household_Users.update({ status: data.active }, { where: { household_user_id: data.household_user_id } });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD + ' ' + MODULE_NAME.USER, method: data.active ? RESPONSE_METHOD.ACTIVE : RESPONSE_METHOD.INACTIVE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "activeInactiveHouseholdUser" });
             return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
         }
     }

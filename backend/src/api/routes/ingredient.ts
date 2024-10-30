@@ -11,15 +11,15 @@ const route = Router();
 export default (app: Router) => {
     app.use('/ingredient', route);
 
-    route.post('/', INGREDIENT_SCHEMA.CREATE, isAuth, addIngredient);
-    route.get('/', INGREDIENT_SCHEMA.READ, isAuth, getIngredient);
-    route.put('/:ingredient_id', INGREDIENT_SCHEMA.UPDATE, isAuth, updateIngredient);
-    route.delete('/', INGREDIENT_SCHEMA.DELETE, isAuth, deleteIngredient);
+    route.post('/', isAuth, INGREDIENT_SCHEMA.CREATE, addIngredient);
+    route.get('/', isAuth, INGREDIENT_SCHEMA.READ, getIngredient);
+    route.put('/:ingredient_id', isAuth, INGREDIENT_SCHEMA.UPDATE, updateIngredient);
+    route.delete('/', isAuth, INGREDIENT_SCHEMA.DELETE, deleteIngredient);
 
-    route.post('/price', INGREDIENT_SCHEMA.CREATE_PRICE, isAuth, addIngredientPrice);
-    route.get('/price', INGREDIENT_SCHEMA.READ_PRICE, isAuth, getIngredientPrice);
-    route.put('/price/:price_id', INGREDIENT_SCHEMA.UPDATE_PRICE, isAuth, updateIngredientPrice);
-    route.delete('/price', INGREDIENT_SCHEMA.DELETE_PRICE, isAuth, deleteIngredientPrice);
+    route.post('/price', isAuth, INGREDIENT_SCHEMA.CREATE_PRICE, addIngredientPrice);
+    route.get('/price', isAuth, INGREDIENT_SCHEMA.READ_PRICE, getIngredientPrice);
+    route.put('/price/:price_id', isAuth, INGREDIENT_SCHEMA.UPDATE_PRICE, updateIngredientPrice);
+    route.delete('/price', isAuth, INGREDIENT_SCHEMA.DELETE_PRICE, deleteIngredientPrice);
 };
 
 async function addIngredient(req: any, res: Response) {
