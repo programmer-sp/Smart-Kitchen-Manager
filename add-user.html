@@ -170,25 +170,36 @@
                             <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
                     -->
-                        <li>
+                        <li class="active">
                             <a href="users.html"><i class="fa fa-calendar"></i> <span>Users</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="households.html"><i class="fa fa-user"></i> <span>Household</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="householdusers.html">Household user</a></li>
+                                <li><a href="ingredient.html">Household ingredient</a></li>
+                                <li><a href="households.html">Household management</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
                                     Category</span></a>
                         </li>
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Store
+                            <a href="ingredient.html"><i class="fa fa-calendar-check-o"></i>
+                                <span>Ingredient</span></a>
+                        </li>
+                        <li>
+                            <a href="stores.html"><i class="fa fa-hospital-o"></i> <span>Store
                                     Management</span></a>
                         </li>
                         <li>
-                            <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Household Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Recipe</span></a>
                         </li>
                         <li>
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
                         </li>
-
-
                         <!--
                         <li class="submenu">
                             <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span
@@ -361,26 +372,85 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>User ID</label>
-                                        <input class="form-control" type="text" value="APT-0001" readonly="">
+                                        <label for="user-id">User ID</label>
+                                        <input class="form-control" type="text" id="user-id" value="APT-0001" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                        <select class="select">
-                                            <option>Select</option>
-                                            <option>Jennifer Robinson</option>
-                                            <option>Terry Baker</option>
-                                        </select>
+                                        <label for="username">Username</label>
+                                        <input class="form-control" type="text" id="username"
+                                            placeholder="Enter username">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Department</label>
-                                        <select class="select">
+                                        <label for="age">Age</label>
+                                        <input class="form-control" type="number" id="age" placeholder="Enter age">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input class="form-control" type="text" id="address"
+                                            placeholder="Enter address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="user-email">User Email</label>
+                                        <input class="form-control" type="email" id="user-email"
+                                            placeholder="Enter email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="user-phone">User Phone Number</label>
+                                        <input class="form-control" type="text" id="user-phone"
+                                            placeholder="Enter phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-type">Account Type</label>
+                                        <select class="form-control" id="account-type">
+                                            <option>Select</option>
+                                            <option>Account type 1</option>
+                                            <option>Account type 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="created-date">Date</label>
+                                        <div class="cal-icon">
+                                            <input type="date" class="form-control" id="created-date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ingredient-categories">Ingredient Categories</label>
+                                        <select class="form-control" id="ingredient-categories">
+                                            <option>Select</option>
+                                            <option>Cristina Groves</option>
+                                            <option>Marie Wells</option>
+                                            <option>Henry Daniels</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="store">Store</label>
+                                        <select class="form-control" id="store">
                                             <option>Select</option>
                                             <option>Dentists</option>
                                             <option>Neurology</option>
@@ -391,74 +461,28 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Doctor</label>
-                                        <select class="select">
-                                            <option>Select</option>
-                                            <option>Cristina Groves</option>
-                                            <option>Marie Wells</option>
-                                            <option>Henry Daniels</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Date</label>
-                                        <div class="cal-icon">
-                                            <input type="text" class="form-control datetimepicker">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Time</label>
-                                        <div class="time-icon">
-                                            <input type="text" class="form-control" id="datetimepicker3">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>User Email</label>
-                                        <input class="form-control" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>User Phone Number</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Message</label>
-                                <textarea cols="30" rows="4" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="display-block">Appointment Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="product_active"
-                                        value="option1" checked>
-                                    <label class="form-check-label" for="product_active">
-                                        Active
-                                    </label>
+                                <div class="form-group">
+                                    <label class="display-block">User Status</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status" id="product_active"
+                                            value="option1" checked>
+                                        <label class="form-check-label" for="product_active">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status" id="product_inactive"
+                                            value="option2">
+                                        <label class="form-check-label" for="product_inactive">
+                                            Inactive
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="product_inactive"
-                                        value="option2">
-                                    <label class="form-check-label" for="product_inactive">
-                                        Inactive
-                                    </label>
+                                <div class="m-t-20 text-center">
+                                    <button class="btn btn-primary submit-btn">Create User</button>
                                 </div>
-                            </div>
-                            <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn">Create User</button>
-                            </div>
                         </form>
                     </div>
                 </div>

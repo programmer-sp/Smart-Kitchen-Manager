@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- edit-schedule24:07-->
+<!-- schedule23:20-->
 
 <head>
     <meta charset="utf-8">
@@ -31,6 +31,7 @@
             <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
             <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
             <ul class="nav user-menu float-right">
+                <!--
                 <li class="nav-item dropdown d-none d-sm-block">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
                         <span class="badge badge-pill bg-danger float-right">3</span></a>
@@ -44,8 +45,7 @@
                                     <a href="activities.html">
                                         <div class="media">
                                             <span class="avatar">
-                                                <img alt="John Doe" src="assets/img/user.jpg"
-                                                    class="img-fluid rounded-circle">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">John Doe</span> added
@@ -126,6 +126,7 @@
                             class="fa fa-comment-o"></i> <span
                             class="badge badge-pill bg-danger float-right">8</span></a>
                 </li>
+                -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img"><img class="rounded-circle" src="assets/img/user.jpg" width="40"
@@ -136,7 +137,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
+                        <!--   <a class="dropdown-item" href="settings.html">Settings</a> -->
                         <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
@@ -157,8 +158,9 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Navigation</li>
+                        <!--
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="index-2.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
                             <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
@@ -166,17 +168,39 @@
                         <li>
                             <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
-                        <li>
-                            <a href="users.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
-                        </li>
+                        -->
                         <li class="active">
-                            <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor
-                                    Schedule</span></a>
-                        </li>
-                        <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                            <a href="users.html"><i class="fa fa-calendar"></i> <span>Users</span></a>
                         </li>
                         <li class="submenu">
+                            <a href="households.html"><i class="fa fa-user"></i> <span>Household</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="householdusers.html">Household user</a></li>
+                                <li><a href="ingredient.html">Household ingredient</a></li>
+                                <li><a href="households.html">Household management</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
+                                    Category</span></a>
+                        </li>
+                        <li>
+                            <a href="ingredient.html"><i class="fa fa-calendar-check-o"></i>
+                                <span>Ingredient</span></a>
+                        </li>
+                        <li>
+                            <a href="stores.html"><i class="fa fa-hospital-o"></i> <span>Store
+                                    Management</span></a>
+                        </li>
+                        <li>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Recipe</span></a>
+                        </li>
+                        <li>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
+                        </li>
+                        <li class="submenu">
+                            <!--
                             <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span
                                     class="menu-arrow"></span></a>
                             <ul style="display: none;">
@@ -254,6 +278,8 @@
                         <li>
                             <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
                         </li>
+                        -->
+                            <!--
                         <li class="menu-title">UI Elements</li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-laptop"></i> <span> Components</span> <span
@@ -327,6 +353,7 @@
                                 </li>
                             </ul>
                         </li>
+                        -->
                     </ul>
                 </div>
             </div>
@@ -334,83 +361,55 @@
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Edit Schedule</h4>
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Ingredients</h4>
+                    </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="add-category.html" class="btn btn btn-primary btn-rounded float-right"><i
+                                class="fa fa-plus"></i> Add Ingredient</a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Doctor Name</label>
-                                        <select class="select">
-                                            <option>Select</option>
-                                            <option>Cristina Groves</option>
-                                            <option>Marie Wells</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Available Days</label>
-                                        <select class="select" multiple>
-                                            <option>Select Days</option>
-                                            <option selected>Sunday</option>
-                                            <option selected>Monday</option>
-                                            <option>Tuesday</option>
-                                            <option>Wednesday</option>
-                                            <option>Thursday</option>
-                                            <option>Friday</option>
-                                            <option>Saturday</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Start Time</label>
-                                        <div class="time-icon">
-                                            <input type="text" class="form-control" id="datetimepicker3">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>End Time</label>
-                                        <div class="time-icon">
-                                            <input type="text" class="form-control" id="datetimepicker4">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Message</label>
-                                <textarea cols="30" rows="4" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="display-block">Schedule Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="product_active"
-                                        value="option1" checked>
-                                    <label class="form-check-label" for="product_active">
-                                        Active
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="product_inactive"
-                                        value="option2">
-                                    <label class="form-check-label" for="product_inactive">
-                                        Inactive
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn">Save</button>
-                            </div>
-                        </form>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Ingredient Name</th>
+                                        <th>Ingredient Category</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img width="28" height="28" src="assets/img/user.jpg"
+                                                class="rounded-circle m-r-5" alt=""> Henry Daniels</td>
+                                        <td>Cardiology</td>
+                                        <td>None</td>
+                                        <td>Sunday, Monday, Tuesday</td>
+                                        <td>10:00 AM - 7:00 PM</td>
+                                        <td><span class="custom-badge status-green">Active</span></td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="edit-category.html"><i
+                                                            class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                                        data-target="#delete_schedule"><i
+                                                            class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -637,6 +636,19 @@
                 </div>
             </div>
         </div>
+        <div id="delete_schedule" class="modal fade delete-modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <img src="assets/img/sent.png" alt="" width="50" height="46">
+                        <h3>Are you sure want to delete this Schedule?</h3>
+                        <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -647,26 +659,9 @@
     <script src="assets/js/moment.min.js"></script>
     <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script>
-        $(function () {
-            $('#datetimepicker3').datetimepicker({
-                format: 'LT'
-
-            });
-        });
-    </script>
-    <script>
-        $(function () {
-            $('#datetimepicker4').datetimepicker({
-                format: 'LT'
-
-            });
-        });
-    </script>
 </body>
 
 
-<!-- edit-schedule24:07-->
+<!-- schedule23:21-->
 
 </html>

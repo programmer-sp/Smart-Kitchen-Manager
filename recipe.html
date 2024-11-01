@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- edit-doctor24:06-->
+<!-- schedule23:20-->
 
 <head>
     <meta charset="utf-8">
@@ -31,6 +31,7 @@
             <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
             <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
             <ul class="nav user-menu float-right">
+                <!--
                 <li class="nav-item dropdown d-none d-sm-block">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
                         <span class="badge badge-pill bg-danger float-right">3</span></a>
@@ -44,8 +45,7 @@
                                     <a href="activities.html">
                                         <div class="media">
                                             <span class="avatar">
-                                                <img alt="John Doe" src="assets/img/user.jpg"
-                                                    class="img-fluid rounded-circle">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">John Doe</span> added
@@ -126,6 +126,7 @@
                             class="fa fa-comment-o"></i> <span
                             class="badge badge-pill bg-danger float-right">8</span></a>
                 </li>
+                -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img"><img class="rounded-circle" src="assets/img/user.jpg" width="40"
@@ -136,7 +137,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
+                        <!--   <a class="dropdown-item" href="settings.html">Settings</a> -->
                         <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
@@ -157,26 +158,49 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Navigation</li>
+                        <!--
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="index-2.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                         </li>
                         <li>
                             <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
-                        <li>
-                            <a href="users.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
-                        </li>
-                        <li>
-                            <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor
-                                    Schedule</span></a>
-                        </li>
-                        <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                        -->
+                        <li class="active">
+                            <a href="users.html"><i class="fa fa-calendar"></i> <span>Users</span></a>
                         </li>
                         <li class="submenu">
+                            <a href="households.html"><i class="fa fa-user"></i> <span>Household</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="householdusers.html">Household user</a></li>
+                                <li><a href="ingredient.html">Household ingredient</a></li>
+                                <li><a href="households.html">Household management</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
+                                    Category</span></a>
+                        </li>
+                        <li>
+                            <a href="ingredient.html"><i class="fa fa-calendar-check-o"></i>
+                                <span>Ingredient</span></a>
+                        </li>
+                        <li>
+                            <a href="stores.html"><i class="fa fa-hospital-o"></i> <span>Store
+                                    Management</span></a>
+                        </li>
+                        <li>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Recipe</span></a>
+                        </li>
+                        <li>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
+                        </li>
+                        <li class="submenu">
+                            <!--
                             <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span
                                     class="menu-arrow"></span></a>
                             <ul style="display: none;">
@@ -254,6 +278,8 @@
                         <li>
                             <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
                         </li>
+                        -->
+                            <!--
                         <li class="menu-title">UI Elements</li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-laptop"></i> <span> Components</span> <span
@@ -327,6 +353,7 @@
                                 </li>
                             </ul>
                         </li>
+                        -->
                     </ul>
                 </div>
             </div>
@@ -334,159 +361,55 @@
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Edit Doctor</h4>
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Recipes</h4>
+                    </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="add-category.html" class="btn btn btn-primary btn-rounded float-right"><i
+                                class="fa fa-plus"></i> Add Recipe</a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>First Name <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" value="Justin">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input class="form-control" type="text" value="Parker">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Username <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" value="justinparker">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email" value="justinparker@example.com">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input class="form-control" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <div class="cal-icon">
-                                            <input type="text" class="form-control datetimepicker">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group gender-select">
-                                        <label class="gen-label">Gender:</label>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" name="gender" class="form-check-input" checked>Male
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" name="gender" class="form-check-input">Female
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control ">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Recipe Name</th>
+                                        <th>Preparation Time</th>
+                                        <th>Cooking Time</th>
+                                        <th>Servings</th>
+                                        <th>Recipe Link</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img width="28" height="28" src="assets/img/user.jpg"
+                                                class="rounded-circle m-r-5" alt=""> Henry Daniels</td>
+                                        <td>Cardiology</td>
+                                        <td>None</td>
+                                        <td>Sunday, Monday, Tuesday</td>
+                                        <td>10:00 AM - 7:00 PM</td>
+                                        <td><span class="custom-badge status-green">Active</span></td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="edit-category.html"><i
+                                                            class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                                        data-target="#delete_schedule"><i
+                                                            class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <select class="form-control select">
-                                                    <option>USA</option>
-                                                    <option>United Kingdom</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>State/Province</label>
-                                                <select class="form-control select">
-                                                    <option>California</option>
-                                                    <option>Alaska</option>
-                                                    <option>Alabama</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="text" value="91403" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Phone </label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Your avatar:</label>
-                                        <div class="profile-upload">
-                                            <div class="upload-img">
-                                                <img alt="" src="assets/img/user.jpg">
-                                            </div>
-                                            <div class="upload-input">
-                                                <input type="file" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Short Biography</label>
-                                <textarea class="form-control" rows="3" cols="30"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="display-block">Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="doctor_active"
-                                        value="option1" checked>
-                                    <label class="form-check-label" for="doctor_active">
-                                        Active
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="doctor_inactive"
-                                        value="option2">
-                                    <label class="form-check-label" for="doctor_inactive">
-                                        Inactive
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn">Save</button>
-                            </div>
-                        </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -713,6 +636,19 @@
                 </div>
             </div>
         </div>
+        <div id="delete_schedule" class="modal fade delete-modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <img src="assets/img/sent.png" alt="" width="50" height="46">
+                        <h3>Are you sure want to delete this Schedule?</h3>
+                        <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -726,6 +662,6 @@
 </body>
 
 
-<!-- edit-doctor24:06-->
+<!-- schedule23:21-->
 
 </html>

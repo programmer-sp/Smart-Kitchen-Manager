@@ -169,22 +169,35 @@
                             <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
                         -->
-                        <li>
+                        <li class="active">
                             <a href="users.html"><i class="fa fa-calendar"></i> <span>Users</span></a>
                         </li>
-                        <li class="active">
-                            <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
+                        <li class="submenu">
+                            <a href="households.html"><i class="fa fa-user"></i> <span>Household</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="householdusers.html">Household user</a></li>
+                                <li><a href="ingredient.html">Household ingredient</a></li>
+                                <li><a href="households.html">Household management</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
                                     Category</span></a>
                         </li>
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Store
+                            <a href="ingredient.html"><i class="fa fa-calendar-check-o"></i>
+                                <span>Ingredient</span></a>
+                        </li>
+                        <li>
+                            <a href="stores.html"><i class="fa fa-hospital-o"></i> <span>Store
                                     Management</span></a>
                         </li>
                         <li>
-                            <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Household Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Recipe</span></a>
                         </li>
                         <li>
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
                         </li>
                         <li class="submenu">
                             <!--
@@ -352,7 +365,7 @@
                         <h4 class="page-title">Ingredient Categories</h4>
                     </div>
                     <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="add-schedule.html" class="btn btn btn-primary btn-rounded float-right"><i
+                        <a href="add-category.html" class="btn btn btn-primary btn-rounded float-right"><i
                                 class="fa fa-plus"></i> Add Category</a>
                     </div>
                 </div>
@@ -362,10 +375,11 @@
                             <table class="table table-border table-striped custom-table mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Doctor Name</th>
-                                        <th>Department</th>
-                                        <th>Available Days</th>
-                                        <th>Available Time</th>
+                                        <th>Category Name</th>
+                                        <th>Parent Category</th>
+                                        <th>Number of ingredients</th>
+                                        <th>Description</th>
+                                        <th>Created Date</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -375,6 +389,7 @@
                                         <td><img width="28" height="28" src="assets/img/user.jpg"
                                                 class="rounded-circle m-r-5" alt=""> Henry Daniels</td>
                                         <td>Cardiology</td>
+                                        <td>None</td>
                                         <td>Sunday, Monday, Tuesday</td>
                                         <td>10:00 AM - 7:00 PM</td>
                                         <td><span class="custom-badge status-green">Active</span></td>
@@ -383,7 +398,7 @@
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                     aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-schedule.html"><i
+                                                    <a class="dropdown-item" href="edit-category.html"><i
                                                             class="fa fa-pencil m-r-5"></i> Edit</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#delete_schedule"><i

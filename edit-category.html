@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- add-patient24:06-->
+<!-- edit-schedule24:07-->
 
 <head>
     <meta charset="utf-8">
@@ -31,8 +31,8 @@
             <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
             <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
             <ul class="nav user-menu float-right">
-                <!--
                 <li class="nav-item dropdown d-none d-sm-block">
+                    <!--
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
                         <span class="badge badge-pill bg-danger float-right">3</span></a>
                     <div class="dropdown-menu notifications">
@@ -127,7 +127,7 @@
                             class="fa fa-comment-o"></i> <span
                             class="badge badge-pill bg-danger float-right">8</span></a>
                 </li>
-            -->
+                -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img"><img class="rounded-circle" src="assets/img/user.jpg" width="40"
@@ -138,7 +138,6 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
                         <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
@@ -149,7 +148,6 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="profile.html">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
                     <a class="dropdown-item" href="login.html">Logout</a>
                 </div>
             </div>
@@ -159,27 +157,35 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Navigation</li>
-                        <!--
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
-                        </li>
-                    -->
-                        <li>
+                        <li class="active">
                             <a href="users.html"><i class="fa fa-calendar"></i> <span>Users</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="households.html"><i class="fa fa-user"></i> <span>Household</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="householdusers.html">Household user</a></li>
+                                <li><a href="ingredient.html">Household ingredient</a></li>
+                                <li><a href="households.html">Household management</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="ingredient-category.html"><i class="fa fa-calendar-check-o"></i> <span>Ingredients
                                     Category</span></a>
                         </li>
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Store
+                            <a href="ingredient.html"><i class="fa fa-calendar-check-o"></i>
+                                <span>Ingredient</span></a>
+                        </li>
+                        <li>
+                            <a href="stores.html"><i class="fa fa-hospital-o"></i> <span>Store
                                     Management</span></a>
                         </li>
                         <li>
-                            <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Household Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Recipe</span></a>
                         </li>
                         <li>
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
+                            <a href="support.html"><i class="fa fa-wheelchair"></i> <span>Support Management</span></a>
                         </li>
                         <!--
                         <li class="submenu">
@@ -331,9 +337,9 @@
                                 <li>
                                     <a href="javascript:void(0);"><span>Level 1</span></a>
                                 </li>
-                            -->
-                    </ul>
-                    </li>
+                            </ul>
+                        </li>
+                        -->
                     </ul>
                 </div>
             </div>
@@ -342,158 +348,59 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Add Patient</h4>
+                        <h4 class="page-title">Edit Ingredient category</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <form>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First Name <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text">
+                                        <label for="category-name-input">Category Name</label>
+                                        <input class="form-control" type="text" id="category-name-input"
+                                            placeholder="Enter category name">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input class="form-control" type="text">
+                                        <label for="parent-category">Parent Category</label>
+                                        <select class="form-control" id="parent-category">
+                                            <option>Select</option>
+                                            <option>Category Name 1</option>
+                                            <option>Category Name 2</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Username <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text">
+                                        <label for="num-ingredients">Number of Ingredients</label>
+                                        <input class="form-control" type="text" id="num-ingredients"
+                                            placeholder="Enter number">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input class="form-control" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <div class="cal-icon">
-                                            <input type="text" class="form-control datetimepicker">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group gender-select">
-                                        <label class="gen-label">Gender:</label>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" name="gender" class="form-check-input">Male
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="radio" name="gender" class="form-check-input">Female
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control ">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <select class="form-control select">
-                                                    <option>USA</option>
-                                                    <option>United Kingdom</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>State/Province</label>
-                                                <select class="form-control select">
-                                                    <option>California</option>
-                                                    <option>Alaska</option>
-                                                    <option>Alabama</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-3">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Phone </label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Avatar</label>
-                                        <div class="profile-upload">
-                                            <div class="upload-img">
-                                                <img alt="" src="assets/img/user.jpg">
-                                            </div>
-                                            <div class="upload-input">
-                                                <input type="file" class="form-control">
-                                            </div>
-                                        </div>
+                                        <label for="created-date">Created Date</label>
+                                        <input type="date" class="form-control" id="created-date"
+                                            placeholder="Select date">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="display-block">Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="patient_active"
-                                        value="option1" checked>
-                                    <label class="form-check-label" for="patient_active">
-                                        Active
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" id="patient_inactive"
-                                        value="option2">
-                                    <label class="form-check-label" for="patient_inactive">
-                                        Inactive
-                                    </label>
-                                </div>
+                                <label for="description">Description</label>
+                                <textarea id="description" cols="30" rows="4" class="form-control"
+                                    placeholder="Enter description"></textarea>
                             </div>
                             <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn">Create Patient</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <!--
             <div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
@@ -718,19 +625,35 @@
             </div>
         </div>
     </div>
--->
-            <div class="sidebar-overlay" data-reff=""></div>
-            <script src="assets/js/jquery-3.2.1.min.js"></script>
-            <script src="assets/js/popper.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/jquery.slimscroll.js"></script>
-            <script src="assets/js/select2.min.js"></script>
-            <script src="assets/js/moment.min.js"></script>
-            <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-            <script src="assets/js/app.js"></script>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        $(function () {
+            $('#datetimepicker3').datetimepicker({
+                format: 'LT'
+
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#datetimepicker4').datetimepicker({
+                format: 'LT'
+
+            });
+        });
+    </script>
 </body>
 
 
-<!-- add-patient24:07-->
+<!-- edit-schedule24:07-->
 
 </html>
