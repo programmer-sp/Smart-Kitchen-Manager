@@ -12,10 +12,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!--[if lt IE 9]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -23,23 +22,23 @@
         <div class="account-page">
             <div class="account-center">
                 <div class="account-box">
-                    <form action="http://dreamguys.co.in/preclinic/template/index.html" class="form-signin">
+                    <form action="javascript:void(0);" class="form-signin">
                         <div class="account-logo">
                             <a href="index.html"><img src="assets/img/logo-dark.png" alt=""></a>
                         </div>
                         <div class="form-group">
-                            <label>Username or Email</label>
-                            <input type="text" autofocus="" class="form-control">
+                            <label>Email</label>
+                            <input type="text" id="email" placeholder="abcd@example.com" autofocus="" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control">
+                            <input id="password" type="password" class="form-control">
                         </div>
                         <div class="form-group text-right">
                             <a href="forgot-password.html">Forgot your password?</a>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary account-btn">Login</button>
+                            <button type="submit" class="btn btn-primary account-btn voidLogin">Login</button>
                         </div>
                         <div class="text-center register-link">
                             Don’t have an account? <a href="register.html">Register Now</a>
@@ -53,6 +52,52 @@
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $('body').on('click', '.voidclass', function () {
+            toastr.info('Coming Soon', '', {
+                "preventDuplicates": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right"
+            });
+        });
+
+        $('body').on('click', '.voidLogin', function () {
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            $.ajax({
+                url: 'http://10.0.0.199:4005/auth/login',
+                method: 'POST',
+                dataType: 'json',
+                data: { email: email, password_hash: password },
+                success: function (data) {
+                    toastr.success(data.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                    localStorage.setItem('user', JSON.stringify({
+                        token: data.data.token,
+                        email: data.data.email,
+                        username: data.data.username
+                    }));
+                    setTimeout(function () { window.location.href = `index.html`; }, 3000);
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.message, '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 

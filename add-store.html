@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!--[if lt IE 9]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -365,23 +365,24 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <form>
+                        <form action="javascript:void(0);" class="form-addStore">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="user-id">Store ID</label>
-                                        <input class="form-control" type="text" id="user-id" value="APT-0001" readonly>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="username">Store name</label>
-                                        <input class="form-control" type="text" id="store name"
+                                        <input class="form-control" type="text" id="storeName"
                                             placeholder="Enter store name">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="user-id">Store Address</label>
+                                        <input class="form-control" type="text" id="address" placeholder="Area">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="account-type">Store Type</label>
@@ -391,16 +392,16 @@
                                             <option>Store type 2</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                            <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="address">Phone Number</label>
                                         <input class="form-control" type="text" id="address"
                                             placeholder="Enter Phone Number">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> -->
+                            <!--      <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="user-email">Location</label>
@@ -415,11 +416,11 @@
                                             placeholder="Enter Operating Hours">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                             </div>
                             <div class="form-group">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="display-block">Store Status</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="status" id="product_active"
@@ -435,9 +436,9 @@
                                             Inactive
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="m-t-20 text-center">
-                                    <button class="btn btn-primary submit-btn">Create Store</button>
+                                    <button class="btn btn-primary submit-btn addstore">Create Store</button>
                                 </div>
                         </form>
                     </div>
@@ -676,6 +677,61 @@
             <script src="assets/js/jquery.slimscroll.js"></script>
             <script src="assets/js/select2.min.js"></script>
             <script src="assets/js/app.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+                integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+            <script>
+                let userData = {};
+                $(document).ready(function () {
+                    userData = JSON.parse(localStorage.getItem('user'));
+                });
+                $('body').on('click', '.voidclass', function () {
+                    toastr.info('Coming Soon', '', {
+                        "preventDuplicates": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right"
+                    });
+                });
+
+                $('body').on('click', '.addstore', function () {
+
+                    const storeName = document.getElementById('storeName').value;
+                    const address = document.getElementById('address').value;
+
+                    console.log('uaser data', userData);
+
+                    $('.form-addStore')[0].reset();
+
+                    $.ajax({
+                        url: 'http://10.0.0.199:4005/admin/add-store',
+                        method: 'POST',
+                        dataType: 'json',
+                        headers: {
+                            'Authorization': 'Bearer ' + userData.token,
+                        },
+                        data: {
+                            store_name: storeName,
+                            address: address
+                        },
+                        success: function (data) {
+                            console.log({ data });
+                            toastr.success(data.message, '', {
+                                "preventDuplicates": true,
+                                "progressBar": true,
+                                "positionClass": "toast-top-right"
+                            });
+                        },
+                        error: function (error) {
+                            toastr.error(error.responseJSON.message, '', {
+                                "preventDuplicates": true,
+                                "progressBar": true,
+                                "positionClass": "toast-top-right"
+                            });
+                        }
+                    });
+                });
+            </script>
 </body>
 
 
