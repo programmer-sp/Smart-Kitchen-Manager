@@ -23,13 +23,13 @@ export default (app: Router) => {
     route.patch('/update-user/:user_id', adminAuth, isAuth, ADMIN_SCHEMA.PATCH_USER, activeInactiveUser);
 
     /* ---------------------- Store API's ---------------------- */
-    route.post('/add-store', adminAuth, isAuth, ADMIN_SCHEMA.CREATE_STORE, addStore);
+    route.post('/add-store', adminAuth, isAuth, ADMIN_SCHEMA.ADD_STORE, addStore);
     route.get('/get-store', adminAuth, isAuth, ADMIN_SCHEMA.READ_STORE, getStore);
     route.put('/update-store/:store_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_STORE, updateStore);
     route.delete('/delete-store', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_STORE, deleteStore);
 
     /* ---------------------- Household API's ---------------------- */
-    route.post('/add-household', adminAuth, isAuth, ADMIN_SCHEMA.CREATE_HOUSEHOLD, createHousehold);
+    route.post('/add-household', adminAuth, isAuth, ADMIN_SCHEMA.ADD_HOUSEHOLD, addHousehold);
     route.get('/get-household', adminAuth, isAuth, ADMIN_SCHEMA.READ_HOUSEHOLD, getHousehold);
     route.put('/update-household/:household_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_HOUSEHOLD, updateHousehold);
     route.delete('/delete-household', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_HOUSEHOLD, deleteHousehold);
@@ -47,6 +47,18 @@ export default (app: Router) => {
     route.get('/get-ingd-category', adminAuth, isAuth, ADMIN_SCHEMA.READ_INGD_CATEGORY, getIngdCategory);
     route.put('/update-ingd-category/:category_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_INGD_CATEGORY, updateIngdCategory);
     route.delete('/delete-ingd-category', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_INGD_CATEGORY, deleteIngdCategory);
+
+    /* ---------------------- Ingredient Price API's ---------------------- */
+    route.post('/add-ingd-price', adminAuth, isAuth, ADMIN_SCHEMA.ADD_INGD_PRICE, addIngredientPrice);
+    route.get('/get-ingd-price', adminAuth, isAuth, ADMIN_SCHEMA.READ_INGD_PRICE, getIngredientPrice);
+    route.put('/update-ingd-price/:price_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_INGD_PRICE, updateIngredientPrice);
+    route.delete('/delete-ingd-price', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_INGD_PRICE, deleteIngredientPrice);
+
+    /* ---------------------- Ingredient API's ---------------------- */
+    route.post('/add-ingd', adminAuth, isAuth, ADMIN_SCHEMA.ADD_INGD, addIngredient);
+    route.get('/get-ingd', adminAuth, isAuth, ADMIN_SCHEMA.READ_INGD, getIngredient);
+    route.put('/update-ingd/:ingredient_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_INGD, updateIngredient);
+    route.delete('/delete-ingd', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_INGD, deleteIngredient);
 
     // -------------------------------------------------------- for backend use only
     route.get('/get-pattern-data', getDataByPattern);
@@ -149,10 +161,10 @@ async function deleteStore(req: any, res: Response) {
         });
 }
 
-async function createHousehold(req: any, res: Response) {
+async function addHousehold(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.body;
-    IAdmin.createHousehold(data, url)
+    IAdmin.addHousehold(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })
@@ -327,6 +339,112 @@ async function deleteIngdCategory(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.query;
     IAdmin.deleteIngdCategory(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function addIngredientPrice(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.body;
+    IAdmin.addIngredientPrice(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function getIngredientPrice(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.getIngredientPrice(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function updateIngredientPrice(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    let data = req.body;
+    data['price_id'] = req.params.price_id;
+    IAdmin.updateIngredientPrice(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function deleteIngredientPrice(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.deleteIngredientPrice(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function addIngredient(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.body;
+    IAdmin.addIngredient(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function getIngredient(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.getIngredient(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function updateIngredient(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    let data = req.body;
+    data['ingredient_id'] = req.params.ingredient_id;
+    IAdmin.updateIngredient(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function deleteIngredient(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.deleteIngredient(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

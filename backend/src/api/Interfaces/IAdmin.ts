@@ -12,7 +12,9 @@ import {
     Stores,
     Households,
     Household_Users,
-    Ingredient_Categories
+    Ingredient_Categories,
+    Ingredient_Prices,
+    Ingredients
 } from '../../common/models/index';
 import { dynamicMailer } from '../../common/services/dynamicMailer';
 import { MODULE_NAME, RESPONSE_METHOD, REDIS_KEYS } from '../../common/utils/Constants';
@@ -174,7 +176,7 @@ export class IAdmin {
     }
 
     /* ---------------------- Hosehold API's ---------------------- */
-    static async createHousehold(data: any, url: string) {
+    static async addHousehold(data: any, url: string) {
         try {
             const isExists = await Households.findOne({ where: { household_name: data.household_name, status: true } });
             if (isExists) return { status: status_code.ALREADY_EXIST, message: l10n.t('ALREADY_EXISTS', { key: data.household_name }) };
@@ -183,7 +185,7 @@ export class IAdmin {
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.HOUSEHOLD, method: RESPONSE_METHOD.CREATE }) };
         } catch (error) {
-            logger.errorAndMail({ e: error, routeName: url, functionName: "createHousehold" });
+            logger.errorAndMail({ e: error, routeName: url, functionName: "addHousehold" });
             return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
         }
     }
@@ -482,6 +484,215 @@ export class IAdmin {
             return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
         }
     }
+
+    /* ---------------------- Ingredient Price API's ---------------------- */
+    // TODO: Ingredient price will be added by store owner or someone whoes role matches to organize store
+    static async addIngredientPrice(data: any, url: string) {
+        try {
+            const isExsits = await Ingredient_Prices.findOne({ where: { ingredient_id: data.ingredient_id, store_id: data.store_id } });
+            if (isExsits) return { status: status_code.ALREADY_EXIST, message: l10n.t('ALREADY_EXISTS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE }) };
+
+            const isIngredientExsits = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
+            if (!isIngredientExsits) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+            const isStoreExsits = await Stores.findOne({ where: { store_id: data.store_id } });
+            if (!isStoreExsits) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.STORE }) };
+
+            await Ingredient_Prices.create({ ingredient_id: data.ingredient_id, store_id: data.store_id, price: data.price, unit: data.unit, last_updated: data.last_updated });
+
+            return { status: status_code.CREATED, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE, method: RESPONSE_METHOD.CREATE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "addIngredientPrice" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async getIngredientPrice(data: any, url: string) {
+        try {
+
+            if (data.price_id) {
+                const ingredientPriceData = await Ingredient_Prices.findOne({
+                    where: { price_id: data.price_id },
+                    include: [
+                        {
+                            model: Ingredients,
+                            attributes: ['ingredient_id', 'name', 'category_id'],
+                            include: [
+                                {
+                                    model: Ingredient_Categories,
+                                    attributes: ['category_id', 'category_name']
+                                }
+                            ]
+                        },
+                        {
+                            model: Stores,
+                            attributes: ['store_id', 'store_name', 'address', 'rating']
+                        },
+                    ]
+                });
+
+                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE, method: RESPONSE_METHOD.READ }), data: ingredientPriceData };
+            }
+
+            const page = +data.page || 1;
+            const limit = +data.limit || 10;
+            const search = data.search;
+
+            let ingredientCondition = {
+                model: Ingredients,
+                attributes: ['ingredient_id', 'name', 'category_id'],
+                include: [
+                    {
+                        model: Ingredient_Categories,
+                        attributes: ['category_id', 'category_name']
+                    }
+                ]
+            }
+            if (search) ingredientCondition['where'] = { name: { [Op.iLike]: `%${search}%` } };
+
+            let ingredientPriceData = await Ingredient_Prices.findAndCountAll({
+                include: [
+                    ingredientCondition,
+                    {
+                        model: Stores,
+                        attributes: ['store_id', 'store_name', 'address', 'rating']
+                    },
+                ],
+                offset: (page - 1) * limit,
+                limit: limit,
+                order: [['createdAt', 'DESC']],
+            });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE, method: RESPONSE_METHOD.READ }), count: ingredientPriceData.count, data: ingredientPriceData.rows };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "getIngredientPrice" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async updateIngredientPrice(data: any, url: string) {
+        try {
+            let updateDataObj = {};
+            if (data.ingredient_id) {
+                const ingredientData = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
+                if (!ingredientData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+                updateDataObj['ingredient_id'] = data.ingredient_id;
+            }
+
+            if (data.store_id) {
+                const isStoreExsits = await Stores.findOne({ where: { store_id: data.store_id } });
+                if (!isStoreExsits) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.STORE }) };
+
+                updateDataObj['store_id'] = data.store_id;
+            }
+
+            updateDataObj['price'] = data.price;
+            updateDataObj['unit'] = data.unit;
+            updateDataObj['last_updated'] = data.last_updated;
+
+            await Ingredient_Prices.update(updateDataObj, { where: { price_id: data.price_id } });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE, method: RESPONSE_METHOD.UPDATE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "updateIngredientPrice" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async deleteIngredientPrice(data: any, url: string) {
+        try {
+            await Ingredient_Prices.destroy({ where: { price_id: data.price_id } });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT + ' ' + MODULE_NAME.PRICE, method: RESPONSE_METHOD.DELETE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "deleteIngredientPrice" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    /* ---------------------- Ingredient API's ---------------------- */
+    static async addIngredient(data: any, url: string) {
+        try {
+            const isExsits = await Ingredients.findOne({ where: { name: { [Op.iLike]: `%${data.name}%` } } });
+            if (isExsits) return { status: status_code.ALREADY_EXIST, message: l10n.t('ALREADY_EXISTS', { key: MODULE_NAME.INGREDIENT }) };
+
+            const isCategoryExsits = await Ingredient_Categories.findOne({ where: { category_id: data.category_id } });
+            if (!isCategoryExsits) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.CATEGORY }) };
+
+            await Ingredients.create({ name: data.name, category_id: data.category_id });
+
+            return { status: status_code.CREATED, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.CREATE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "addIngredient" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async getIngredient(data: any, url: string) {
+        try {
+            if (data.ingredient_id) {
+                const ingredientData = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
+                if (!ingredientData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.READ }), data: ingredientData };
+            }
+
+            const page = +data.page || 1;
+            const limit = +data.limit || 10;
+            const search = data.search;
+            const condition: any = {
+                offset: (page - 1) * limit,
+                limit: limit,
+                order: [['createdAt', 'DESC']],
+            };
+
+            if (search) condition['where'] = { name: { [Op.iLike]: `%${search}%` } };
+
+            let ingredientData = await Ingredients.findAndCountAll(condition);
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.READ }), count: ingredientData.count, data: ingredientData.rows };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "getIngredient" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async updateIngredient(data: any, url: string) {
+        try {
+            const ingredientData = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
+            if (!ingredientData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+            let updateData = { name: data.name };
+            if (data.category_id != ingredientData.category_id) {
+                const categoryData = await Ingredient_Categories.findOne({ where: { category_id: data.category_id } });
+                if (!categoryData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.CATEGORY }) };
+
+                updateData['category_id'] = data.category_id;
+            }
+            await Ingredients.update(updateData, { where: { ingredient_id: data.ingredient_id } });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.UPDATE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "updateIngredient" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async deleteIngredient(data: any, url: string) {
+        try {
+            const ingredientData = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
+            if (!ingredientData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+            await Ingredients.destroy({ where: { ingredient_id: data.ingredient_id } });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.DELETE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "deleteIngredient" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
 
 
     static async isAdmin(url: string) {

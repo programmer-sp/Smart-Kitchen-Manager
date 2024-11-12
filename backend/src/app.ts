@@ -5,8 +5,6 @@ import helmet from 'helmet';
 import loaders from './common/loaders';
 import logger from './common/loaders/logger';
 import * as l10n from 'jm-ez-l10n';
-import fs from 'fs';
-import https from 'https';
 
 async function startServer() {
 	const app = express();
@@ -19,13 +17,7 @@ async function startServer() {
 
 	app.use(helmet());
 
-	// Load SSL certificates
-	const options = {
-		key: fs.readFileSync("server.key"),
-		cert: fs.readFileSync("server.cert"),
-	};
-
-	https.createServer(options, app).listen(config.PORT, (err?: any) => {
+	app.listen(config.PORT, (err?: any) => {
 		if (err) {
 			logger.info(err);
 			process.exit(1);
