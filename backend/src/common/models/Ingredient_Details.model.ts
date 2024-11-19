@@ -1,4 +1,9 @@
 import { Schema, model } from 'mongoose';
+import config from "../config";
+
+export const getBucketURL = (value: any) => {
+    return value && value !== '' ? `${config.S3_BUCKET_URL}${value}` : '';
+};
 
 const ingredientSchema: Schema = new Schema(
     {
@@ -22,6 +27,7 @@ const ingredientSchema: Schema = new Schema(
         },
         image_url: {
             type: String,
+            get: getBucketURL,
         },
         nutritional_info: {
             type: JSON

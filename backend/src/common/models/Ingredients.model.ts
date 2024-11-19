@@ -1,5 +1,4 @@
-import { BuildOptions, DataTypes, DATE, Model, Sequelize } from "sequelize";
-import config from '../config';
+import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export interface Ingredients_Attributes {
     ingredient_id: number;
@@ -13,10 +12,6 @@ export interface Ingredients_Model extends Model<Ingredients_Attributes>, Ingred
 
 export type Ingredients_Static = typeof Model & {
     new(values?: object, options?: BuildOptions): Ingredients_Model;
-};
-
-export const getImageUrlOfBucket = (value: any) => {
-    return value && value !== '' ? `${config.ASSETS_URL}${value}` : '';
 };
 
 export function Ingredients_Factory(sequelize: Sequelize): Ingredients_Static {

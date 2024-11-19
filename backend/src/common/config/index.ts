@@ -76,7 +76,13 @@ export default {
 	/* API configs */
 	API_PREFIX: '/',
 
-	/* Base Url for Images */
-	ASSETS_URL: `https://${process.env.S3_ASSETS_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/`,
-	IMAGE_URL: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/`,
+	/* S3 Credentials */
+	S3_BUCKET_NAME: process.env.S3_BUCKET_NAME,
+	S3_SECRET: process.env.S3_SECRET,
+	S3_ACCESS_KEY: process.env.S3_ACCESS_KEY,
+	S3_REGION: process.env.S3_REGION,
+	S3_INGD_FOLDER: process.env.S3_INGD_FOLDER,
+
+	/* S3 URL's */
+	S3_BUCKET_URL: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/`,
 };

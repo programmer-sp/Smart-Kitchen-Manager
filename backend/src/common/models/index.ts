@@ -13,9 +13,9 @@ import { User_Recipe_History_Factory } from '../models/User_Recipe_History.model
 import { Recipes_Factory } from '../models/Recipes.model';
 import { Stores_Factory } from '../models/Stores.model';
 
-// dbConfig.sync({}).then(() => {
-//     console.log(`Database & tables created!`)
-// });
+/* dbConfig.sync({ force: true }).then(() => {
+    console.log(`Database & tables created!`)
+}); */
 
 export const Users = Users_Factory(dbConfig);
 export const Household_Ingredients = Household_Ingredients_Factory(dbConfig);
@@ -31,23 +31,23 @@ export const Recipes = Recipes_Factory(dbConfig);
 export const Stores = Stores_Factory(dbConfig);
 
 
-Household_Ingredients.hasMany(Households, { foreignKey: 'household_id', onDelete: 'CASCADE' });
-Households.belongsTo(Household_Ingredients, { foreignKey: 'household_id', onDelete: 'CASCADE' });
-Household_Ingredients.hasMany(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
-Ingredients.belongsTo(Household_Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Household_Ingredients.belongsTo(Households, { foreignKey: 'household_id', onDelete: 'CASCADE' });
+Households.hasMany(Household_Ingredients, { foreignKey: 'household_id', onDelete: 'CASCADE' });
+Household_Ingredients.belongsTo(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Ingredients.hasMany(Household_Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
 
-Household_Users.hasMany(Users, { foreignKey: 'user_id', onDelete: 'CASCADE' });
-Users.belongsTo(Household_Users, { foreignKey: 'user_id', onDelete: 'CASCADE' });
-Household_Users.hasMany(Households, { foreignKey: 'household_id', onDelete: 'CASCADE' });
-Households.belongsTo(Household_Users, { foreignKey: 'household_id', onDelete: 'CASCADE' });
+Household_Users.belongsTo(Users, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+Users.hasMany(Household_Users, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+Household_Users.belongsTo(Households, { foreignKey: 'household_id', onDelete: 'CASCADE' });
+Households.hasMany(Household_Users, { foreignKey: 'household_id', onDelete: 'CASCADE' });
 
-Ingredient_Prices.hasMany(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
-Ingredients.belongsTo(Ingredient_Prices, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
-Ingredient_Prices.hasMany(Stores, { foreignKey: 'store_id', onDelete: 'CASCADE' });
-Stores.belongsTo(Ingredient_Prices, { foreignKey: 'store_id', onDelete: 'CASCADE' });
+Ingredient_Prices.belongsTo(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Ingredients.hasMany(Ingredient_Prices, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Ingredient_Prices.belongsTo(Stores, { foreignKey: 'store_id', onDelete: 'CASCADE' });
+Stores.hasMany(Ingredient_Prices, { foreignKey: 'store_id', onDelete: 'CASCADE' });
 
-Ingredients.hasMany(Ingredient_Categories, { foreignKey: 'category_id', onDelete: 'CASCADE' });
-Ingredient_Categories.belongsTo(Ingredients, { foreignKey: 'category_id', onDelete: 'CASCADE' });
+Ingredients.belongsTo(Ingredient_Categories, { foreignKey: 'category_id', onDelete: 'CASCADE' });
+Ingredient_Categories.hasMany(Ingredients, { foreignKey: 'category_id', onDelete: 'CASCADE' });
 
 Recipe_Ingredients.hasMany(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
 Ingredients.belongsTo(Recipe_Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });

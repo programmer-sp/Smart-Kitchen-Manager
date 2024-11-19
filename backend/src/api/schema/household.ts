@@ -1,7 +1,7 @@
 import { celebrate, Joi } from 'celebrate';
 
 const HOUSEHOLD_SCHEMA = {
-    CREATE: celebrate({
+    ADD: celebrate({
         body: Joi.object({
             household_name: Joi.string().required().messages({
                 "string.empty": "household_name is not allowed to be empty",
@@ -24,11 +24,19 @@ const HOUSEHOLD_SCHEMA = {
             search: Joi.string().optional().messages({
                 "string.empty": "Search not allowed to be empty"
             }),
-            page: Joi.number().integer().min(1).optional().messages({
+            page: Joi.number().integer().min(1).when('household_id', {
+                is: Joi.exist(),
+                then: Joi.optional(),
+                otherwise: Joi.required()
+            }).messages({
                 "number.base": "Page must be a number",
                 "number.min": "Page must be greater than or equal to 1"
             }),
-            limit: Joi.number().integer().optional().messages({
+            limit: Joi.number().integer().when('household_id', {
+                is: Joi.exist(),
+                then: Joi.optional(),
+                otherwise: Joi.required()
+            }).messages({
                 "number.base": "Limit must be a number"
             })
         })

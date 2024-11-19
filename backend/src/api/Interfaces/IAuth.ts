@@ -168,9 +168,11 @@ export class IAuth {
                 let tokenSlug = `${REDIS_KEYS.USER_TOKEN}${data.user_id}:`;
                 let tokenExists: any = await redis.getValueByPattern({ key: tokenSlug });
                 if (tokenExists.count > 0) token = (Object.keys(tokenExists.data[0])[0]).split(':')[1];
-                else token = await generateJWTToken({ user_id: data.user_id, email: data.email, username: data.username, role: metaData.role, type: metaData.type });
+                else {
+                    token = await generateJWTToken({ user_id: data.user_id, email: data.email, username: data.username, role: metaData.role, type: metaData.type });
+                    await redis.setValue({ key: tokenSlug + token, value: true, duration: ms(config.JWT_TTL) });
+                }
 
-                await redis.setValue({ key: tokenSlug + token, value: true, duration: ms(config.JWT_TTL) });
                 return resolve(token);
             } catch (error) {
                 return reject({ e: error, routeName: "", functionName: "getUserTokens" });

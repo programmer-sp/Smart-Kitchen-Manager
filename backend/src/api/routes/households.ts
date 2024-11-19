@@ -11,7 +11,7 @@ const route = Router();
 export default (app: Router) => {
     app.use('/household', route);
 
-    route.post('/', isAuth, HOUSEHOLD_SCHEMA.CREATE, createHousehold);
+    route.post('/', isAuth, HOUSEHOLD_SCHEMA.ADD, addHousehold);
     route.get('/', isAuth, HOUSEHOLD_SCHEMA.READ, getHousehold);
     route.put('/:household_id', isAuth, HOUSEHOLD_SCHEMA.UPDATE, updateHousehold);
     route.delete('/', isAuth, HOUSEHOLD_SCHEMA.DELETE, deleteHousehold);
@@ -22,7 +22,7 @@ export default (app: Router) => {
     route.get('/user', isAuth, HOUSEHOLD_SCHEMA.READ_USER, getHouseholdUser);
     route.put('/user/:household_user_id', isAuth, HOUSEHOLD_SCHEMA.UPDATE_USER, updateHouseholdUser);
     route.delete('/user', isAuth, HOUSEHOLD_SCHEMA.DELETE_USER, deleteHouseholdUser);
-    route.patch('/user/:household_id', isAuth, HOUSEHOLD_SCHEMA.PATCH_USER, activeInactiveHouseholdUser);
+    route.patch('/user/:household_user_id', isAuth, HOUSEHOLD_SCHEMA.PATCH_USER, activeInactiveHouseholdUser);
 
     // Household Ingredient api's
     route.post('/ingredient', isAuth, HOUSEHOLD_SCHEMA.ADD_INGREDIENT, addHouseholdIngd);
@@ -31,10 +31,10 @@ export default (app: Router) => {
     route.delete('/ingredient', isAuth, HOUSEHOLD_SCHEMA.DELETE_INGREDIENT, deleteHouseholdIngd);
 };
 
-async function createHousehold(req: any, res: Response) {
+async function addHousehold(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.body;
-    IHouseholds.createHousehold(data, url)
+    IHouseholds.addHousehold(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

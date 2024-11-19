@@ -100,3 +100,5 @@ export const EMAIL_CONSTANTS: object = {
   privacyPolicy: `javascript:void(0);`,
   termsCondition: `javascript:void(0);`,
 };
+
+export const RESTRICTED_USER = ['guest', 'content creator', 'viewer'];
