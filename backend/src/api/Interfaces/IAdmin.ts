@@ -18,7 +18,8 @@ import {
     Ingredient_Prices,
     Ingredients,
     Recipes,
-    Recipe_Ingredients
+    Recipe_Ingredients,
+    User_Ratings
 } from '../../common/models/index';
 import ingredientModel from '../../common/models/Ingredient_Details.model';
 import recipeModel from '../../common/models/Recipe_Details.model';
@@ -1156,6 +1157,55 @@ export class IAdmin {
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.DELETE }) };
         } catch (error) {
             logger.errorAndMail({ e: error, routeName: url, functionName: "deleteRecipeDetail" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    /* ---------------------- Recipe Rating API's ---------------------- */
+    static async getRecipeRating(data: any, url: string) {
+        try {
+            if (data.rating_id) {
+                const recipeRatingData = await User_Ratings.findOne({
+                    where: { rating_id: data.rating_id },
+                    include: [
+                        {
+                            model: Users,
+                            attributes: ['username', 'role', 'email'],
+                        },
+                        {
+                            model: Recipes,
+                            attributes: ['recipe_name', 'cuisine', 'system_rating']
+                        }
+                    ]
+                });
+                if (!recipeRatingData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE_RATING }) };
+
+                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_RATING, method: RESPONSE_METHOD.READ }), data: recipeRatingData };
+            }
+
+            const page = +data.page || 1;
+            const limit = +data.limit || 10;
+
+            const recipeRatingData = await User_Ratings.findAndCountAll({
+                attributes: ['recipe_id', 'rating_id', 'user_id', 'rating'],
+                include: [
+                    {
+                        model: Users,
+                        attributes: ['username', 'role', 'email'],
+                    },
+                    {
+                        model: Recipes,
+                        attributes: ['recipe_name', 'cuisine', 'system_rating']
+                    }
+                ],
+                offset: (page - 1) * limit,
+                limit: limit,
+                order: data.rating_filter ? [['rating', data.rating_filter]] : [['createdAt', 'DESC']],
+            });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_RATING, method: RESPONSE_METHOD.READ }), count: recipeRatingData.count, data: recipeRatingData.rows };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "getRecipeRating" });
             return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
         }
     }

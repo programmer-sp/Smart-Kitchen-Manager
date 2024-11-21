@@ -13,6 +13,7 @@ export default (app: Router) => {
 
     route.get('/', isAuth, RECIPE_SCHEMA.READ, getRecipe);
     route.get('/ingredient', isAuth, RECIPE_SCHEMA.READ_INGREDIENT, getRecipeIngd);
+    route.post('/rating', isAuth, RECIPE_SCHEMA.ADD_RECIPE_RATING, addRecipeRating);
 };
 
 async function getRecipe(req: any, res: Response) {
@@ -32,6 +33,19 @@ async function getRecipeIngd(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.query;
     IRecipe.getRecipeIngd(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function addRecipeRating(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.body;
+    IRecipe.addRecipeRating(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

@@ -428,7 +428,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.createTable('User_Rating', {
+    await queryInterface.createTable('User_Ratings', {
       rating_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -475,7 +475,7 @@ module.exports = {
     await queryInterface.dropTable('Household_Users');
     await queryInterface.dropTable('Household_Ingredients');
     await queryInterface.dropTable('Ingredient_Prices');
-    await queryInterface.dropTable('User_Rating');
+    await queryInterface.dropTable('User_Ratings');
     await queryInterface.dropTable('User_Recipe_History');
     await queryInterface.dropTable('Recipe_Ingredients');
     await queryInterface.dropTable('Ingredients');

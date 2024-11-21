@@ -22,7 +22,8 @@ export enum MODULE_NAME {
   PRICE = 'Price',
   STORE = 'Store',
   RECIPE = 'Recipe',
-  RECIPE_DETAIL = 'Recipe detail'
+  RECIPE_DETAIL = 'Recipe detail',
+  RECIPE_RATING = 'Recipe rating'
 };
 
 export const BACKEND_SLUGS = {

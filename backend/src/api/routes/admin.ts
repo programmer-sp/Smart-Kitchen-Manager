@@ -80,6 +80,9 @@ export default (app: Router) => {
     route.put('/update-recipe-detail/:recipe_id', adminAuth, isAuth, multipartMiddleware, ADMIN_SCHEMA.ADD_RECIPE_DETAIL, updateRecipeDetail);
     route.delete('/delete-recipe-detail', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_RECIPE_DETAIL, deleteRecipeDetail);
 
+    /* ---------------------- Recipe Rating API's ---------------------- */
+    route.get('/get-recipe-rating', adminAuth, isAuth, ADMIN_SCHEMA.READ_RECIPE_RATING, getRecipeRating);
+
     // -------------------------------------------------------- for backend use only
     route.get('/get-pattern-data', getDataByPattern);
     route.get('/unwrap-token', unwrapToken);
@@ -630,6 +633,19 @@ async function deleteRecipeDetail(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.query;
     IAdmin.deleteRecipeDetail(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function getRecipeRating(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.getRecipeRating(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

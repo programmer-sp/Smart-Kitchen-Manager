@@ -17,7 +17,7 @@ export type User_Ratings_Static = typeof Model & {
 };
 
 export function User_Ratings_Factory(sequelize: Sequelize): User_Ratings_Static {
-    return <User_Ratings_Static>sequelize.define('User_Rating', {
+    return <User_Ratings_Static>sequelize.define('User_Ratings', {
         rating_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

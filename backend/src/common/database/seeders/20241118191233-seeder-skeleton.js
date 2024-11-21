@@ -107,12 +107,19 @@ module.exports = {
     await queryInterface.sequelize.query(
       `ALTER SEQUENCE "Recipe_Ingredients_recipe_ingredient_id_seq" RESTART WITH ${RecipeIngdData.length + 1}`,
     );
+
+    await queryInterface.bulkInsert('User_Ratings', RecipeIngdData, {});
+
+    await queryInterface.sequelize.query(
+      `ALTER SEQUENCE "User_Ratings_rating_id_seq" RESTART WITH ${RecipeRatingData.length + 1}`,
+    );
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Household_Ingredients', null, {});
     await queryInterface.bulkDelete('Household_Users', null, {});
     await queryInterface.bulkDelete('Households', null, {});
+    await queryInterface.bulkDelete('User_Ratings', null, {});
     await queryInterface.bulkDelete('Users', null, {});
     await queryInterface.bulkDelete('Ingredient_Prices', null, {});
     await queryInterface.bulkDelete('Recipe_Ingredients', null, {});
@@ -582,4 +589,16 @@ const RecipeIngdData = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
+];
+
+const RecipeRatingData = [
+  {
+    rating_id: 1,
+    user_id: 2,
+    recipe_id: 1,
+    rating: 4,
+    review: 'My favourite dish of all time',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }
 ];

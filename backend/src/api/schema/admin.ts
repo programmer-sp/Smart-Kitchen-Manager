@@ -731,6 +731,27 @@ const ADMIN_SCHEMA = {
             })
         })
     }),
+    READ_RECIPE_RATING: celebrate({
+        query: Joi.object({
+            rating_id: Joi.number().integer().optional().messages({
+                "number.empty": "rating_id is not allowed to be empty",
+                "number.base": "rating_id must be a number"
+            }),
+            page: Joi.number().integer().min(1).optional().messages({
+                "number.base": "Page must be a number",
+                "number.min": "Page must be greater than or equal to 1"
+            }),
+            limit: Joi.number().integer().optional().messages({
+                "number.base": "Limit must be a number"
+            }),
+            rating_filter: Joi.string().optional().valid('asc', 'desc', 'ASC', 'DESC').uppercase().messages({
+                "string.empty": "rating_filter is not allowed to be empty",
+                "string.base": "rating_filter must be a string",
+                "any.only": "rating_filter should be asc or desc",
+                "any.required": "rating_filter is required"
+            }),
+        })
+    }),
 };
 
 export { ADMIN_SCHEMA };

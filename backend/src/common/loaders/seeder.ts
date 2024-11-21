@@ -3,6 +3,7 @@ import config from '../config';
 import logger from '../loaders/logger';
 import ingredientModel from '../models/Ingredient_Details.model';
 import recipeModel from '../../common/models/Recipe_Details.model';
+import recipeRatingModel from '../../common/models/Recipe_Rating.model';
 
 const mongoUri = `mongodb://${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}`;  //for local database
 /* let mongoUri;
@@ -27,6 +28,9 @@ const seed = async () => {
 
     await recipeModel.deleteMany({});
     await recipeModel.insertMany(recipeData);
+
+    await recipeRatingModel.deleteMany({});
+    await recipeRatingModel.insertMany(recipeRatingData);
 };
 
 seed().then(() => {
@@ -184,5 +188,15 @@ const recipeData = [
             "https://smart-kitchen-helper.s3.ca-central-1.amazonaws.com/recipes/1732134525579.png"
         ],
         video_url: "https://smart-kitchen-helper.s3.ca-central-1.amazonaws.com/recipes/1732134525728.mp4",
+    }
+];
+
+const recipeRatingData = [
+    {
+        rating_id: 1,
+        user_id: 2,
+        recipe_id: 1,
+        rating: 1,
+        review: "My favourite dish of all time",
     }
 ];
