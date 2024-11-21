@@ -11,7 +11,8 @@
     "start:db:migration": "npx sequelize-cli db:migrate --env development",
     "undo:db:migration": "npx sequelize-cli db:migrate:undo",
     "start:db:seeder": "npx sequelize-cli db:seed:all --env development",
-    "undo:db:seeder": "npx sequelize-cli db:seed:undo:all"
+    "undo:db:seeder": "npx sequelize-cli db:seed:undo:all",
+    "seeder": "nodemon ./src/common/loaders/seeder.ts"
   },
   "author": "Sagar Parmar",
   "license": "ISC",

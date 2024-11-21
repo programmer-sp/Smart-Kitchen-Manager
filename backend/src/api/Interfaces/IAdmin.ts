@@ -7,6 +7,7 @@ import logger from '../../common/loaders/logger';
 import { uploadFile, deleteFile } from '../../common/loaders/multer';
 import status_code from '../../common/utils/statusCode';
 import { redis } from '../../common/services/redis';
+import { isArrayOrObject } from '../../common/services/Helper';
 import { setEncrypt } from '../../common/models/Users.model';
 import {
     Users,
@@ -20,6 +21,7 @@ import {
     Recipe_Ingredients
 } from '../../common/models/index';
 import ingredientModel from '../../common/models/Ingredient_Details.model';
+import recipeModel from '../../common/models/Recipe_Details.model';
 import { dynamicMailer } from '../../common/services/dynamicMailer';
 import { MODULE_NAME, RESPONSE_METHOD, REDIS_KEYS } from '../../common/utils/Constants';
 
@@ -501,7 +503,7 @@ export class IAdmin {
     }
 
     /* ---------------------- Ingredient Price API's ---------------------- */
-    // TODO: Ingredient price will be added by store owner or someone whoes role matches to organize store
+    // TODO: Ingredient price will be added by store owner or someone who's role matches to organize store
     static async addIngredientPrice(data: any, url: string) {
         try {
             const isExsits = await Ingredient_Prices.findOne({ where: { ingredient_id: data.ingredient_id, store_id: data.store_id } });
@@ -652,6 +654,8 @@ export class IAdmin {
 
             const ingdData = await Ingredients.create({ name: data.name, category_id: data.category_id });
 
+            if (!data.image) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT + ' image' }) };
+
             const uploadImage: any = await uploadFile(config.S3_INGD_FOLDER, data.image, 'public');
             await ingredientModel.create({
                 ingredient_id: ingdData.ingredient_id,
@@ -773,7 +777,8 @@ export class IAdmin {
                 recipe_name: data.recipe_name,
                 cuisine: data.cuisine,
                 preparation_time: data.preparation_time,
-                expiration_date: data.expiration_date
+                expiration_date: data.expiration_date,
+                system_rating: data.system_rating
             });
 
             return { status: status_code.CREATED, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE, method: RESPONSE_METHOD.CREATE }) };
@@ -796,14 +801,17 @@ export class IAdmin {
             const limit = +data.limit || 10;
             const search = data.search;
             const condition: any = {
+                attributes: ['recipe_id', 'recipe_name', 'cuisine', 'system_rating', 'is_rated'],
                 offset: (page - 1) * limit,
                 limit: limit,
-                order: [['createdAt', 'DESC']],
+                order: data.rating_filter ? [['system_rating', data.rating_filter]] : [['createdAt', 'DESC']],
             };
 
             if (search) condition['where'] = {
-                recipe_name: { [Op.iLike]: `%${search}%` },
-                cuisine: { [Op.iLike]: `%${search}%` }
+                [Op.or]: [
+                    { recipe_name: { [Op.iLike]: `%${search}%` } },
+                    { cuisine: { [Op.iLike]: `%${search}%` } }
+                ]
             };
             const recipeData = await Recipes.findAndCountAll(condition);
 
@@ -823,10 +831,7 @@ export class IAdmin {
             if (data.recipe_name) updateDataObj['recipe_name'] = data.recipe_name;
             if (data.cuisine) updateDataObj['cuisine'] = data.cuisine;
             if (data.preparation_time) updateDataObj['preparation_time'] = data.preparation_time;
-            if (data.system_rating) {
-                updateDataObj['system_rating'] = data.system_rating;
-                updateDataObj['is_rated'] = true;
-            }
+            if (data.system_rating) updateDataObj['system_rating'] = data.system_rating;
             if (data.expiration_date) updateDataObj['expiration_date'] = data.expiration_date;
 
             await Recipes.update(updateDataObj, { where: { recipe_id: data.recipe_id } });
@@ -878,12 +883,53 @@ export class IAdmin {
     static async getRecipeIngd(data: any, url: string) {
         try {
             if (data.recipe_ingredient_id) {
-                const recipeIngdData = await Recipe_Ingredients.findOne({ where: { recipe_ingredient_id: data.recipe_ingredient_id } });
+                const recipeIngdData = await Recipe_Ingredients.findOne({
+                    where: { recipe_ingredient_id: data.recipe_ingredient_id },
+                    attributes: ['recipe_id', 'ingredient_id', 'quantity', 'unit'],
+                    include: [
+                        {
+                            model: Recipes,
+                            attributes: ['recipe_name', 'cuisine', 'preparation_time', 'system_rating', 'expiration_date']
+                        },
+                        {
+                            model: Ingredients,
+                            attributes: ['name', 'category_id'],
+                            include: [
+                                {
+                                    model: Ingredient_Categories,
+                                    attributes: ['category_name']
+                                }
+                            ]
+                        }
+                    ]
+                });
                 if (!recipeIngdData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE + ' ' + MODULE_NAME.INGREDIENT }) };
 
                 return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE + ' ' + MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.READ }), data: recipeIngdData };
+
             } else if (data.recipe_id) {
-                const recipeIngdData = await Recipe_Ingredients.findOne({ where: { recipe_id: data.recipe_id } });
+                const recipeIngdData = await Recipes.findOne({
+                    where: { recipe_id: data.recipe_id },
+                    attributes: ['recipe_name', 'cuisine', 'preparation_time', 'system_rating', 'expiration_date'],
+                    include: [
+                        {
+                            model: Recipe_Ingredients,
+                            attributes: ['recipe_id', 'ingredient_id', 'quantity', 'unit'],
+                            include: [
+                                {
+                                    model: Ingredients,
+                                    attributes: ['name', 'category_id'],
+                                    include: [
+                                        {
+                                            model: Ingredient_Categories,
+                                            attributes: ['category_name']
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                });
                 if (!recipeIngdData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE + ' ' + MODULE_NAME.INGREDIENT }) };
 
                 return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE + ' ' + MODULE_NAME.INGREDIENT, method: RESPONSE_METHOD.READ }), data: recipeIngdData };
@@ -911,19 +957,21 @@ export class IAdmin {
             const recipeIngdData = await Recipe_Ingredients.findOne({ where: { recipe_ingredient_id: data.recipe_ingredient_id } });
             if (!recipeIngdData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE + ' ' + MODULE_NAME.INGREDIENT }) };
 
-            if (recipeIngdData.recipe_id != data.recipe_id) {
+            let updateDataObj = {};
+            if (data.recipe_id && recipeIngdData.recipe_id != data.recipe_id) {
                 const recipeData = await Recipes.findOne({ where: { recipe_id: data.recipe_id } });
                 if (!recipeData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE }) };
+
+                updateDataObj['recipe_id'] = data.recipe_id;
             }
 
-            if (recipeIngdData.ingredient_id != data.ingredient_id) {
+            if (data.ingredient_id && recipeIngdData.ingredient_id != data.ingredient_id) {
                 const ingredientData = await Ingredients.findOne({ where: { ingredient_id: data.ingredient_id } });
                 if (!ingredientData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.INGREDIENT }) };
+
+                updateDataObj['ingredient_id'] = data.ingredient_id;
             }
 
-            let updateDataObj = {};
-            if (data.recipe_id) updateDataObj['recipe_id'] = data.recipe_id;
-            if (data.ingredient_id) updateDataObj['ingredient_id'] = data.ingredient_id;
             if (data.quantity) updateDataObj['quantity'] = data.quantity;
             if (data.unit) updateDataObj['unit'] = data.unit;
 
@@ -950,6 +998,167 @@ export class IAdmin {
         }
     }
 
+    /* ---------------------- Recipe Detail API's ---------------------- */
+    static async addRecipeDetail(data: any, url: string) {
+        try {
+            let recipeData: any = await Recipes.findOne({
+                where: { recipe_id: data.recipe_id },
+                attributes: ['recipe_id', 'recipe_name', 'cuisine', 'preparation_time', 'system_rating', 'expiration_date', 'is_rated'],
+                include: [
+                    {
+                        model: Recipe_Ingredients,
+                        attributes: ['recipe_ingredient_id', 'recipe_id', 'ingredient_id', 'quantity', 'unit'],
+                        include: [
+                            {
+                                model: Ingredients,
+                                attributes: ['ingredient_id', 'name', 'category_id']
+                            }
+                        ]
+                    }
+                ]
+            });
+            if (!recipeData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE }) };
+            else recipeData = recipeData.toJSON();
+
+            const ingredientArr = [];
+            for (let i = 0; i < recipeData.Recipe_Ingredients.length; i++) {
+                ingredientArr.push({
+                    recipe_ingredient_id: recipeData.Recipe_Ingredients[i].recipe_ingredient_id,
+                    recipe_id: recipeData.Recipe_Ingredients[i].recipe_id,
+                    ingredient_id: recipeData.Recipe_Ingredients[i].ingredient_id,
+                    quantity: recipeData.Recipe_Ingredients[i].quantity,
+                    unit: recipeData.Recipe_Ingredients[i].unit,
+                    ingredient_name: recipeData.Recipe_Ingredients[i].Ingredient?.name,
+                    ingredient_category_id: recipeData.Recipe_Ingredients[i].Ingredient?.category_id,
+                });
+            }
+
+            let ingdDetailData: any = {
+                recipe_id: recipeData.recipe_id,
+                recipe_name: recipeData.recipe_name,
+                cuisine: recipeData.cuisine,
+                preparation_time: recipeData.preparation_time,
+                system_rating: recipeData.system_rating,
+                is_rated: recipeData.is_rated,
+                expiration_date: recipeData.expiration_date,
+                ingredients: ingredientArr,
+                steps: data.steps?.replace(/,\s+/g, ',').split(','),
+                images: []
+            };
+
+            if (data.image) {
+                const checkTypeOfObj = await isArrayOrObject(data.image);
+                if (checkTypeOfObj == 'Object') {
+                    const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.image, 'public');
+                    ingdDetailData.images.push(uploadImage.url);
+                } else if (checkTypeOfObj == 'Array') {
+                    for (let i = 0; i < data.image.length; i++) {
+                        const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.image[i], 'public');
+                        ingdDetailData.images.push(uploadImage.url);
+                    }
+                }
+            } else delete ingdDetailData.images;
+
+            if (data.video_url) ingdDetailData.video_url = data.video_url;
+            else if (data.video) {
+                const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.video, 'public');
+                ingdDetailData.video_url = uploadImage.url;
+            }
+
+            await recipeModel.create(ingdDetailData);
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.ADDED }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "addRecipeDetail" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async getRecipeDetail(data: any, url: string) {
+        try {
+            if (data.recipe_id) {
+                const recipeDetailData = await recipeModel.findOne({ recipe_id: data.recipe_id });
+                if (!recipeDetailData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE_DETAIL }) };
+
+                return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.READ }), data: recipeDetailData };
+            }
+
+            const limit = data.limit ? +data.limit : 10
+            const page = data.page ? (+data.page - 1) * limit : 0;
+
+            let condition: any = { recipe_id: { $ne: null } };
+            if (data.search) condition.$or = [
+                { recipe_name: { $regex: new RegExp(data.search, "i") } },
+                { cuisine: { $regex: new RegExp(data.search, "i") } },
+            ];
+
+            const recipeIngdData = await recipeModel.find(condition).sort({ createdAt: -1 }).skip(page).limit(limit);
+            const totalRecipeData = await recipeModel.countDocuments(condition);
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.READ }), count: totalRecipeData, data: recipeIngdData };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "getRecipeDetail" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async updateRecipeDetail(data: any, url: string) {
+        try {
+            const recipeDetailData = await recipeModel.findOne({ recipe_id: data.recipe_id });
+            if (!recipeDetailData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE_DETAIL }) };
+
+            let ingdDetailData: any = { '$push': { images: [] } };
+            if (data.steps) ingdDetailData.steps = data.steps?.replace(/,\s+/g, ',').split(',');
+
+            if (data.image) {
+                const checkTypeOfObj = await isArrayOrObject(data.image);
+                if (checkTypeOfObj == 'Object') {
+                    const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.image, 'public');
+                    ingdDetailData['$push']['images'].push(uploadImage.url);
+                } else if (checkTypeOfObj == 'Array') {
+                    for (let i = 0; i < data.image.length; i++) {
+                        const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.image[i], 'public');
+                        ingdDetailData['$push']['images'].push(uploadImage.url);
+                    }
+                }
+            } else delete ingdDetailData['$push'];
+
+            if (data.video_url) ingdDetailData.video_url = data.video_url;
+            else if (data.video) {
+                const uploadImage: any = await uploadFile(config.S3_RECIPE_FOLDER, data.video, 'public');
+                ingdDetailData.video_url = uploadImage.url;
+            }
+
+            await recipeModel.updateOne({ recipe_id: data.recipe_id }, ingdDetailData, { upsert: true });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.UPDATE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "updateRecipeDetail" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
+
+    static async deleteRecipeDetail(data: any, url: string) {
+        try {
+            const recipeDetailData = await recipeModel.findOne({ recipe_id: data.recipe_id });
+            if (!recipeDetailData) return { status: status_code.NOTFOUND, message: l10n.t('NOT_FOUND', { key: MODULE_NAME.RECIPE_DETAIL }) };
+
+            /* Delete images uploaded into s3 bucket */
+            for (const image of recipeDetailData.images || []) {
+                await deleteFile(image.replace(config.S3_BUCKET_URL, ''));
+            }
+
+            /* Delete video uploaded into s3 bucket */
+            if (recipeDetailData.video_url.includes(config.S3_BUCKET_NAME)) deleteFile(recipeDetailData.video_url.replace(config.S3_BUCKET_URL, ''));
+
+            await recipeModel.deleteOne({ recipe_id: data.recipe_id });
+
+            return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE_DETAIL, method: RESPONSE_METHOD.DELETE }) };
+        } catch (error) {
+            logger.errorAndMail({ e: error, routeName: url, functionName: "deleteRecipeDetail" });
+            return { status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') };
+        }
+    }
 
 
     static async isAdmin(url: string) {

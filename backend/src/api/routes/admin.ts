@@ -69,10 +69,16 @@ export default (app: Router) => {
     route.delete('/delete-recipe', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_RECIPE, deleteRecipe);
 
     /* ---------------------- Recipe Ingredient API's ---------------------- */
-    route.post('/ingredient', adminAuth, isAuth, ADMIN_SCHEMA.ADD_RECIPE_INGREDIENT, addRecipeIngd);
-    route.get('/ingredient', adminAuth, isAuth, ADMIN_SCHEMA.READ_RECIPE_INGREDIENT, getRecipeIngd);
-    route.put('/:recipe_ingredient_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_RECIPE_INGREDIENT, updateRecipeIngd);
-    route.delete('/', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_RECIPE_INGREDIENT, deleteRecipeIngd);
+    route.post('/add-recipe-ingd', adminAuth, isAuth, ADMIN_SCHEMA.ADD_RECIPE_INGREDIENT, addRecipeIngd);
+    route.get('/get-recipe-ingd', adminAuth, isAuth, ADMIN_SCHEMA.READ_RECIPE_INGREDIENT, getRecipeIngd);
+    route.put('/update-recipe-ingd/:recipe_ingredient_id', adminAuth, isAuth, ADMIN_SCHEMA.UPDATE_RECIPE_INGREDIENT, updateRecipeIngd);
+    route.delete('/delete-recipe-ingd', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_RECIPE_INGREDIENT, deleteRecipeIngd);
+
+    /* ---------------------- Recipe Detail API's ---------------------- */
+    route.post('/add-recipe-detail', adminAuth, isAuth, multipartMiddleware, ADMIN_SCHEMA.ADD_RECIPE_DETAIL, addRecipeDetail);
+    route.get('/get-recipe-detail', adminAuth, isAuth, ADMIN_SCHEMA.READ_RECIPE_DETAIL, getRecipeDetail);
+    route.put('/update-recipe-detail/:recipe_id', adminAuth, isAuth, multipartMiddleware, ADMIN_SCHEMA.ADD_RECIPE_DETAIL, updateRecipeDetail);
+    route.delete('/delete-recipe-detail', adminAuth, isAuth, ADMIN_SCHEMA.DELETE_RECIPE_DETAIL, deleteRecipeDetail);
 
     // -------------------------------------------------------- for backend use only
     route.get('/get-pattern-data', getDataByPattern);
@@ -551,7 +557,8 @@ async function getRecipeIngd(req: any, res: Response) {
 
 async function updateRecipeIngd(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
-    const data = req.query;
+    let data = req.body;
+    data['recipe_ingredient_id'] = req.params.recipe_ingredient_id;
     IAdmin.updateRecipeIngd(data, url)
         .then(response => {
             res.status(response.status).json(response);
@@ -566,6 +573,63 @@ async function deleteRecipeIngd(req: any, res: Response) {
     const url = req.protocol + '://' + req.hostname + req.originalUrl;
     const data = req.query;
     IAdmin.deleteRecipeIngd(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function addRecipeDetail(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    let data = req.body;
+    data.image = req.files.images;
+    data.video = req.files.video;
+    IAdmin.addRecipeDetail(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function getRecipeDetail(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.getRecipeDetail(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function updateRecipeDetail(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    let data = req.body;
+    data['recipe_id'] = req.params.recipe_id;
+    data.image = req.files.images;
+    data.video = req.files.video;
+    IAdmin.updateRecipeDetail(data, url)
+        .then(response => {
+            res.status(response.status).json(response);
+        })
+        .catch(e => {
+            logger.errorAndMail({ e });
+            res.status(status_code.INTERNAL_SERVER_ERROR).json({ status: status_code.INTERNAL_SERVER_ERROR, message: l10n.t('SOMETHING_WENT_WRONG') });
+        });
+}
+
+async function deleteRecipeDetail(req: any, res: Response) {
+    const url = req.protocol + '://' + req.hostname + req.originalUrl;
+    const data = req.query;
+    IAdmin.deleteRecipeDetail(data, url)
         .then(response => {
             res.status(response.status).json(response);
         })

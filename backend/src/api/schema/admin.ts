@@ -510,6 +510,13 @@ const ADMIN_SCHEMA = {
                 "string.base": "expiration_date must be a string",
                 "any.required": "expiration_date is required"
             }),
+            system_rating: Joi.number().min(1).max(5).required().messages({
+                "number.empty": "system_rating is not allowed to be empty",
+                "number.base": "system_rating must be a number",
+                "number.max": "system_rating should not be more than 5",
+                "number.min": "system_rating should not be less than 1",
+                "any.required": "system_rating is required"
+            }),
         })
     }),
     READ_RECIPE: celebrate({
@@ -527,7 +534,13 @@ const ADMIN_SCHEMA = {
             }),
             limit: Joi.number().integer().optional().messages({
                 "number.base": "Limit must be a number"
-            })
+            }),
+            rating_filter: Joi.string().optional().valid('asc', 'desc', 'ASC', 'DESC').uppercase().messages({
+                "string.empty": "rating_filter is not allowed to be empty",
+                "string.base": "rating_filter must be a string",
+                "any.only": "rating_filter should be asc or desc",
+                "any.required": "rating_filter is required"
+            }),
         })
     }),
     UPDATE_RECIPE: celebrate({
@@ -555,9 +568,11 @@ const ADMIN_SCHEMA = {
                 "string.empty": "expiration_date is not allowed to be empty",
                 "string.base": "expiration_date must be a string"
             }),
-            system_rating: Joi.number().integer().optional().messages({
+            system_rating: Joi.number().min(1).max(5).optional().messages({
                 "number.empty": "system_rating is not allowed to be empty",
-                "number.base": "system_rating must be a number"
+                "number.base": "system_rating must be a number",
+                "number.max": "system_rating should not be more than 5",
+                "number.min": "system_rating should not be less than 1",
             }),
         })
     }),
@@ -649,6 +664,70 @@ const ADMIN_SCHEMA = {
                 "number.empty": "recipe_ingredient_id is not allowed to be empty",
                 "number.base": "recipe_ingredient_id must be a number",
                 "any.required": "recipe_ingredient_id is required"
+            })
+        })
+    }),
+    ADD_RECIPE_DETAIL: celebrate({
+        body: Joi.object({
+            recipe_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number",
+                "any.required": "recipe_id is required"
+            }),
+            steps: Joi.string().required().messages({
+                "string.empty": "steps is not allowed to be empty",
+                "string.base": "steps must be a string",
+                "any.required": "steps is required"
+            }),
+            video_url: Joi.string().optional().messages({
+                "string.empty": "video_url is not allowed to be empty",
+                "string.base": "video_url must be a string"
+            }),
+        }).options({ allowUnknown: true })
+    }),
+    READ_RECIPE_DETAIL: celebrate({
+        query: Joi.object({
+            recipe_id: Joi.number().integer().optional().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number"
+            }),
+            search: Joi.string().optional().messages({
+                "string.empty": "Search not allowed to be empty"
+            }),
+            page: Joi.number().integer().min(1).optional().messages({
+                "number.base": "Page must be a number",
+                "number.min": "Page must be greater than or equal to 1"
+            }),
+            limit: Joi.number().integer().optional().messages({
+                "number.base": "Limit must be a number"
+            })
+        })
+    }),
+    UPDATE_RECIPE_DETAIL: celebrate({
+        params: Joi.object({
+            recipe_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number",
+                "any.required": "recipe_id is required"
+            }),
+        }),
+        body: Joi.object({
+            steps: Joi.string().optional().messages({
+                "string.empty": "steps is not allowed to be empty",
+                "string.base": "steps must be a string"
+            }),
+            video_url: Joi.string().optional().messages({
+                "string.empty": "video_url is not allowed to be empty",
+                "string.base": "video_url must be a string"
+            }),
+        }).options({ allowUnknown: true })
+    }),
+    DELETE_RECIPE_DETAIL: celebrate({
+        query: Joi.object({
+            recipe_id: Joi.number().integer().required().messages({
+                "number.empty": "recipe_id is not allowed to be empty",
+                "number.base": "recipe_id must be a number",
+                "any.required": "recipe_id is required"
             })
         })
     }),

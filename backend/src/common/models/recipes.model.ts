@@ -41,7 +41,8 @@ export function Recipes_Factory(sequelize: Sequelize): Recipes_Static {
             type: DataTypes.DATE
         },
         is_rated: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     }, {
         timestamps: true

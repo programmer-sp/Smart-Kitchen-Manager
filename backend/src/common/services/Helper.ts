@@ -28,3 +28,14 @@ export async function InvoiceNumber(min = 0, max = 500000) {
     strNum = strNum.slice(3, strNum.length);
     return strNum.padStart(6, "0");
 }
+
+export async function isArrayOrObject(value: any) {
+    try {
+        const type = Object.prototype.toString.call(value);
+        if (type === "[object Array]") return "Array";
+        else if (type === "[object Object]") return "Object";
+        else return "Neither";
+    } catch (error) {
+        return "Neither";
+    }
+}

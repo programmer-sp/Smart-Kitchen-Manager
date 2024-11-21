@@ -95,6 +95,18 @@ module.exports = {
     await queryInterface.sequelize.query(
       `ALTER SEQUENCE "Ingredient_Prices_price_id_seq" RESTART WITH ${ingdPriceData.length + 1}`,
     );
+
+    await queryInterface.bulkInsert('Recipes', RecipeData, {});
+
+    await queryInterface.sequelize.query(
+      `ALTER SEQUENCE "Recipes_recipe_id_seq" RESTART WITH ${RecipeData.length + 1}`,
+    );
+
+    await queryInterface.bulkInsert('Recipe_Ingredients', RecipeIngdData, {});
+
+    await queryInterface.sequelize.query(
+      `ALTER SEQUENCE "Recipe_Ingredients_recipe_ingredient_id_seq" RESTART WITH ${RecipeIngdData.length + 1}`,
+    );
   },
 
   async down(queryInterface, Sequelize) {
@@ -103,9 +115,11 @@ module.exports = {
     await queryInterface.bulkDelete('Households', null, {});
     await queryInterface.bulkDelete('Users', null, {});
     await queryInterface.bulkDelete('Ingredient_Prices', null, {});
+    await queryInterface.bulkDelete('Recipe_Ingredients', null, {});
     await queryInterface.bulkDelete('Ingredients', null, {});
     await queryInterface.bulkDelete('Ingredient_Categories', null, {});
     await queryInterface.bulkDelete('Stores', null, {});
+    await queryInterface.bulkDelete('Recipes', null, {});
   },
 
   encryptData(data) {
@@ -515,4 +529,57 @@ const ingdPriceData = [
     createdAt: new Date(),
     updatedAt: new Date(),
   }
+];
+
+const RecipeData = [
+  {
+    recipe_id: 1,
+    recipe_name: 'Noodle',
+    cuisine: 'Chinese',
+    preparation_time: 5,
+    system_rating: 4,
+    expiration_date: '12-31-2024',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    recipe_id: 2,
+    recipe_name: 'Meggie',
+    cuisine: 'Chinese',
+    preparation_time: 5,
+    system_rating: 4,
+    expiration_date: '12-31-2024',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }
+];
+
+const RecipeIngdData = [
+  {
+    recipe_ingredient_id: 1,
+    recipe_id: 1,
+    ingredient_id: 3,
+    quantity: 1,
+    unit: 'table spoon',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    recipe_ingredient_id: 2,
+    recipe_id: 1,
+    ingredient_id: 2,
+    quantity: 1,
+    unit: 'table spoon',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    recipe_ingredient_id: 3,
+    recipe_id: 2,
+    ingredient_id: 3,
+    quantity: 1,
+    unit: 'table spoon',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
 ];

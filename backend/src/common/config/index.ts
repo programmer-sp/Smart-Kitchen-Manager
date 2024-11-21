@@ -82,6 +82,7 @@ export default {
 	S3_ACCESS_KEY: process.env.S3_ACCESS_KEY,
 	S3_REGION: process.env.S3_REGION,
 	S3_INGD_FOLDER: process.env.S3_INGD_FOLDER,
+	S3_RECIPE_FOLDER: process.env.S3_RECIPE_FOLDER,
 
 	/* S3 URL's */
 	S3_BUCKET_URL: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/`,

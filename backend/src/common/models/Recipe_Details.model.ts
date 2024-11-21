@@ -24,22 +24,21 @@ const recipeSchema: Schema = new Schema(
         },
         is_rated: {
             type: Boolean,
-            default: false,
-            require: true
+            default: false
         },
         expiration_date: {
             type: Date
         },
-        ingredients: {
+        ingredients: {      // { ingredient_id: 1, ingredient_name: abc, category_id: 1}
             type: [JSON]
         },
-        steps: {
+        steps: {            // Description of cooking food
             type: [String]
         },
-        images: {
+        images: {           // images of cooked food and other images like ingredients
             type: [String]
         },
-        video_url: {
+        video_url: {        // video url of cooked food or how to cook food (can be youtube video)
             type: String
         },
         ratings: {

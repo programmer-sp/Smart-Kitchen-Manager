@@ -49,10 +49,10 @@ Stores.hasMany(Ingredient_Prices, { foreignKey: 'store_id', onDelete: 'CASCADE' 
 Ingredients.belongsTo(Ingredient_Categories, { foreignKey: 'category_id', onDelete: 'CASCADE' });
 Ingredient_Categories.hasMany(Ingredients, { foreignKey: 'category_id', onDelete: 'CASCADE' });
 
-Recipe_Ingredients.hasMany(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
-Ingredients.belongsTo(Recipe_Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
-Recipe_Ingredients.hasMany(Recipes, { foreignKey: 'recipe_id', onDelete: 'CASCADE' });
-Recipes.belongsTo(Recipe_Ingredients, { foreignKey: 'recipe_id', onDelete: 'CASCADE' });
+Recipe_Ingredients.belongsTo(Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Ingredients.hasMany(Recipe_Ingredients, { foreignKey: 'ingredient_id', onDelete: 'CASCADE' });
+Recipe_Ingredients.belongsTo(Recipes, { foreignKey: 'recipe_id', onDelete: 'CASCADE' });
+Recipes.hasMany(Recipe_Ingredients, { foreignKey: 'recipe_id', onDelete: 'CASCADE' });
 
 User_Ratings.hasMany(Users, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 Users.belongsTo(User_Ratings, { foreignKey: 'user_id', onDelete: 'CASCADE' });
