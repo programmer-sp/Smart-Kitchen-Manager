@@ -108,7 +108,7 @@ module.exports = {
       `ALTER SEQUENCE "Recipe_Ingredients_recipe_ingredient_id_seq" RESTART WITH ${RecipeIngdData.length + 1}`,
     );
 
-    await queryInterface.bulkInsert('User_Ratings', RecipeIngdData, {});
+    await queryInterface.bulkInsert('User_Ratings', RecipeRatingData, {});
 
     await queryInterface.sequelize.query(
       `ALTER SEQUENCE "User_Ratings_rating_id_seq" RESTART WITH ${RecipeRatingData.length + 1}`,
