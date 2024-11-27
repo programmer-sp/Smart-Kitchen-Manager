@@ -48,6 +48,7 @@ export class IRecipe {
                 offset: (page - 1) * limit,
                 limit: limit,
                 order: data.rating_filter ? [['system_rating', data.rating_filter]] : [['createdAt', 'DESC']],
+                raw: true
             };
 
             if (search) condition['where'] = {
@@ -56,7 +57,13 @@ export class IRecipe {
                     { cuisine: { [Op.iLike]: `%${search}%` } }
                 ]
             };
-            const recipeData = await Recipes.findAndCountAll(condition);
+            let recipeData: any = await Recipes.findAndCountAll(condition);
+            if (recipeData.rows.length > 0) {
+                for (let recipeDetail of recipeData.rows) {
+                    const rDetail = await recipeModel.findOne({ recipe_id: recipeDetail.recipe_id });
+                    if (rDetail) recipeDetail['images'] = rDetail.images;
+                }
+            }
 
             return { status: status_code.OK, message: l10n.t('COMMON_SUCCESS', { key: MODULE_NAME.RECIPE, method: RESPONSE_METHOD.READ }), count: recipeData.count, data: recipeData.rows };
 
