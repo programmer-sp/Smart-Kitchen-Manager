@@ -5,10 +5,12 @@ import ingredientModel from '../models/Ingredient_Details.model';
 import recipeModel from '../../common/models/Recipe_Details.model';
 import recipeRatingModel from '../../common/models/Recipe_Rating.model';
 
-const mongoUri = `mongodb://${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}`;  //for local database
+// const mongoUri = `mongodb://${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}`;  //for local database
 /* let mongoUri;
 if (config.NODE_ENV === 'development') mongoUri = `mongodb://${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}`;
 else mongoUri = `mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}?authSource=admin`; */
+
+const mongoUri = `mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}.zntg8.mongodb.net/${config.MONGO_NAME}?retryWrites=true&w=majority&appName=${config.MONGO_NAME}`;
 
 connect(mongoUri).then(() => {
     logger.info(`

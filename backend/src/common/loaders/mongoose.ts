@@ -20,7 +20,9 @@ const connectMongo = () => {
     };
 
     if (config.NODE_ENV != 'development') {
-        mongoose.connect(`mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}?authSource=admin`, options);
+        // mongoose.connect(`mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_NAME}?authSource=admin`, options);
+
+        mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}.zntg8.mongodb.net/${config.MONGO_NAME}?retryWrites=true&w=majority&appName=${config.MONGO_NAME}`, options);
     } else {
         mongoose.set('debug', true);
         mongoose.connect(config.MONGO_URI, options);
